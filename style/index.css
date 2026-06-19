@@ -1,122 +1,632 @@
-
 /*Colocanndo cor de fundo no cabeçalho*/
 header {
-background-color:rgb(199, 117, 134);
-font-family: poppins, sans-serif; /*FORTE DO CABEÇALHO */
-color: #FFFFFF;         /*COR DO TEXTO DFO CABEÇALHO */
+    background-color: rgb(199, 117, 134);
+    font-family: poppins, sans-serif;
+    /*FORTE DO CABEÇALHO */
+    color: #FFFFFF;
+    /*COR DO TEXTO DFO CABEÇALHO */
 }
-NAV a{
-    color:antiquewhite; /*COR DO TEXTO DO MENU DE NAVEGAÇAO */
-    text-decoration: nome; /*REMOVE O SUBLINHADO DO LINKS */
-    margin: 0 10px; /*ESPACHAMENTO ENTRE OS LINKS */
+
+NAV a {
+    color: antiquewhite;
+    /*COR DO TEXTO DO MENU DE NAVEGAÇAO */
+    text-decoration: nome;
+    /*REMOVE O SUBLINHADO DO LINKS */
+    margin: 0 10px;
+    /*ESPACHAMENTO ENTRE OS LINKS */
 }
-nav{
-text-align: center; /*ALINHAMENTO DO TEXTO DOS LINKS */
-border-color:#FFFFFF; /* COR DA BORDA DO MENU DE NAVEGAÇAO */
-border-width: 1px; /*LARGURA DA BORDA DO MENU DE NAVEGAÇAO */
-border-style: solid; /*ESTILO DA BORDA DO MENU DE NAVEGAÇAO */
-padding: 10px; /*DISTANCIA ENTRE AS BORDAS DO MENU DE NAVECAÇAO */
+
+nav {
+    text-align: center;
+    /*ALINHAMENTO DO TEXTO DOS LINKS */
+    border-color: #FFFFFF;
+    /* COR DA BORDA DO MENU DE NAVEGAÇAO */
+    border-width: 1px;
+    /*LARGURA DA BORDA DO MENU DE NAVEGAÇAO */
+    border-style: solid;
+    /*ESTILO DA BORDA DO MENU DE NAVEGAÇAO */
+    padding: 10px;
+    /*DISTANCIA ENTRE AS BORDAS DO MENU DE NAVECAÇAO */
 }
-.logo img{ 
-    height: 120px; /*ALTURA DA LOGO */
-    width:  80px; /*LARGURA DA IMAGEM */
+
+.logo img {
+    height: 120px;
+    /*ALTURA DA LOGO */
+    width: 80px;
+    /*LARGURA DA IMAGEM */
 }
+
 /*CONFIGURANDO A CAIXA DE PESQUISA*/
-.caixa-pesquisa input{
-padding: 10px; /*DISTANCIA ENTRE AS BORDAS DO CAMPO DE PESQUISA */
-border: 1px solid #ccc; /*BORDA DO CAMPO DE PESQUISA */
-border-radius: 5px; /*ARRENDAMENTO DAS BORDAS DO CAMPO DE PESQUISA*/
-font-family: poppins, sans-serif; /*FONTE DO CAMPO DE PESQUISA */
-Width: 300px; /*LARGURA DO CAMPO DE PESQUISA */ 
-height:auto; /*ALTURA DO CAMPO DE PESQUISA */
-padding-left: 50px;
+.caixa-pesquisa input {
+    padding: 10px;
+    /*DISTANCIA ENTRE AS BORDAS DO CAMPO DE PESQUISA */
+    border: 1px solid #ccc;
+    /*BORDA DO CAMPO DE PESQUISA */
+    border-radius: 5px;
+    /*ARRENDAMENTO DAS BORDAS DO CAMPO DE PESQUISA*/
+    font-family: poppins, sans-serif;
+    /*FONTE DO CAMPO DE PESQUISA */
+    Width: 300px;
+    /*LARGURA DO CAMPO DE PESQUISA */
+    height: auto;
+    /*ALTURA DO CAMPO DE PESQUISA */
+    padding-left: 50px;
 }
+
 /*CONFIGURANDO A DIV DA PESQUISA */
-.caixa-pesquisa{
-display: flex; /*EXIBE OS ELEMENTOS EM LINHA */
-justify-content: center; /*ALINHAMENTO HORIZONTAL DOS ELEMENTOS */
-margin-top: 10px; /*MARGEM SUPERIOR DA CAIXA DE PESQUISA */
-margin-bottom: 10px; /*MARGEM INFERIOR DA CAIXA DE PESQUISA */
-position: relative; /*POSIÇÃO RELATIVA PARA POSICIONAR O ICONE DE PESQUISA */
+.caixa-pesquisa {
+    display: flex;
+    /*EXIBE OS ELEMENTOS EM LINHA */
+    justify-content: center;
+    /*ALINHAMENTO HORIZONTAL DOS ELEMENTOS */
+    margin-top: 10px;
+    /*MARGEM SUPERIOR DA CAIXA DE PESQUISA */
+    margin-bottom: 10px;
+    /*MARGEM INFERIOR DA CAIXA DE PESQUISA */
+    position: relative;
+    /*POSIÇÃO RELATIVA PARA POSICIONAR O ICONE DE PESQUISA */
 }
+
 /*ALINHAR AS DIVAS DO CABEÇALHO */
-.topo{
-    display: flex; /*EXIBE OS ELEMENTOS EM LINHA */
-    align-items: center; /*ALINHAMENTO VERTICAL DOS ELEMENTOS */
+.topo {
+    display: flex;
+    /*EXIBE OS ELEMENTOS EM LINHA */
+    align-items: center;
+    /*ALINHAMENTO VERTICAL DOS ELEMENTOS */
     justify-content: space-between;
     /*DISTRIBUIÇÃO DOS ELEMENTOS COM ESPAÇO ENTRE ELES */
-    padding: 10px; /*DISTANCIA ENTRE AS BORDAS DO CABEÇALHO */
+    padding: 10px;
+    /*DISTANCIA ENTRE AS BORDAS DO CABEÇALHO */
 }
+
 /*CONFIGURANDO OS ICONES*/
-.caixa-pesquisa img{ 
-    height: 20px; /*Altura do icone de pesquisa */
-    width: 20px; /*LARGURA DO ICONE DE PESQUISA */
-    position: absolute; /*POSIÇÃO ABSOLUTA PRA POSICIONAR O ICONE DE PESQUISA */
-    left: 10px; /*DISTANÇIA DO ICONE DE PESQUISA PARA A ESQUERDA */
-    top: 50%; /*ALIANHAMENTO VERTICAL DO ICONE DE PESQUISA */
-    transform: translateY(-50%); /*Centra o icone de pesquisa verticalmente */
+.caixa-pesquisa img {
+    height: 20px;
+    /*Altura do icone de pesquisa */
+    width: 20px;
+    /*LARGURA DO ICONE DE PESQUISA */
+    position: absolute;
+    /*POSIÇÃO ABSOLUTA PRA POSICIONAR O ICONE DE PESQUISA */
+    left: 10px;
+    /*DISTANÇIA DO ICONE DE PESQUISA PARA A ESQUERDA */
+    top: 50%;
+    /*ALIANHAMENTO VERTICAL DO ICONE DE PESQUISA */
+    transform: translateY(-50%);
+    /*Centra o icone de pesquisa verticalmente */
 }
-.caixa-pesquisa placeholder{
+
+.caixa-pesquisa placeholder {
     padding-left: 30px;
     /*DISTANCIA ENTRE O TEXTO DO PLACEHOLDER E O ICONE DE PESQUISA */
 }
-.icones a img{
-    height: 30px; /*ALTURA DOS ICONES DE USUARIO E CARRINHO */
-    width: 30PX; /*LARGURA DOS ICONES DE USUARIO E CARRINHO */
+
+.icones a img {
+    height: 30px;
+    /*ALTURA DOS ICONES DE USUARIO E CARRINHO */
+    width: 30PX;
+    /*LARGURA DOS ICONES DE USUARIO E CARRINHO */
     margin-right: 20px;
     /*DISTANCIA ENTRE OS ICONES DE USUARIO E CARRINHO AO LADO DIREITO */
     grid-row: 1/ 3;
     /*OCUPA AS DUAS LINHAS DA GRADE PARA ALINHAR OS ICONES VERTICALMENTE */
 }
+
 /*CONFIGURANDO O TEXTO DOS ICONES DE USUARIO E CARRINHO */
-.icones a small{ 
-    font-size: 10px; /*TAMANHO DA FONTE DE TEXTO PEQUENO */
-    display: block; /*EXIBE O TEXTO EM UMA LINHA */
-    color:#FFFFFF; /*COR DO TEXTO PEQUENO */
-    grid-column: 2; /*OCUPA A SEGUNDA COLUNA DA GRADE PARA ALINHAR O TEXTO AO LADO */
-    grid-row: 1; /*OCUPA A PRIMEIRA LINHA DA GRANDE PARA ALINHAR OS TEXTO VERTICALMENTE */
-    margin: 0; /*REMOVE A MARGEM PADRÃO DO ELEMENTO SMALL */
+/* TEXTO PEQUENO */
+.icones a SMALL {
+    font-size: 10px;
+    display: block;
+    color: #FFFFFF;
+
+    grid-column: 2;
+    grid-row: 1;
+
+    margin: 0;
 }
-    .icones a p{
-        font-size: 12px; /*TAMANHO DA FONTE DO TEXTO GRANDE */
-        display: block; /*EXIBE O TEXTO EM UMA NOVA LINHA */
-        color:#FFFFFF; /*COR DO TEXTO GRANDE */
-        grid-column: 2; /*OCUPA A SEGUNDA COLUNA DA GRADE PARA ALINHAR O TEXTO AO LADO */ 
-        grid-row: 2; /*ocupa a segunda linha da grade para alinhar o texto verticalmente */
-        margin: 0; /*REMOVE A MARGEM PADRÃO DO ELEMENTO SMALL */
 
-    }
-    .icones a{
-        text-decoration: none; /*REMOVE O SUBLINHADO DOS LINKS */
-        display:grid; /*EXIBE OS ELEMENYOS EM LINHA */
-        grid-template-columns: 40PX  auto;
-        grid-template-rows: AUTO auto;
-        color: #FFFFFF;
+/* TEXTO PRINCIPAL */
+.icones a p {
+    font-size: 12px;
+    display: block;
+    color: #FFFFFF;
 
-    }
-    /*CONFIGURANDO A DIV ICONES */ 
-    .icones{
-    display: flex;/*EXIBE OS ELEMENTOS EM LINHA */
-    align-items: center;/*ALINHAMENTO VERTICAL DOS ELEMENTOS */
-    gap: 30px;/*DISTANCIA ENTRE OS ELEMENTOS */
+    grid-column: 2;
+    grid-row: 2;
+
+    margin: 0;
+}
+
+/* LINK DOS ÍCONES */
+.icones a {
     text-decoration: none;
+
+    display: grid;
+    /* Organiza ícone e textos */
+
+    grid-template-columns: 40px auto;
+    /* Coluna do ícone e do texto */
+
+    grid-template-rows: auto auto;
+    /* Duas linhas */
+
+    margin-right: 20px;
 }
 
-/*configurando a area do banner */
-.imagens-banner img{ 
- max-width: 100%; /*LARGURA MAXIMA DO BANNER */
-}
-.banner{
+/* CONTAINER DOS ÍCONES */
+.icones {
     display: flex;
-    justify-content:space-between;
-    /*DISTRIBUIÇAO DOS ELEMENTOS COM ESPAÇO ENTRE ELES */
-    align-items:center;/*ALIANHAMENTO VERTICAL DOS ELEMENTOS */
+
+    align-items: center;
+
+    gap: 30px;
+    /* Espaçamento entre login e carrinho */
 }
 
-    
+/*CONFIGURANDO A AREA DO BANNER */
+.imagens-banner img {
+
+    display: flex;
+    /*EXIBE A IMAGEM COMO BLOCO PARA REMOVER ESPAÇOS EM VOLTA DA IMAGEM  */
+    width: 100%;
+    /*LARGURA DO BANNER */
+    height: auto;
+    /*ALTURA DO BANNER */
+    /*AJUSTA A IMAGEM PARA COBRIR TODO O ESPAÇO DO BANNER SEM DISTORCER A IMAGEM */
+}
+
+.banner {
+    width: 100%;
+    /*LARGURA DO BANNER */
+    height: auto;
+    /*ALTURA DO BANNER */
+    margin: 0;
+    /*REMOVE A IMAGEM PADRÃO DO BANNER */
+    padding: 0;
+    /*REMOVE O PADDING PADRÃO DO BANNER */
+}
+
+.imagens-banner {
+    width: 100%;
+    /*LARGURA DA DIV DO BANNER */
+    position: relative;
+    /*POSIÇÃO RELATIVA PARA POSICIONAR OS BOTÕES DO BANNER */
+}
+
+
+/*
+
+.botoes-banners {
+    position: absolute;
+    top: 60%;
+    left: 90px;
+}
+
+.bnt-comprar {
+    background-color: aquamarine;
+    color: #ffffff;
+    border-radius: 5px;
+    font-family: poppins, sans-serif;
+    padding: 5px 10px;
+}
+
+.bnt-comprar:hover {
+    background-color: #F1F1F1;
+    color: #A21D54;
+}
+
+.bnt-anterior,
+.bnt-proximo {
+    background-color: #FFFFFF;
+    color: #A21D54;
+    border-radius: 10px;
+    font-family: poppins, sans-serif;
+    border: none;
+    padding: 5px 20px;
+}
+
+.btn-anterior:hover,
+.btn-proximo:hover {
+    background-color: #A21D54;
+    color: #ffffff;
+}
+    */
+.bnt-comprar {
+    position: absolute;
+    top: 60%;
+    left: 90px;
+    background-color: aquamarine;
+    color: #000000;
+    border-radius: 5px;
+    font-family: poppins, sans-serif;
+    padding: 5px 10px;
+    border: none;
+    font-size: 18px;
+}
+
+.btn-anterior {
+    position: absolute;
+    top: 40%;
+    left: 3%;
+    background-color: #ffffff;
+    color: #A21D54;
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+
+}
+
+.btn-proximo {
+    position: absolute;
+    top: 40%;
+    left: 93%;
+    background-color: #ffffff;
+    color: #A21D54;
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+
+}
+
+.bnt-comprar :hover {
+    background-color: #f1f1f1;
+    color: #A21D54;
+}
+
+.btn-anterior:hover,
+.btn-proximo:hover {
+    background-color: #A21D54;
+    color: #FFFFFF;
+}
+
+/*configurando a aréa de ofertas */
+
+.ofertas {
+    padding: 20px;
+    /*DISTANCIA ENTRE O CONTEUDO DA DIV 
+    DE OFERTAS E AS BORDAS DA DIV */
+}
+
+/*configurando os textos da ofertas */
+.titulo-ofertas {
+    font-family: poppins, sans-serif;
+    /*FONTE DO TITULO DAS OFERTAS */
+    display: grid;
+    /*EXIBE OS ELEMENTOS EM GRADE */
+    grid-template-columns: 2 80% 20%;
+    /*DEFINE O TAMANHO DAS COLUNAS DA GRADE */
+    grid-template-rows: 2 50% 50%;
+    /*DEFINE O TAMANHO DAS LINHAS DA GRADE */
+
+}
+
+.titulo-ofertas h2 {
+    color: #A21D54;
+    /*COR DO TITULO DAS OFERTAS */
+    font-size: 24PX;
+    /*TAMANHO DA FONTE DO TITULO DE OFERTAS */
+    grid-column: 1;
+    /*OCUPA A PRIMEIRA LINHA DA GRADE PARA ALINHAR O
+    TITULO VERTICALMENTE COM ICONE */
+    margin: 0;
+    /*REMOVE A MARGEM PADRÃO DO ELEMENTO H2 */
+}
+
+.titulo-ofertas P {
+    color: #A21D54;
+    /*COR DO SUBTITULO DAS OFERTAS */
+    font-size: 14px;
+    /*TAMANHO DA FONTE DO SUBTITULO DAS OFERTAS */
+    grid-column: 1;
+    /*OCUPA A PRIMEIRA COLUNA DA GRADE PARA ALINHAR O SUBTITULO AO LADO DIREITO DO ICONE */
+    grid-row: 2;
+    /*OCUPA A SEGUNDA LINHA DA GRADE PARA ALINHAR O SUBTITULO VERTICALMENTE COM O ICONE */
+    margin: 0;
+    /*REMOVE A MARGEM PADRÃO DO ELEMENTO P */
+
+}
+
+.titulo-ofertas a {
+    text-decoration: none;
+    /*REMOVE O SUBLINHADO DO LINKS */
+    color: #A21D54;
+    /*COR DO LINK DO TEXTO DAS OFERTAS */
+    font-size: 14px;
+    /*TAMANHO DA FONTE DO LINK DO TITULO DAS OFERTAS */
+    grid-column: 2;
+    /*OCUPA A SEGUNDA COLUNA DA GRADE PARA ALINHAR O LINK AO LADO DIREITO DO TITULO E SUBTITULO */
+    grid-row: 2;
+    /*OCUPA AS DUAS LINHAS DA GRADE PARA ALINHAR O LINK VERTIACALMENTE COM O TITULO E SUBTITULO */
+    align-self: center;
+    /*ALINHAR O LINK VERTICALMENTE NO CENTRO DA GRADE */
+    padding-left: 80%;
+    /*DISTANCIA ENTRE O LINK E O TITULO E SUBTITULO */
+}
+
+.listas-produtos {
+    display: flex;
+    /*EXIBE OS ELEMENTOSEM LINHA */
+    justify-content: space-between;
+    /*DISTRIBUIÇAO DOS ELEMENTOS COM ESPAÇO ENTRE ELES */
+    font-family: Poppins, sans-serif;
+    /*FONTE DOS PRODUTOS */
+    margin-top: 20px;
+    /*MARGEM SUPERIOR DA LISTA DE PRODUTOS */
+
+}
+
+.card-produtos {
+    width: 15%;
+    /*LARGURA DE CADA CARD DE PRODUTO */
+
+    /*ALTURA DE CADA CARD DE PRODUTO */
+    background-color: #f1f1f1;
+    /*COR DE FUNDO DE CADA CARD DO PRODUTO */
+    border: 1px soli #ccc;
+    /*BORDA DE CADA CARD DE PRODUTO */
+    border-radius: 10px;
+    /*ARREDONDAMENTO DAS BORDAS DE CADA CARD DE PRODUTO */
+    padding: 10px;
+    /*DISTANCIA ENTRE O CONTEUDO DO CARD E AS BORDAS DO CARD */
+    text-align: center;
+    /*ALINHAMENTO DO TEXTO NO CENTRO DO CARD */
+}
 
 
 
+.card-produtos img {
+    width: 100%;
+    /*LARGURA DA IAMGEM DO PRODUTO */
+    height: auto;
+    /*ALTURA DA IAMGEM DO PRODDUTO */
+    margin-bottom: 10px;
+    /*MARGEM INFERIOR DA IMAGEM DO PRODUTO */
+    border: 10px;
+    /*ARREDONDAMENTO DAS BORDAS DA IMAGEM DO PRODUTO */
+}
+
+.imagem-botao {
+    position: relative
+        /*POSIÇAO RELATIVA PARA POSICIONAR O BOTÃO DE FAVORITO DO CARD DE PRODUTO */
+}
 
 
+.favorito {
+    position: absolute;
+    border: none;
+    border: 50%;
+    background-color: transparent;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+}
 
+.card-produtos h3 {
+    font-size: 18px;
+    /*DEFINE O TAMANHO DO TEXTO */
+    font-family: poppins, sans-serif;
+    /*ALTERAR FONTE DO TEXTO */
+    color: #2E3F4F;
+    /*ADICIONA COR DE TEXTO */
+    font-style: bold;
+    /*DEIXA O TEXTO EM NEGRITO */
+}
+
+
+/*CONFIGURANDO O BOTÃO DE ADICIONAR AO CARRINHO */
+.btn-adicionar {
+    border-radius: 40%;
+    /*ARRENDODAR O BOTÃO */
+    background-color: #A21D54;
+    /* COR DE FUNDO DO BOTÃO */
+    border: none;
+    /*RETIRAR AS BORDAS DO BOTÃO */
+    margin-left: 60%;
+    /*DEFINIR QUE O BOTÃO FICARA NO LADO DIREITO DO CARD */
+
+
+}
+
+.btn-adicionar img {
+    width: 30px;
+    /*ALTERANDO O TAMANHO ICONE DE CARRINHO */
+    padding-top: 5px;
+    /*DISTANCIAR A IAMGEM DO TOPO DO BOTÃO */
+
+}
+
+.precos {
+    display: grid;
+    /*PREMITE COLOCAR INTENS UM AO LADO DO OUTRO */
+    grid-template-columns: 2;
+    /*DUAS COLUNAS */
+    grid-template-rows: 1;
+    /*UMA LINHA */
+    align-items: center;
+}
+
+.p-antigo {
+    grid-column: 1;
+    grid-row: 1;
+    /*TRAÇAR UMA LINHA CORTANDO O PREÇO */
+    text-decoration: line-through;
+    font-size: 12px;
+    /*TAMANHO DO TEXTO */
+    color: #aba7a7;
+    /*COR DO TEXTO */
+
+
+}
+
+.p-promocional {
+    grid-column: 2;
+    grid-row: 1;
+    font-weight: bold;
+    font-size: 18px;
+    /*TAMANHO DO TEXTO */
+    color: #A21D54;
+    /*COR DE TEXTO */
+
+    /*ALINHA O TEXTO PARA A ESQUERDA */
+    text-align: left;
+}
+
+/*ÁREA DE AVALIAÇÃO EM ESTRELA */
+
+/* ÁREA DA AVALIAÇÃO */
+.btn-card {
+    display: flex;
+    /* Elementos lado a lado */
+
+    align-items: center;
+    /* Alinhamento vertical */
+
+    gap: 10px;
+    /* Espaçamento entre os itens */
+}
+
+.btn-card img {
+    width: 24px;
+    /* Tamanho da estrela */
+}
+
+.btn-card h5 {
+    font-size: 14px;
+    /* Tamanho da nota */
+}
+
+
+/*Configurações de Rodapé*/
+
+footer {
+    background-color: #C6838C;
+    /*cor de fundo*/
+    color: #FFFFFF;
+    /*todos os textos na cor branca*/
+    font-family: poppins, sans-serif;
+    /*tipo de fonte*/
+    padding: 10px;
+    /*espaçamentos dentro do rodape*/
+}
+
+.superior {
+    display: flex;
+    /*permitir flexibilidade entre as colunas*/
+    gap: 10px;
+    /*espaçamento entre as divs*/
+    justify-content: space-between;
+    /*definir um tamanho igual entre as divs*/
+    flex-wrap: wrap;
+    /*joga os textos para outra linha caso não possa 
+    caber na div */
+}
+
+.inferior {
+    display: flex;
+    /*permitir flexibilidade entre as colunas*/
+    gap: 20px;
+    /*espaçamento entre os paragrafos*/
+    justify-content: space-between;
+    /*definir um tamanho igual entre os paragrafos*/
+    flex-wrap: wrap;
+    /*joga os textos para outra linha caso não possa 
+    caber na div */
+    align-items: center;
+    /* alinha os paragrafos no*/
+    border-top: #f1f1f1 solid 2px;
+    /*linha entre o rodapé superior e inferior */
+}
+
+.coluna1,
+.coluna2,
+.coluna3,
+.coluna4 {
+    flex: 1;
+    /*que cada coluna ocupa 1 espaço na página*/
+}
+
+.superior h2 {
+    font-size: 14px;
+    /*tamanho dos titulos*/
+    font-weight: bold;
+    /*apliquei negrito aos titulos*/
+}
+
+.superior p {
+    font-size: 10px;
+    /*tamanho dos paragrafos*/
+}
+
+.superior a {
+    color: #FFFFFF;
+    /*cor dos links*/
+    font-size: 10px;
+    /*tamanho dos paragrafos*/
+    text-decoration: none;
+    /*remove o sublinado*/
+}
+
+.superior ul {
+    text-decoration: none;
+    /*retira decoração do texto*/
+    list-style: none;
+    /*retirar a decoração da lista*/
+    padding: 0px;
+    /*retirar os espaçamentos*/
+}
+
+.superior img {
+    width: 24px;
+    /*definir tamanho dos icones*/
+}
+
+.coluna3 a img {
+    padding-right: 10px;
+    /*distanciar a imagem do endereço*/
+}
+
+.coluna3 a {
+    display: flex;
+    /*deixar imagem e endereço lado a lado*/
+    align-items: center;
+}
+
+
+/*CONFIGURANDO O PARAGRAFO DO RODAPE INFERIOR */
+.inferior P {
+    font-size: 10px;
+    /*TAMANHO DO TEXTO */
+}
+
+.inferior .links {
+    display: flex;
+    /*TORNAR OS LINKS FLEXIVEIS A MUDANÇA DE TELA */
+    font-size: 10px;
+    /*TAMANHO DO TEXTO */
+    color: #FFFFFF;
+    /*COR DO TEXTO BRANCA */
+    gap: 50px;
+    /*DISTANCIAR OS LINKS */
+}
+
+.links a {
+    text-decoration: none;
+    /*REMOVE SUBLINHADO */
+    color: #FFFFFF;
+}
+
+/*configurar para que os elementos da pagina preencham toda a tela */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*definir que a pagina não precisa de barra horizontal */
+
+body {
+    overflow-x: hidden;
+    /*remove a barra de rolagem horizontal */
+    width: 100%;
+    /*prencher sempre 100% d atela */
+
+}

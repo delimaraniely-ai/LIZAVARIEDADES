@@ -1,0 +1,179 @@
+/*PRENCHENDO TODA A TELA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    overflow-x: hidden;
+    /*REMOVE A BARRA DE ROLAGEM HORIZONTAL*/
+    width: 100%;
+    /*PREENCHER SEMPRE 100% DA TELA */
+
+}
+
+header {
+    background-color: rgb(199, 117, 134);
+    font-family: poppins,
+        sans-serif;
+    /*FORTE DO CABEÇALHO */
+    color: #FFFFFF;
+    /*COR DO TEXTO DFO CABEÇALHO */
+}
+
+NAV a {
+    color: antiquewhite;
+    /*COR DO TEXTO DO MENU DE NAVEGAÇAO */
+    text-decoration: nome;
+    /*REMOVE O SUBLINHADO DO LINKS */
+    margin: 0 10px;
+    /*ESPACHAMENTO ENTRE OS LINKS */
+}
+
+nav {
+    text-align: center;
+    /*ALINHAMENTO DO TEXTO DOS LINKS */
+    border-color: #FFFFFF;
+    /* COR DA BORDA DO MENU DE NAVEGAÇAO */
+    border-width: 1px;
+    /*LARGURA DA BORDA DO MENU DE NAVEGAÇAO */
+    border-style: solid;
+    /*ESTILO DA BORDA DO MENU DE NAVEGAÇAO */
+    padding: 10px;
+    /*DISTANCIA ENTRE AS BORDAS DO MENU DE NAVECAÇAO */
+}
+
+.logo img {
+    height: 120px;
+    /*ALTURA DA LOGO */
+    width: 80px;
+    /*LARGURA DA IMAGEM */
+}
+
+/*CONFIGURANDO A CAIXA DE PESQUISA*/
+.caixa-pesquisa input {
+    padding: 10px;
+    /*DISTANCIA ENTRE AS BORDAS DO CAMPO DE PESQUISA */
+    border: 1px solid #ccc;
+    /*BORDA DO CAMPO DE PESQUISA */
+    border-radius: 5px;
+    /*ARRENDAMENTO DAS BORDAS DO CAMPO DE PESQUISA*/
+    font-family: poppins, sans-serif;
+    /*FONTE DO CAMPO DE PESQUISA */
+    Width: 300px;
+    /*LARGURA DO CAMPO DE PESQUISA */
+    height: auto;
+    /*ALTURA DO CAMPO DE PESQUISA */
+    padding-left: 50px;
+}
+
+/*CONFIGURANDO A DIV DA PESQUISA */
+.caixa-pesquisa {
+    display: flex;
+    /*EXIBE OS ELEMENTOS EM LINHA */
+    justify-content: center;
+    /*ALINHAMENTO HORIZONTAL DOS ELEMENTOS */
+    margin-top: 10px;
+    /*MARGEM SUPERIOR DA CAIXA DE PESQUISA */
+    margin-bottom: 10px;
+    /*MARGEM INFERIOR DA CAIXA DE PESQUISA */
+    position: relative;
+    /*POSIÇÃO RELATIVA PARA POSICIONAR O ICONE DE PESQUISA */
+}
+
+/*ALINHAR AS DIVAS DO CABEÇALHO */
+.topo {
+    display: flex;
+    /*EXIBE OS ELEMENTOS EM LINHA */
+    align-items: center;
+    /*ALINHAMENTO VERTICAL DOS ELEMENTOS */
+    justify-content: space-between;
+    /*DISTRIBUIÇÃO DOS ELEMENTOS COM ESPAÇO ENTRE ELES */
+    padding: 10px;
+    /*DISTANCIA ENTRE AS BORDAS DO CABEÇALHO */
+}
+
+/*CONFIGURANDO OS ICONES*/
+.caixa-pesquisa img {
+    height: 20px;
+    /*Altura do icone de pesquisa */
+    width: 20px;
+    /*LARGURA DO ICONE DE PESQUISA */
+    position: absolute;
+    /*POSIÇÃO ABSOLUTA PRA POSICIONAR O ICONE DE PESQUISA */
+    left: 10px;
+    /*DISTANÇIA DO ICONE DE PESQUISA PARA A ESQUERDA */
+    top: 50%;
+    /*ALIANHAMENTO VERTICAL DO ICONE DE PESQUISA */
+    transform: translateY(-50%);
+    /*Centra o icone de pesquisa verticalmente */
+}
+
+.caixa-pesquisa placeholder {
+    padding-left: 30px;
+    /*DISTANCIA ENTRE O TEXTO DO PLACEHOLDER E O ICONE DE PESQUISA */
+}
+
+.icones a img {
+    height: 30px;
+    /*ALTURA DOS ICONES DE USUARIO E CARRINHO */
+    width: 30PX;
+    /*LARGURA DOS ICONES DE USUARIO E CARRINHO */
+    margin-right: 20px;
+    /*DISTANCIA ENTRE OS ICONES DE USUARIO E CARRINHO AO LADO DIREITO */
+    grid-row: 1/ 3;
+    /*OCUPA AS DUAS LINHAS DA GRADE PARA ALINHAR OS ICONES VERTICALMENTE */
+}
+
+/*CONFIGURANDO O TEXTO DOS ICONES DE USUARIO E CARRINHO */
+/* TEXTO PEQUENO */
+.icones a SMALL {
+    font-size: 10px;
+    display: block;
+    color: #FFFFFF;
+
+    grid-column: 2;
+    grid-row: 1;
+
+    margin: 0;
+}
+
+/* TEXTO PRINCIPAL */
+.icones a p {
+    font-size: 12px;
+    display: block;
+    color: #FFFFFF;
+
+    grid-column: 2;
+    grid-row: 2;
+
+    margin: 0;
+}
+
+/* LINK DOS ÍCONES */
+.icones a {
+    text-decoration: none;
+
+    display: grid;
+    /* Organiza ícone e textos */
+
+    grid-template-columns: 40px auto;
+    /* Coluna do ícone e do texto */
+
+    grid-template-rows: auto auto;
+    /* Duas linhas */
+
+    margin-right: 20px;
+}
+
+/* CONTAINER DOS ÍCONES */
+.icones {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+    /* Espaçamento entre login e carrinho */
+}

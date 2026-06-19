@@ -2,6 +2,20 @@
 <html lang="pt-br">
 
 <head>
+    <title> LIZAVARIEDADES </title>
+    <!-- Titulo exibido na aba do navegador -->
+
+    <link rel="stylesheet" href="style/index.css">
+    <!-- Conecta o arquivo CSS Externo responsavel pela estilizaçao -->
+
+    <!--imagem da logo p/ navegador -->
+    <link rel=" icon" type="image/png" href="assets/logo-navegador.png">
+
+
+
+</head>
+
+<body>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lizavariedades</title>
@@ -9,58 +23,324 @@
     <link rel="stylesheet" href="style/index.css">
     <!-- ESTE E UM COMENTARIO SOBRE MINHA LOJA -->
 
-<body><!-- CABECALHO -->
-    <header>
-        <div class="topo">
+    <body><!-- CABECALHO -->
+        <header>
+            <div class="topo">
 
-            <div class="logo">
-                <img src="assets/logo.png" alt="logo da Lizavariedades">
-               
-            </div>
-            <!-- caixa de pesquisa -->
-            <div class="caixa-pesquisa">
-                <input type="text" placeholder="O que voce esta procurando?">
-                <img src="assets/pesquisa.png">
-            </div>
-            <!-- icones -->
-            <div class="icones">
-                <a href="">
-                <img src="assets/carrinho.png" alt="carrinho">
-                <small>MEMU</small>
-                <p>CARRINHO</p>
-                </a>
-                 <a href="">
-                <img src="assets/usuario.png" alt="login">
-                <small>Ola visitante</small>
-                <p>ENTRAR</p>
-                </a>
-            </div>
+                <div class="logo">
+                    <img src="assets/logo.png" alt="logo da Lizavariedades">
 
-        </div>
-        <!-- MENU DE NAVEGAÇAO -->
-        <NAV class="menu">
-
-            <a href="#">HOME</a>
-            <a id="idcarrinho" href="#">CARRINHO</a>
-            <a href="#">BRINQUEDOS</a>
-            <a href="#">MAQUIAGENS</a>
-            <a href="#">CAMAMESAEBANHO</a>
-            <a href="#">UNTESILIOSDECASA</a>
-
-        </NAV>
-    </header>
-
-    <!-- BANNER -->
-    <div class="banner">
-        <div class="imagens-banner">
-         <img src="assets/BANNER.png" alt="Banner 1">
-            </div>
-            <div class="botoes-banners">
-
+                </div>
+                <!-- caixa de pesquisa -->
+                <div class="caixa-pesquisa">
+                    <input type="text" placeholder="O que voce esta procurando?">
+                    <img src="assets/pesquisa.png">
+                </div>
+                <!-- icones -->
+                <div class="icones">
+                    <a href="">
+                        <img src="assets/carrinho.png" alt="carrinho">
+                        <small>MEMU</small>
+                        <p>CARRINHO</p>
+                    </a>
+                    <a href="">
+                        <img src="assets/usuario.png" alt="login">
+                        <small>Ola visitante</small>
+                        <p>ENTRAR</p>
+                    </a>
                 </div>
 
             </div>
-            <!--FINALIZÇAO DA AERA DO BANNER DA LOJA-->
+            <!-- MENU DE NAVEGAÇAO -->
+            <NAV class="menu">
 
+                <a href="#">HOME</a>
+                <a id="idcarrinho" href="#">CARRINHO</a>
+                <a href="#">BRINQUEDOS</a>
+                <a href="#">MAQUIAGENS</a>
+                <a href="#">CAMAMESAEBANHO</a>
+                <a href="#">UNTESILIOSDECASA</a>
+
+            </NAV>
+        </header>
+
+        <!-- BANNER -->
+        <div class="banner">
+            <div class="imagens-banner">
+                <img src="assets/BANNER.png" alt="Banner 1">
+            </div>
+            <div class="botoes-banners">
+                <button class="bnt-comprar">Comprar</button>
+
+                <button class="btn-anterior">
+
+                    <img src="assets/ANTERIOR.png" alt="">
+                </button>
+                <button class="btn-proximo">
+                    <img src="assets/PROXIMO.png" alt="Seta para a direita">
+                </button>
+
+
+            </div>
+
+        </div>
+        <!--FINALIZÇAO DA AERA DO BANNER DA LOJA-->
+
+        <!--AREA DE OFERTAS -->
+        <section class="ofertas">
+
+            <div class="titulo-ofertas">
+                <div class="texto-promoçoes">
+                    <h2>confira as melhores ofertas !</p>
+                </div>
+                <a href="#" class="ver-tudo">Ver Tudo</a>
+            </div>
+
+            <div class="lista-produtos">
+                <div class="card-produtos">
+
+                    <div class="imagem-botao">
+                        <img src="assets/1.png" alt=" Produtos 1">
+                        <button class="favorito">
+                            <img src="assets/favorito.png" alt="icone de favorito">
+                        </button>
+
+
+
+                    </div>
+
+
+                    <h3>Nome do produto</h3>
+                    <div class="precos">
+                        <p class="p-antigo">R$ 199,99</p>
+                        <p class="p-promocional">R$ 99,99</p>
+                    </div>
+
+
+                    <div class="btn-card">
+                        <img src="assets/estrela.png" alt="avaliacao">
+                        <h5>4.5</h5>
+
+                        <button class=" btn-adicionar">
+                            <img src="assets/carrinho.png" alt="icone de carrinho">
+                        </button>
+
+                    </div>
+                </div>
+        </section>
+        <!--AREA DE OFERTAS -->
+        <section class="ofertas">
+
+            <div class="titulo-ofertas">
+                <div class="texto-promoçoes">
+                    <h2>confira as melhores ofertas !</p>
+                </div>
+                <a href="#" class="ver-tudo">Ver Tudo</a>
+            </div>
+
+            <div class="lista-produtos">
+                <div class="card-produtos">
+
+                    <div class="imagem-botao">
+                        <img src="assets/1.png" alt=" Produtos 1">
+                        <button class="favorito">
+                            <img src="assets/favorito.png" alt="icone de favorito">
+                        </button>
+
+
+
+                    </div>
+
+
+                    <h3>Nome do produto</h3>
+                    <div class="precos">
+                        <p class="p-antigo">R$ 199,99</p>
+                        <p class="p-promocional">R$ 99,99</p>
+                    </div>
+
+
+                    <div class="btn-card">
+                        <img src="assets/estrela.png" alt="avaliacao">
+                        <h5>4.5</h5>
+
+                        <button class=" btn-adicionar">
+                            <img src="assets/carrinho.png" alt="icone de carrinho">
+                        </button>
+
+                    </div>
+                </div>
+        </section>
+
+
+
+        <!--AREA DE OFERTAS -->
+        <section class="ofertas">
+
+            <div class="titulo-ofertas">
+                <div class="texto-promoçoes">
+                    <h2>confira as melhores ofertas !</p>
+                </div>
+                <a href="#" class="ver-tudo">Ver Tudo</a>
+            </div>
+
+            <div class="lista-produtos">
+                <div class="card-produtos">
+
+                    <div class="imagem-botao">
+                        <img src="assets/1.png" alt=" Produtos 1">
+                        <button class="favorito">
+                            <img src="assets/favorito.png" alt="icone de favorito">
+                        </button>
+
+
+
+                    </div>
+
+
+                    <h3>Nome do produto</h3>
+                    <div class="precos">
+                        <p class="p-antigo">R$ 199,99</p>
+                        <p class="p-promocional">R$ 99,99</p>
+                    </div>
+
+
+                    <div class="btn-card">
+                        <img src="assets/estrela.png" alt="avaliacao">
+                        <h5>4.5</h5>
+
+                        <button class=" btn-adicionar">
+                            <img src="assets/carrinho.png" alt="icone de carrinho">
+                        </button>
+
+                    </div>
+                </div>
+        </section>
+
+
+
+        <!--AREA DE OFERTAS -->
+        <section class="ofertas">
+
+
+
+            <div class="titulo-ofertas">
+                <div class="texto-promoçoes">
+                    <h2>BRINQUEDOS !</p>
+                </div>
+                <a href="#" class="ver-tudo">Ver Tudo</a>
+            </div>
+
+            <div class="lista-produtos">
+                <div class="card-produtos">
+
+                    <div class="imagem-botao">
+                        <img src="assets/1.png" alt=" Produtos 1">
+                        <button class="favorito">
+                            <img src="assets/favorito.png" alt="icone de favorito">
+                        </button>
+
+
+
+                    </div>
+
+
+                    <h3>Nome do produto</h3>
+                    <div class="precos">
+                        <p class="p-antigo">R$ 199,99</p>
+                        <p class="p-promocional">R$ 99,99</p>
+                    </div>
+
+
+                    <div class="btn-card">
+                        <img src="assets/estrela.png" alt="avaliacao">
+                        <h5>4.5</h5>
+
+                        <button class=" btn-adicionar">
+                            <img src="assets/carrinho.png" alt="icone de carrinho">
+                        </button>
+
+                    </div>
+                </div>
+        </section>
+
+
+
+
+
+        <!--INICIO DO RODAPÉ -->
+        <footer>
+            <!--parte superior do rodapé-->
+            <div class="superior">
+                <div class="coluna1">
+                    <h2>LIZAVARIEDADES</h2>
+                    <p>Sua melhor escolha para eletroniços e variedades com o melhor preço e entrega do brasil.</p>
+                    <div class="redes-sociais">
+                        <a href="">
+                            <img src="assets/instagram.png">
+                        </a>
+                        <a href="">
+                            <img src="assets/whatsapp.png">
+                        </a>
+                        <a href="">
+                            <img src="assets/tiktok.png">
+                        </a>
+                        <a href="">
+                            <img src="assets/linkedin.png">
+                        </a>
+                    </div>
+
+                </div>
+                <div class="coluna2">
+                    <h2>NAVEGAÇÃO</h2>
+                    <!--criando uma lista-->
+                    <ul>
+                        <li><a href="">Smartphones </a> </li>
+                        <li><a href="">Notebooks</a> </li>
+                        <li><a href="">Liquidação</a> </li>
+                        <li><a href="">perifericos</a> </li>
+                    </ul>
+                </div>
+                <div class="coluna3">
+                    <h2>ENDEREÇO</h2>
+                    <a href="">
+                        <img src="assets/endereco.png">
+                        AVENIDA X, 77826562,
+                        ARAGUAÍNA, TOCANTINS -
+                        BRASIL
+                    </a>
+                </div>
+                <div class="coluna4">
+                    <h2>NOSSO BLOG</h2>
+                    <ul>
+                        <li><a href="">BRINQUEDOS</a></li>
+                        <li><a href="">VARIEDADES </a></li>
+                        <li><a href="">Dicas</a></li>
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+            <!--parte inferior-->
+            <div class="inferior">
+
+            </div>
+
+
+
+            <!--parte inferior -->
+            <div class="inferior">
+                <p> LIZAVARIEDADES - TODOS OS DIREITOS RESERVADOS </p>
+                <div class="links">
+                    <a href="">POLITICA DE PRIVACIDADE</a>
+                    <a href="">TERMOS DE USO</a>
+                </div>
+
+
+            </div>
+
+        </footer>
+    </body>
 
 </html>
