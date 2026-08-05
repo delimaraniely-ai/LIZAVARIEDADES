@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const cartaoPagamentosModel = require("../model/cartao_pagamentos_model.js");
+const cartaoPagamentosModel = require("../model/cartao_pagamento_model");
 
 
 

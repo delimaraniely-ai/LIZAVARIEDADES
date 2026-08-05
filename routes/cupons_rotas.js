@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 
-const controller = require("../controller/cartao_pagamento_controller.js");
+const controller = require("../controller/cupom_controller");
 
 
 

@@ -95,7 +95,7 @@ function atualizar(id, banner_has_produto, callback) {
         callback
     );
 
-} const conexao = require("../conexao/conexao.js");
+}
 
 // =========================
 // Cadastrar

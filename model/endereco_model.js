@@ -1,4 +1,4 @@
-const db = require("../database/conexao.js");
+const db = require("../conexao/conexao");
 
 
 // ==========================================

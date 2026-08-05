@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const promocaoHasCategoriaModel = require("../model/promocao_has_categoria_model.js");
+const promocaoHasCategoriaModel = require("../model/promocao_has_categoria");
 
 
 //==========================================

@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const formaPagamentoModel = require("../model/forma_pagamento_model.js");
+const formaPagamentoModel = require("../model/formas_pagamento_model");
 
 
 //==========================================

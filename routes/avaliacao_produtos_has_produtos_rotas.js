@@ -10,13 +10,13 @@ const express = require("express");
 // Importando o módulo express para criar rotas e lidar com requisições HTTP.
 const router = express.Router();
 // Criando um objeto router para definir as rotas relacionadas aos clientes.
-const avaliacao_produtos_has_produtosController = require("../controller/avaliacao_has_produto_controller.js");
+const avaliacao_produtos_has_produtosController = require("../controller/avaliacao_has_produtos_produtos_controller");
 
 router.post("/", avaliacao_produtos_has_produtosController.cadastrar);
 
 router.get("/", avaliacao_produtos_has_produtosController.listar);
 
-router.get("/:id", avaliacao_produtos_has_produtosController.buscarPorId);
+router.get("/:id", avaliacao_produtos_has_produtosController.buscar);
 
 router.put("/:id", avaliacao_produtos_has_produtosController.atualizar);
 

@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const categoriaHasCuponsModel = require("../model/categoria_has_cupons_model.js");
+const categoriaHasCuponsModel = require("../model/categoria_has_cupom_model");
 
 
 

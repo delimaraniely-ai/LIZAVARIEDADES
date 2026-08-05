@@ -1,96 +1,211 @@
+
+// ==========================================
+// IMPORTAÇÃO DAS ROTAS
+// ==========================================
+// express é um framework para criar 
+// aplicações web com Node.js
 const express = require("express");
+// cors é um pacote que permite que o servidor
+// aceite requisições de outros domínios
 const cors = require("cors");
 
+// criar uma instância do express
 const app = express();
 
+// permitir que o servidor aceite requisições de 
+// outros domínios
 app.use(cors());
 app.use(express.json());
 
+// importar a conexão com o banco de dados
 const conexao = require("./conexao");
 
-// ROTAS
+// CLIENTE
+const clienteRoutes = require("../routes/cliente_rotas.js");
 
-const clienteRotas = require("../routes/cliente_rotas");
-app.use("/clientes", clienteRotas);
 
-const avaliacaoProdutoRotas = require("../routes/avaliacao_produtos_rotas");
-app.use("/avaliacoes-produtos", avaliacaoProdutoRotas);
+// CATEGORIA
+const categoriaRoutes = require("../routes/categoria_rotas.js");
 
-const avaliacaoProdutosHasProdutosRotas = require("../routes/avaliacao_produtos_has_produtos_rotas");
-app.use("/avaliacao-produtos-has-produtos", avaliacaoProdutosHasProdutosRotas);
 
-const bannerRotas = require("../routes/banner_rotas");
-app.use("/banners", bannerRotas);
+// CORES
+const coresRoutes = require("../routes/cores_rotas.js");
 
-const bannerHasProdutosRotas = require("../routes/banner_has_produtos_rotas");
-app.use("/banner-has-produtos", bannerHasProdutosRotas);
 
-const carrinhoRotas = require("../routes/carrinho_rotas");
-app.use("/carrinhos", carrinhoRotas);
+// TAMANHO
+const tamanhoRoutes = require("../routes/tamanho_rotas.js");
 
-const carrinhoHasProdutoRotas = require("../routes/carrinho_has_produto.js");
-app.use("/carrinho-has-produtos", carrinhoHasProdutoRotas);
 
-const cartaoPagamentoRotas = require("../routes/cartao_pagamento_rotas");
-app.use("/cartoes-pagamento", cartaoPagamentoRotas);
+// PRODUTO
+const produtoRoutes = require("../routes/produto_rotas.js");
 
-const categoriaRotas = require("../routes/categoria_rotas");
-app.use("/categorias", categoriaRotas);
 
-const coresRotas = require("../routes/cores_rotas");
-app.use("/cores", coresRotas);
+// MARCA
+const marcaRoutes = require("../routes/marca_rotas.js");
 
-const cuponsHasCategoriaRotas = require("../routes/cupons_has_categoria.js");
-app.use("/cupons-has-categorias", cuponsHasCategoriaRotas);
 
-const cuponsHasProdutoRotas = require("../routes/cupons_has_produtos_rotas");
-app.use("/cupons-has-produtos", cuponsHasProdutoRotas);
+// BANNER
+const bannerRoutes = require("../routes/banner_rotas.js");
 
-const enderecoRotas = require("../routes/endereco_rotas");
-app.use("/enderecos", enderecoRotas);
 
-const enderecoHasClienteRotas = require("../routes/endereco_has_cliente_rotas");
-app.use("/endereco-has-clientes", enderecoHasClienteRotas);
+// BANNER PRODUTO
+const bannerProdutoRoutes =
+    require("../routes/banner_has_produto_rotas.js");
 
-const formasPagamentoRotas = require("../routes/formas_pagamento_rotas");
-app.use("/formas-pagamento", formasPagamentoRotas);
 
-const freteRotas = require("../routes/frete_rotas");
-app.use("/fretes", freteRotas);
+// AVALIAÇÃO
+const avaliacaoRoutes =
+    require("../routes/avaliacao_produtos_rotas.js");
 
-const imagemProdutoRotas = require("../routes/imagem_produto_rotas");
-app.use("/imagens-produto", imagemProdutoRotas);
 
-const marcaRotas = require("../routes/marca_rotas");
-app.use("/marcas", marcaRotas);
+// CARRINHO
+const carrinhoRoutes =
+    require("../routes/carrinho_rotas.js");
 
-const pedidosRotas = require("../routes/pedidos_rotas");
-app.use("/pedidos", pedidosRotas);
 
-const pedidosHasProdutoRotas = require("../routes/pedidos_has_produto");
-app.use("/pedidos-has-produtos", pedidosHasProdutoRotas);
+// CARRINHO PRODUTO
+const carrinhoProdutoRoutes =
+    require("../routes/carrinho_has_produto.js");
 
-const produtoRotas = require("../routes/produto_rotas");
-app.use("/produtos", produtoRotas);
 
-const produtoHasCoresRotas = require("../routes/produto_has_cores_rotas");
-app.use("/produto-has-cores", produtoHasCoresRotas);
+// CARTÃO
+const cartaoRoutes =
+    require("../routes/cartao_pagamento_rotas.js");
 
-const promocaoRotas = require("../routes/promocao_rotas");
-app.use("/promocoes", promocaoRotas);
 
-const promocaoHasCategoriaRotas = require("../routes/promocao_has_categoria_rotas");
-app.use("/promocao-has-categorias", promocaoHasCategoriaRotas);
+// CUPONS
+const cuponsRoutes =
+    require("../routes/cupons_rotas.js");
 
-const promocaoHasProdutoRotas = require("../routes/promocao_has_produto_rotas");
-app.use("/promocao-has-produtos", promocaoHasProdutoRotas);
 
-const tamanhoRotas = require("../routes/tamanho_rotas");
-app.use("/tamanhos", tamanhoRotas);
+// CUPONS PRODUTOS
+const cuponsProdutosRoutes =
+    require("../routes/cupons_has_produtos_rotas.js");
 
-const tamanhoHasProdutoRotas = require("../routes/tamanho_has_produto_rotas");
-app.use("/tamanho-has-produtos", tamanhoHasProdutoRotas);
 
+// CUPONS CATEGORIA
+const cuponsCategoriaRoutes =
+    require("../routes/cupons_has_categoria.js");
+
+
+// ENDEREÇO
+const enderecoRoutes =
+    require("../routes/endereco_rotas.js");
+
+
+// ENDEREÇO CLIENTE
+const enderecoClienteRoutes =
+    require("../routes/endereco_has_cliente_rotas.js");
+
+
+// FORMAS PAGAMENTO
+const formasPagamentoRoutes =
+    require("../routes/formas_pagamento_rotas.js");
+
+
+// FRETE
+const freteRoutes =
+    require("../routes/frete_rotas.js");
+
+
+// FRETE ENDEREÇO
+const freteEnderecoRoutes =
+    require("../routes/frete_endereco_rotas.js");
+
+
+// IMAGEM PRODUTO
+const imagemProdutoRoutes =
+    require("../routes/imagem_produto_rotas.js");
+
+
+// PEDIDOS
+const pedidosRoutes =
+    require("../routes/pedidos_rotas.js");
+
+
+// PEDIDOS PRODUTO
+const pedidosProdutoRoutes =
+    require("../routes/pedidos_has_produto.js");
+
+
+// PRODUTO CORES
+const produtoCoresRoutes =
+    require("../routes/produto_has_cores_rotas.js");
+
+
+// PROMOÇÃO
+const promocaoRoutes =
+    require("../routes/promocao_rotas.js");
+
+
+// PROMOÇÃO CATEGORIA
+const promocaoCategoriaRoutes =
+    require("../routes/promocao_has_categoria_rotas.js");
+
+
+// PROMOÇÃO PRODUTO
+const promocaoProdutoRoutes =
+    require("../routes/promocao_has_produto_rotas.js");
+
+// ==========================================
+// TESTE DA API
+// ==========================================
+
+app.use("/cliente", clienteRoutes);
+
+app.use("/categoria", categoriaRoutes);
+
+app.use("/cores", coresRoutes);
+
+app.use("/tamanho", tamanhoRoutes);
+
+app.use("/produto", produtoRoutes);
+
+app.use("/marca", marcaRoutes);
+
+app.use("/banner", bannerRoutes);
+
+app.use("/banner-produto", bannerProdutoRoutes);
+
+app.use("/avaliacao", avaliacaoRoutes);
+
+app.use("/carrinho", carrinhoRoutes);
+
+app.use("/carrinho-produto", carrinhoProdutoRoutes);
+
+app.use("/cartao", cartaoRoutes);
+
+app.use("/cupons", cuponsRoutes);
+
+app.use("/cupons-produtos", cuponsProdutosRoutes);
+
+app.use("/cupons-categoria", cuponsCategoriaRoutes);
+
+app.use("/endereco", enderecoRoutes);
+
+app.use("/endereco-cliente", enderecoClienteRoutes);
+
+app.use("/formas-pagamento", formasPagamentoRoutes);
+
+app.use("/frete", freteRoutes);
+
+app.use("/frete-endereco", freteEnderecoRoutes);
+
+app.use("/imagem-produto", imagemProdutoRoutes);
+
+app.use("/pedidos", pedidosRoutes);
+
+app.use("/pedidos-produto", pedidosProdutoRoutes);
+
+app.use("/produto-cores", produtoCoresRoutes);
+
+app.use("/promocao", promocaoRoutes);
+
+app.use("/promocao-categoria", promocaoCategoriaRoutes);
+
+app.use("/promocao-produto", promocaoProdutoRoutes);
+
+// importar as rotas da aplicação
 app.listen(3000, () => {
-    console.log("Servidor iniciado na porta 3000");
+    console.log("Servidor iniciado!");
 });

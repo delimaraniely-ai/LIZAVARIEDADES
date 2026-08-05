@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const bannerHasProdutosModel = require("../model/banner_has_produtos_model.js");
+const bannerHasProdutosModel = require("../model/banner_has_produto_model");
 
 
 

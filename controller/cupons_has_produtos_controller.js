@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const cuponsHasProdutosModel = require("../model/cupons_has_produtos_model.js");
+const cuponsHasProdutosModel = require("../model/cupons_has_produtos");
 
 
 //==========================================

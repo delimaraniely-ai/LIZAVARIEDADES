@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const produtosHasCoresModel = require("../model/produtos_has_cores_model.js");
+const produtosHasCoresModel = require("../model/produto_has_cores_model");
 
 
 //==========================================

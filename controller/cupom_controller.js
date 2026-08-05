@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const cupomModel = require("../model/cupom_model.js");
+const cupomModel = require("../model/cupons_model");
 
 
 //==========================================

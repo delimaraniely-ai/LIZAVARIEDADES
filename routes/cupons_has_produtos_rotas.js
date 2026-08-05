@@ -10,7 +10,7 @@ const express = require("express");
 // Importando o módulo express para criar rotas e lidar com requisições HTTP.
 const router = express.Router();
 // Criando um objeto router para definir as rotas relacionadas aos clientes.
-const cupons_has_produtoscontroller = require("../controller/cupons_has_produto_controller.js");
+const cupons_has_produtoscontroller = require("../controller/cupons_has_produtos_controller");
 
 router.post("/", cupons_has_produtoscontroller.cadastrar);
 

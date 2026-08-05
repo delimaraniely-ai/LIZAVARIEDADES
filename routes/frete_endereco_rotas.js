@@ -2,12 +2,13 @@ const express = require("express");
 const router = express.Router();
 
 
-const controller = require("../controller/promocao_has_promocao_controller");
+const controller = require("../controller/frete_endereco_controller.js");
 
 
 
 // LISTAR
 router.get("/", controller.listar);
+
 
 
 

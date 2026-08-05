@@ -2,7 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const imagemProdutosModel = require("../model/imagem_produtos_model.js");
+const imagemProdutosModel = require("../model/imagem_produto_model");
 
 
 //==========================================
