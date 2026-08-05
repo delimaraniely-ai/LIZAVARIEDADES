@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descrição do Produto</title>
+
+    <link rel="stylesheet" href="../style/descricao.css">
+    <link rel="stylesheet" href="./descricaoproduto.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header id="header">
+
+        <div class="logo">
+            <a href="home.html">LIZA VARIEDADES</a>
+        </div>
+
+        <div class="pesquisa">
+            <input type="text" id="buscar" placeholder="Buscar produtos...">
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <div class="acoes">
+
+            <a href="#">
+                <i class="fa-regular fa-user"></i>
+                Minha Conta
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Carrinho
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- BREADCRUMB -->
+
+    <section class="breadcrumb">
+
+        <span id="caminhoProduto"></span>
+
+    </section>
+
+    <!-- PRODUTO -->
+
+    <main class="produto">
+
+        <!-- GALERIA -->
+
+        <section class="galeria">
+
+            <div class="miniaturas" id="miniaturas">
+
+            </div>
+
+            <div class="imagemPrincipal">
+
+                <img id="imagemPrincipal">
+
+            </div>
+
+        </section>
+
+        <!-- INFORMAÇÕES -->
+
+        <section class="informacoes">
+
+            <span class="marca" id="marcaProduto"></span>
+
+            <h1 id="nomeProduto"></h1>
+
+            <div class="avaliacao" id="avaliacaoProduto">
+
+            </div>
+
+            <div class="preco">
+
+                <h2 id="precoProduto"></h2>
+
+                <small id="parcelamento"></small>
+
+            </div>
+
+            <div class="cores">
+
+                <h3>Cores</h3>
+
+                <div id="listaCores"></div>
+
+            </div>
+
+            <div class="armazenamento">
+
+                <h3>Armazenamento</h3>
+
+                <div id="listaMemorias"></div>
+
+            </div>
+
+            <div class="cep">
+
+                <label>Calcule o Frete</label>
+
+                <input type="text" placeholder="00000-000" id="cep">
+
+                <button id="btnFrete">
+
+                    Calcular
+
+                </button>
+
+            </div>
+
+            <div class="resultadoFrete" id="resultadoFrete">
+
+            </div>
+
+            <div class="botoes">
+
+                <button id="comprar">
+
+                    Comprar Agora
+
+                </button>
+
+                <button id="carrinho">
+
+                    Adicionar ao Carrinho
+
+                </button>
+
+            </div>
+
+            <div class="beneficios">
+
+                <div>
+
+                    <i class="fa-solid fa-shield"></i>
+
+                    <span>Compra Segura</span>
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                    <span>Entrega Rápida</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ABAS -->
+
+    <section class="abas">
+
+        <button class="aba ativa" data-aba="descricao">
+
+            Descrição
+
+        </button>
+
+        <button class="aba" data-aba="especificacoes">
+
+            Especificações
+
+        </button>
+
+        <button class="aba" data-aba="avaliacoes">
+
+            Avaliações
+
+        </button>
+
+    </section>
+
+    <!-- CONTEÚDO -->
+
+    <section class="conteudoAbas">
+
+        <div id="descricao" class="conteudo ativo">
+
+        </div>
+
+        <div id="especificacoes" class="conteudo">
+
+        </div>
+
+        <div id="avaliacoes" class="conteudo">
+
+        </div>
+
+    </section>
+
+    <!-- PRODUTOS RELACIONADOS -->
+
+    <section class="relacionados">
+
+        <div class="titulo">
+
+            <h2>
+
+                Quem viu este produto também comprou
+
+            </h2>
+
+        </div>
+
+        <div class="listaRelacionados" id="listaRelacionados">
+
+        </div>
+
+    </section>
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <div class="footerContainer">
+
+            <div>
+
+                <h3>LIZA VARIEDADES</h3>
+
+                <p>
+
+                    Produtos de qualidade com os melhores preços.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Categorias</h3>
+
+                <ul>
+
+                    <li><a href="#">Celulares</a></li>
+
+                    <li><a href="#">Informática</a></li>
+
+                    <li><a href="#">Acessórios</a></li>
+
+                    <li><a href="#">Eletrônicos</a></li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h3>Institucional</h3>
+
+                <ul>
+
+                    <li><a href="#">Sobre Nós</a></li>
+
+                    <li><a href="#">Política</a></li>
+
+                    <li><a href="#">Trocas</a></li>
+
+                    <li><a href="#">Contato</a></li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h3>Newsletter</h3>
+
+                <input type="email" placeholder="Seu e-mail">
+
+                <button>
+
+                    Enviar
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
+            © 2026 Liza Variedades - Todos os direitos reservados.
+
+        </div>
+
+    </footer>
+
+    <script src="/js/descricaoproduto.js"></script>
+
+</body>
+
+</html>

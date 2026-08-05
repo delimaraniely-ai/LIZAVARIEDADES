@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Estoque - Logista</title>
+
+    <link rel="stylesheet" href="./estoquelogista.html">
+
+</head>
+
+<body>
+
+    <!-- MENU SUPERIOR -->
+
+    <header class="topbar">
+
+        <div class="logo-area">
+
+            <h1 id="logoNome"></h1>
+
+        </div>
+
+        <div class="search-area">
+
+            <input type="text" id="campoBusca">
+
+        </div>
+
+        <div class="user-area">
+
+            <img id="avatarUsuario" alt="Usuário">
+
+            <div>
+
+                <strong id="nomeUsuario"></strong>
+
+                <small id="cargoUsuario"></small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+
+    <main class="container">
+
+        <section class="page-header">
+
+            <div>
+
+                <h2 id="tituloPagina"></h2>
+
+                <p id="descricaoPagina"></p>
+
+            </div>
+
+            <button id="btnNovoProduto"></button>
+
+        </section>
+
+        <!-- CARDS -->
+
+        <section class="cards-grid">
+
+            <article class="card">
+
+                <span class="card-title">
+                    Total Produtos
+                </span>
+
+                <h3 id="totalProdutos"></h3>
+
+                <small id="infoProdutos"></small>
+
+            </article>
+
+            <article class="card">
+
+                <span class="card-title">
+                    Estoque Baixo
+                </span>
+
+                <h3 id="estoqueBaixo"></h3>
+
+                <small id="infoBaixo"></small>
+
+            </article>
+
+            <article class="card">
+
+                <span class="card-title">
+                    Sem Estoque
+                </span>
+
+                <h3 id="semEstoque"></h3>
+
+                <small id="infoSemEstoque"></small>
+
+            </article>
+
+        </section>
+
+        <!-- TABELA -->
+
+        <section class="table-card">
+
+            <div class="table-header">
+
+                <h3>
+                    Controle de Estoque
+                </h3>
+
+                <button id="btnExportar"></button>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Produto</th>
+                        <th>SKU</th>
+                        <th>Categoria</th>
+                        <th>Quantidade</th>
+                        <th>Status</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+
+                            <div class="produto-info">
+
+                                <img id="produtoImagem1" alt="Produto">
+
+                                <span id="produtoNome1"></span>
+
+                            </div>
+
+                        </td>
+
+                        <td id="sku1"></td>
+                        <td id="categoria1"></td>
+                        <td id="quantidade1"></td>
+
+                        <td>
+
+                            <span id="status1" class="status">
+                            </span>
+
+                        </td>
+
+                        <td id="preco1"></td>
+
+                        <td>
+
+                            <button id="editar1" class="btn-editar">
+                                Editar
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            <div class="produto-info">
+
+                                <img id="produtoImagem2" alt="Produto">
+
+                                <span id="produtoNome2"></span>
+
+                            </div>
+
+                        </td>
+
+                        <td id="sku2"></td>
+                        <td id="categoria2"></td>
+                        <td id="quantidade2"></td>
+
+                        <td>
+
+                            <span id="status2" class="status">
+                            </span>
+
+                        </td>
+
+                        <td id="preco2"></td>
+
+                        <td>
+
+                            <button id="editar2" class="btn-editar">
+                                Editar
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            <div class="produto-info">
+
+                                <img id="produtoImagem3" alt="Produto">
+
+                                <span id="produtoNome3"></span>
+
+                            </div>
+
+                        </td>
+
+                        <td id="sku3"></td>
+                        <td id="categoria3"></td>
+                        <td id="quantidade3"></td>
+
+                        <td>
+
+                            <span id="status3" class="status">
+                            </span>
+
+                        </td>
+
+                        <td id="preco3"></td>
+
+                        <td>
+
+                            <button id="editar3" class="btn-editar">
+                                Editar
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            <div class="produto-info">
+
+                                <img id="produtoImagem4" alt="Produto">
+
+                                <span id="produtoNome4"></span>
+
+                            </div>
+
+                        </td>
+
+                        <td id="sku4"></td>
+                        <td id="categoria4"></td>
+                        <td id="quantidade4"></td>
+
+                        <td>
+
+                            <span id="status4" class="status">
+                            </span>
+
+                        </td>
+
+                        <td id="preco4"></td>
+
+                        <td>
+
+                            <button id="editar4" class="btn-editar">
+                                Editar
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        <p id="footerTexto"></p>
+
+    </footer>
+
+    <script src="/js/estoquelogista.js"></script>
+
+</body>
+
+</html>

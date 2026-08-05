@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #cf7f97;
+}
+
+.header {
+    background: #c28282;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-center input {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #bd7a7a;
+    border-radius: 6px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.dashboard {
+    padding: 25px;
+}
+
+.dashboard-header {
+    color: #ad6060;
+    margin-bottom: 20px;
+}
+
+.filters {
+    background: #da7f7f;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.filters button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#btnFiltrar {
+    background: #e9edf5;
+}
+
+#btnAtualizar {
+    background: #09142c;
+    color: #d38e8e;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #d38c8c;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+.chart-section,
+.table-section,
+.export-section {
+    background: #c48686;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    height: 350px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.export-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.export-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer {
+    background: #be7389;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+@media(max-width:991px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header-center input {
+        width: 100%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .export-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

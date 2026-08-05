@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meus Endereços</title>
+
+    <link rel="stylesheet" href="../style/enderecos.css">
+
+</head>
+
+<body>
+
+    <!-- TOPO -->
+
+    <header class="topbar">
+
+        <div class="logo">
+
+            <h1 id="logoNome"></h1>
+
+        </div>
+
+        <div class="search">
+
+            <input type="text" id="campoBusca">
+
+        </div>
+
+        <div class="usuario">
+
+            <img id="avatarUsuario" alt="Usuário">
+
+            <div>
+
+                <strong id="nomeUsuario"></strong>
+
+                <small id="cargoUsuario"></small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+
+    <main class="layout">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <nav>
+
+                <a href="#" id="menuDados"></a>
+
+                <a href="#" id="menuPedidos"></a>
+
+                <a href="#" id="menuEnderecos" class="active"></a>
+
+                <a href="#" id="menuFavoritos"></a>
+
+                <a href="#" id="menuCartoes"></a>
+
+                <a href="#" id="menuSair"></a>
+
+            </nav>
+
+        </aside>
+
+        <!-- CONTEÚDO -->
+
+        <section class="content">
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2 id="tituloPagina"></h2>
+
+                    <p id="descricaoPagina"></p>
+
+                </div>
+
+                <button id="btnNovoEndereco">
+
+                </button>
+
+            </div>
+
+            <!-- ENDEREÇOS -->
+
+            <section class="cards-endereco">
+
+                <article class="card-endereco">
+
+                    <span id="tagEndereco1"></span>
+
+                    <h3 id="tipoEndereco1"></h3>
+
+                    <p id="endereco1"></p>
+
+                    <div class="acoes">
+
+                        <button id="editarEndereco1">
+                            Editar
+                        </button>
+
+                        <button id="excluirEndereco1">
+                            Excluir
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <article class="card-endereco">
+
+                    <span id="tagEndereco2"></span>
+
+                    <h3 id="tipoEndereco2"></h3>
+
+                    <p id="endereco2"></p>
+
+                    <div class="acoes">
+
+                        <button id="editarEndereco2">
+                            Editar
+                        </button>
+
+                        <button id="excluirEndereco2">
+                            Excluir
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- FORMULÁRIO -->
+
+            <section class="form-card">
+
+                <h3 id="tituloFormulario"></h3>
+
+                <form id="formEndereco">
+
+                    <div class="grid">
+
+                        <div>
+
+                            <label>CEP</label>
+
+                            <input type="text" id="cep">
+                        </div>
+
+                        <div>
+
+                            <label>Endereço</label>
+
+                            <input type="text" id="logradouro">
+                        </div>
+
+                        <div>
+
+                            <label>Número</label>
+
+                            <input type="text" id="numero">
+                        </div>
+
+                        <div>
+
+                            <label>Complemento</label>
+
+                            <input type="text" id="complemento">
+                        </div>
+
+                        <div>
+
+                            <label>Cidade</label>
+
+                            <input type="text" id="cidade">
+                        </div>
+
+                        <div>
+
+                            <label>Bairro</label>
+
+                            <input type="text" id="bairro">
+                        </div>
+
+                    </div>
+
+                    <div class="acoes-form">
+
+                        <button type="button" id="btnCancelar">
+                        </button>
+
+                        <button type="submit" id="btnSalvar">
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- BENEFÍCIOS -->
+
+    <section class="beneficios">
+
+        <div id="beneficio1"></div>
+        <div id="beneficio2"></div>
+        <div id="beneficio3"></div>
+        <div id="beneficio4"></div>
+
+    </section>
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        <p id="footerTexto"></p>
+
+    </footer>
+
+    <script src="../js/enderecos.js"></script>
+
+</body>
+
+</html>

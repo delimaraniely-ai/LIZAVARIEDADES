@@ -1,0 +1,168 @@
+* {
+    margin: 2;
+    padding: 10;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #cc7893;
+}
+
+.topbar {
+    background: #e98080;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box input {
+    width: 400px;
+    padding: 12px;
+    border: 1px solid #804e4e;
+    border-radius: 8px;
+}
+
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-box img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 25px;
+}
+
+.titulo-area {
+    color: #241d1d;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.card-title {
+    color: #884848;
+    font-size: 14px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 30px;
+}
+
+.grafico-card {
+    background: #e49d9d;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.grafico-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#graficoVendas {
+    max-height: 300px;
+}
+
+.bottom-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 20px;
+}
+
+.box {
+    background: #f08989;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.produto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.produto img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid #c95d5d;
+    text-align: left;
+}
+
+.footer {
+    text-align: center;
+    color: #ca6868;
+    padding: 20px;
+}
+
+@media(max-width:991px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .topbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+}

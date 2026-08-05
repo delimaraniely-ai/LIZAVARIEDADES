@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoções</title>
+
+    <link rel="stylesheet" href="./promocoes.css">">
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <header class="header">
+
+        <div class="top-bar">
+
+            <div class="logo-area">
+                <h1>LIZA VARIEDADES</h1>
+                <span id="cidadeUsuario"></span>
+            </div>
+
+            <div class="search-area">
+
+                <input type="text" id="campoBusca" placeholder="Buscar em ofertas...">
+
+            </div>
+
+            <div class="icons-area">
+
+                <button id="btnPerfil">👤</button>
+
+                <button id="btnFavoritos">❤</button>
+
+                <button id="btnCarrinho">🛒</button>
+
+            </div>
+
+        </div>
+
+        <nav class="menu-categorias">
+
+            <a href="#">Categorias</a>
+            <a href="#">Ofertas</a>
+            <a href="#">Mais Vendidos</a>
+            <a href="#">Novidades</a>
+            <a href="#">Outlet</a>
+
+        </nav>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main>
+
+        <!-- BANNER -->
+        <section class="banner-promocao">
+
+            <span id="bannerTag"></span>
+
+            <h2 id="bannerTitulo"></h2>
+
+            <p id="bannerDescricao"></p>
+
+        </section>
+
+        <div class="layout">
+
+            <!-- FILTROS -->
+            <aside class="sidebar">
+
+                <h3>Categoria</h3>
+
+                <label>
+                    <input type="checkbox">
+                    Tudo
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Casa
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Decoração
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Tecnologia
+                </label>
+
+                <h3>Desconto</h3>
+
+                <button class="filter-btn">Acima de 25%</button>
+                <button class="filter-btn">Acima de 50%</button>
+                <button class="filter-btn">Acima de 70%</button>
+
+                <button id="btnFiltrar" class="apply-filter">
+                    Aplicar
+                </button>
+
+            </aside>
+
+            <!-- PRODUTOS -->
+            <section class="products">
+
+                <div class="products-header">
+
+                    <h3 id="quantidadeProdutos"></h3>
+
+                    <select id="ordenacao">
+                        <option>Melhores Ofertas</option>
+                        <option>Menor Preço</option>
+                        <option>Maior Preço</option>
+                    </select>
+
+                </div>
+
+                <div class="products-grid">
+
+                    <!-- PRODUTO 1 -->
+                    <article class="product-card">
+
+                        <span id="desconto1" class="badge"></span>
+
+                        <img id="imagem1" src="" alt="">
+
+                        <h4 id="nome1"></h4>
+
+                        <span id="parcela1" class="parcela"></span>
+
+                        <div class="preco">
+
+                            <small id="precoAntigo1"></small>
+
+                            <strong id="precoAtual1"></strong>
+
+                        </div>
+
+                        <button id="btnProduto1">
+                            ADICIONAR AO CARRINHO
+                        </button>
+
+                    </article>
+
+                    <!-- PRODUTO 2 -->
+
+                    <article class="product-card">
+
+                        <span id="desconto2" class="badge"></span>
+
+                        <img id="imagem2" src="" alt="">
+
+                        <h4 id="nome2"></h4>
+
+                        <span id="parcela2" class="parcela"></span>
+
+                        <div class="preco">
+
+                            <small id="precoAntigo2"></small>
+
+                            <strong id="precoAtual2"></strong>
+
+                        </div>
+
+                        <button id="btnProduto2">
+                            ADICIONAR AO CARRINHO
+                        </button>
+
+                    </article>
+
+                    <!-- PRODUTO 3 -->
+
+                    <article class="product-card">
+
+                        <span id="desconto3" class="badge"></span>
+
+                        <img id="imagem3" src="" alt="">
+
+                        <h4 id="nome3"></h4>
+
+                        <span id="parcela3" class="parcela"></span>
+
+                        <div class="preco">
+
+                            <small id="precoAntigo3"></small>
+
+                            <strong id="precoAtual3"></strong>
+
+                        </div>
+
+                        <button id="btnProduto3">
+                            ADICIONAR AO CARRINHO
+                        </button>
+
+                    </article>
+
+                    <!-- PRODUTO 4 -->
+
+                    <article class="product-card">
+
+                        <span id="desconto4" class="badge"></span>
+
+                        <img id="imagem4" src="" alt="">
+
+                        <h4 id="nome4"></h4>
+
+                        <span id="parcela4" class="parcela"></span>
+
+                        <div class="preco">
+
+                            <small id="precoAntigo4"></small>
+
+                            <strong id="precoAtual4"></strong>
+
+                        </div>
+
+                        <button id="btnProduto4">
+                            ADICIONAR AO CARRINHO
+                        </button>
+
+                    </article>
+
+                </div>
+
+                <div class="pagination">
+
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- NEWSLETTER -->
+
+        <section class="newsletter">
+
+            <h2 id="newsletterTitulo"></h2>
+
+            <p id="newsletterDescricao"></p>
+
+            <input type="email" id="newsletterEmail" placeholder="Seu melhor e-mail">
+
+            <button id="btnCadastrar">
+                CADASTRAR
+            </button>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div>
+
+                <h3>LIZA VARIEDADES</h3>
+
+                <p id="footerDescricao"></p>
+
+            </div>
+
+            <div>
+
+                <h4>Institucional</h4>
+
+                <a href="#">Quem Somos</a>
+                <a href="#">Políticas</a>
+                <a href="#">Trocas</a>
+
+            </div>
+
+            <div>
+
+                <h4>Contato</h4>
+
+                <p id="telefone"></p>
+
+                <p id="email"></p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="/js/promocoes.js"></script>
+
+</body>
+
+</html>

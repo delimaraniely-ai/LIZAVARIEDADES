@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios Logista</title>
+
+    <link rel="stylesheet" href="./relatoriologista.html">
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <header class="header">
+
+        <div class="header-left">
+
+            <h1 id="empresaNome"></h1>
+
+        </div>
+
+        <div class="header-center">
+
+            <input type="text" id="campoBusca" placeholder="Pesquisar por pedido, cliente ou produto...">
+
+        </div>
+
+        <div class="header-right">
+
+            <img id="avatarUsuario" src="" alt="">
+
+            <span id="nomeUsuario"></span>
+
+        </div>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="dashboard">
+
+        <!-- TOPO -->
+        <section class="dashboard-header">
+
+            <h2 id="tituloRelatorio"></h2>
+
+            <p id="descricaoRelatorio"></p>
+
+        </section>
+
+        <!-- FILTROS -->
+        <section class="filters">
+
+            <div class="filter-group">
+
+                <label>Período</label>
+
+                <input type="date" id="dataInicial">
+
+            </div>
+
+            <div class="filter-group">
+
+                <label>Categoria</label>
+
+                <select id="categoriaFiltro">
+
+                    <option>Todas as Categorias</option>
+
+                </select>
+
+            </div>
+
+            <button id="btnFiltrar">
+                Filtrar Relatório
+            </button>
+
+            <button id="btnAtualizar">
+                Atualizar Dados
+            </button>
+
+        </section>
+
+        <!-- CARDS -->
+        <section class="cards">
+
+            <div class="card">
+
+                <span class="card-title">
+                    Faturamento Total
+                </span>
+
+                <h3 id="faturamento"></h3>
+
+                <small id="faturamentoCrescimento"></small>
+
+            </div>
+
+            <div class="card">
+
+                <span class="card-title">
+                    Total de Pedidos
+                </span>
+
+                <h3 id="pedidos"></h3>
+
+                <small id="pedidosCrescimento"></small>
+
+            </div>
+
+            <div class="card">
+
+                <span class="card-title">
+                    Ticket Médio
+                </span>
+
+                <h3 id="ticketMedio"></h3>
+
+                <small id="ticketCrescimento"></small>
+
+            </div>
+
+            <div class="card">
+
+                <span class="card-title">
+                    Margem de Lucro
+                </span>
+
+                <h3 id="lucro"></h3>
+
+                <small id="lucroCrescimento"></small>
+
+            </div>
+
+        </section>
+
+        <!-- GRÁFICO -->
+        <section class="chart-section">
+
+            <div class="section-header">
+
+                <h3>Tendência de Vendas</h3>
+
+            </div>
+
+            <div class="chart-container">
+
+                <canvas id="salesChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- TABELA -->
+        <section class="table-section">
+
+            <div class="section-header">
+
+                <h3>Relatório de Vendas Detalhado</h3>
+
+                <a href="#" id="verRelatorio">
+                    Ver relatório completo
+                </a>
+
+            </div>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Data</th>
+
+                        <th>Pedidos</th>
+
+                        <th>Faturamento</th>
+
+                        <th>Crescimento</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td id="dataLinha1"></td>
+
+                        <td id="pedidoLinha1"></td>
+
+                        <td id="faturamentoLinha1"></td>
+
+                        <td id="crescimentoLinha1"></td>
+
+                        <td>
+                            <span id="statusLinha1"></span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td id="dataLinha2"></td>
+
+                        <td id="pedidoLinha2"></td>
+
+                        <td id="faturamentoLinha2"></td>
+
+                        <td id="crescimentoLinha2"></td>
+
+                        <td>
+                            <span id="statusLinha2"></span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td id="dataLinha3"></td>
+
+                        <td id="pedidoLinha3"></td>
+
+                        <td id="faturamentoLinha3"></td>
+
+                        <td id="crescimentoLinha3"></td>
+
+                        <td>
+                            <span id="statusLinha3"></span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- EXPORTAÇÃO -->
+        <section class="export-section">
+
+            <h3>Exportar Relatórios</h3>
+
+            <div class="export-grid">
+
+                <div class="export-card">
+
+                    <span>📄</span>
+
+                    <h4 id="pdfTitulo"></h4>
+
+                </div>
+
+                <div class="export-card">
+
+                    <span>📊</span>
+
+                    <h4 id="csvTitulo"></h4>
+
+                </div>
+
+                <div class="export-card">
+
+                    <span>📗</span>
+
+                    <h4 id="excelTitulo"></h4>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+
+        <p id="footerTexto"></p>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/relatoriologista.js"></script>
+
+</body>
+
+</html>\

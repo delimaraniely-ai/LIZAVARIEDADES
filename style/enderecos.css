@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #241f1f;
+    color: #222;
+}
+
+/* TOPO */
+
+.topbar {
+    background: #c9bebe;
+    height: 70px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.logo h1 {
+    color: #e5487d;
+    font-size: 18px;
+}
+
+.search input {
+    width: 420px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: #555;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.sidebar a.active {
+    background: #fde7ee;
+    color: #e5487d;
+    font-weight: 600;
+}
+
+/* CONTEÚDO */
+
+.page-header h2 {
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: #777;
+}
+
+#btnNovoEndereco {
+    background: #09142c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    cursor: pointer;
+}
+
+/* CARDS */
+
+.card-endereco {
+    background: #fff;
+    border: 2px solid #f4c7d5;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.card-endereco:hover {
+    border-color: #e5487d;
+}
+
+.card-endereco span {
+    background: #fde7ee;
+    color: #e5487d;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.card-endereco h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.card-endereco p {
+    color: #666;
+    line-height: 1.5;
+}
+
+/* FORMULÁRIO */
+
+.form-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.form-card h3 {
+    background: #d98ca5;
+    color: #fff;
+    padding: 15px 20px;
+}
+
+.grid {
+    padding: 20px;
+}
+
+.grid label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-size: 13px;
+}
+
+.grid input {
+    width: 100%;
+    height: 42px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+/* BOTÕES */
+
+#btnCancelar {
+    background: #f1f1f1;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+}
+
+#btnSalvar {
+    background: #e5487d;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+}
+
+/* BENEFÍCIOS */
+
+.beneficios {
+    background: #fff;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+/* RODAPÉ */
+
+.footer {
+    background: #d98ca5;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+}

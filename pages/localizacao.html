@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localização</title>
+
+    <link rel="stylesheet" href="./localizacao.css">
+</head>
+
+<body>
+
+    <!-- MENU -->
+
+    <header class="header">
+
+        <button id="btnVoltar">
+            ←
+        </button>
+
+        <h1 id="tituloPagina"></h1>
+
+        <button id="btnCompartilhar">
+            ⤴
+        </button>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+
+    <main>
+
+        <!-- MAPA -->
+
+        <section class="map-section">
+
+            <img id="mapaImagem" src="" alt="">
+
+            <div class="map-overlay">
+
+                <button id="btnMinhaLocalizacao">
+                    📍 Minha Localização
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- INFORMAÇÕES -->
+
+        <section class="location-card">
+
+            <div class="location-icon">
+
+                <img id="pinIcon" src="" alt="">
+
+            </div>
+
+            <div class="location-info">
+
+                <h2 id="nomeLoja"></h2>
+
+                <p id="enderecoLoja"></p>
+
+            </div>
+
+        </section>
+
+        <!-- DISTÂNCIA -->
+
+        <section class="distance-card">
+
+            <div class="distance-item">
+
+                <span class="label">
+                    Distância
+                </span>
+
+                <strong id="distancia"></strong>
+
+            </div>
+
+            <div class="distance-item">
+
+                <span class="label">
+                    Tempo Estimado
+                </span>
+
+                <strong id="tempo"></strong>
+
+            </div>
+
+        </section>
+
+        <!-- AÇÕES -->
+
+        <section class="actions-section">
+
+            <button id="btnRota" class="btn-primary">
+            </button>
+
+            <button id="btnWaze" class="btn-secondary">
+            </button>
+
+        </section>
+
+        <!-- STATUS -->
+
+        <section class="status-card">
+
+            <div class="status-left">
+
+                <span class="status-dot"></span>
+
+                <span id="statusLoja"></span>
+
+            </div>
+
+            <span id="horarioLoja"></span>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        <button id="btnOutrasLojas">
+        </button>
+
+    </footer>
+
+    <script src="/js/localizacao.js"></script>
+
+</body>
+
+</html>

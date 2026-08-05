@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma de Pagamento</title>
+
+    <link rel="stylesheet" href="./formadepagamento.css">
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <header class="header">
+
+        <button id="btnVoltar" class="btn-voltar">
+            ←
+        </button>
+
+        <h1>Formas de Pagamento</h1>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main>
+
+        <!-- FORMAS DE PAGAMENTO -->
+        <section class="payment-section">
+
+            <h2 class="section-title">
+                FORMAS DE PAGAMENTO
+            </h2>
+
+            <div class="payment-card">
+
+                <!-- PIX -->
+                <div class="payment-option active">
+
+                    <div class="payment-icon">
+                        <img id="pixIcon" src="" alt="">
+                    </div>
+
+                    <div class="payment-info">
+
+                        <h3 id="pixTitulo"></h3>
+
+                        <p id="pixDescricao"></p>
+
+                        <span id="pixStatus"></span>
+
+                    </div>
+
+                </div>
+
+                <!-- CARTÃO -->
+                <div class="payment-option">
+
+                    <div class="payment-icon">
+                        <img id="cartaoIcon" src="" alt="">
+                    </div>
+
+                    <div class="payment-info">
+
+                        <h3 id="cartaoTitulo"></h3>
+
+                        <p id="cartaoDescricao"></p>
+
+                    </div>
+
+                    <div class="card-flags">
+
+                        <img id="bandeira1" src="" alt="">
+                        <img id="bandeira2" src="" alt="">
+
+                    </div>
+
+                </div>
+
+                <!-- BOLETO -->
+                <div class="payment-option">
+
+                    <div class="payment-icon">
+                        <img id="boletoIcon" src="" alt="">
+                    </div>
+
+                    <div class="payment-info">
+
+                        <h3 id="boletoTitulo"></h3>
+
+                        <p id="boletoDescricao"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- LOCALIZAÇÃO -->
+        <section class="location-section">
+
+            <h2 class="section-title">
+                NOSSA LOCALIZAÇÃO
+            </h2>
+
+            <div class="map-card">
+
+                <img id="mapaImagem" class="map-image" src="" alt="">
+
+            </div>
+
+            <div class="store-card">
+
+                <div class="store-header">
+
+                    <img id="lojaIcon" src="" alt="">
+
+                    <div>
+
+                        <h3 id="lojaNome"></h3>
+
+                        <p id="lojaEndereco"></p>
+
+                    </div>
+
+                </div>
+
+                <button id="btnComoChegar" class="btn-primary">
+                </button>
+
+                <button id="btnOutrasUnidades" class="btn-secondary">
+                </button>
+
+            </div>
+
+            <div class="status-card">
+
+                <div class="status-left">
+
+                    <span class="status-dot"></span>
+
+                    <span id="statusLoja"></span>
+
+                </div>
+
+                <span id="horarioLoja"></span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+
+        <p>
+            Dúvidas sobre pagamentos ou entregas?
+        </p>
+
+        <button id="btnConsultor" class="consultor-btn">
+        </button>
+
+    </footer>
+
+    <script src="/js/formadepagamentos.js></script>
+
+</body>
+
+</html>

@@ -1,0 +1,486 @@
+/*======================================
+RESET
+======================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #333;
+    padding-bottom: 90px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/*======================================
+HEADER
+======================================*/
+
+.header {
+    width: 100%;
+    height: 70px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.voltar a,
+.carrinho a {
+    width: 40px;
+    height: 40px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: .3s;
+}
+
+.voltar a:hover,
+.carrinho a:hover {
+    background: #e61d48;
+    color: #fff;
+}
+
+.titulo h2 {
+    font-size: 22px;
+    color: #222;
+}
+
+#contadorCarrinho {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 18px;
+    height: 18px;
+    background: #e61d48;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*======================================
+PESQUISA
+======================================*/
+
+.pesquisa {
+    padding: 20px;
+}
+
+.campoPesquisa {
+    background: #c58282;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+.campoPesquisa i {
+    color: #999;
+    margin-right: 10px;
+}
+
+.campoPesquisa input {
+    width: 100%;
+    height: 48px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+}
+
+/*======================================
+INFORMAÇÕES
+======================================*/
+
+.informacoes {
+    padding: 0 20px 15px;
+}
+
+#quantidadeFavoritos {
+    color: #777;
+    font-size: 15px;
+}
+
+/*======================================
+LISTA DE FAVORITOS
+======================================*/
+
+.listaFavoritos {
+    padding: 0 20px 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+/*======================================
+CARD
+======================================*/
+
+.cardFavorito {
+    background: #0c0b0b;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
+    transition: .3s;
+    position: relative;
+}
+
+.cardFavorito:hover {
+    transform: translateY(-5px);
+}
+
+.imagemProduto {
+    width: 100%;
+    height: 170px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.imagemProduto img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+/*======================================
+BOTÃO FAVORITO
+======================================*/
+
+.btnFavorito {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e61d48;
+    font-size: 18px;
+    transition: .3s;
+}
+
+.btnFavorito:hover {
+    background: #e61d48;
+    color: #fff;
+}
+
+/*======================================
+INFORMAÇÕES DO PRODUTO
+======================================*/
+
+.infoProduto {
+    padding: 15px;
+}
+
+.infoProduto h3 {
+    font-size: 15px;
+    color: #333;
+    height: 42px;
+    overflow: hidden;
+    line-height: 21px;
+    margin-bottom: 10px;
+}
+
+.preco {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e61d48;
+    margin-bottom: 15px;
+}
+
+/*======================================
+BOTÃO ADICIONAR
+======================================*/
+
+.btnAdicionar {
+    width: 100%;
+    height: 42px;
+    background: #e61d48;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btnAdicionar:hover {
+    background: #c4143d;
+}
+
+/*======================================
+TELA VAZIA
+======================================*/
+
+.vazio {
+    display: none;
+    padding: 60px 25px;
+    text-align: center;
+}
+
+.vazio.ativo {
+    display: block;
+}
+
+.vazio i {
+    font-size: 70px;
+    color: #e61d48;
+    margin-bottom: 20px;
+}
+
+.vazio h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.vazio p {
+    color: #0f0c0c;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.btnVoltar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    background: #e61d48;
+    color: #fff;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btnVoltar:hover {
+    background: #050505;
+}
+
+/*======================================
+MENU INFERIOR
+======================================*/
+
+.menuInferior {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background: #d89a9a;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, .08);
+    z-index: 999;
+}
+
+.menuInferior a {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #888;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.menuInferior a i {
+    font-size: 20px;
+}
+
+.menuInferior a:hover {
+    color: #dd8699;
+}
+
+.menuInferior .ativo {
+    color: #d88597;
+    font-weight: bold;
+}
+
+/*======================================
+ANIMAÇÕES
+======================================*/
+
+.cardFavorito {
+    animation: fadeUp .4s ease;
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.btnAdicionar {
+    transition: .3s;
+}
+
+.btnAdicionar:active {
+    transform: scale(.97);
+}
+
+.btnFavorito:active {
+    transform: scale(.90);
+}
+
+/*======================================
+SCROLLBAR
+======================================*/
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #a77373;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b9b9b9;
+}
+
+/*======================================
+RESPONSIVO TABLET
+======================================*/
+
+@media (max-width:768px) {
+
+    .header {
+        padding: 0 15px;
+    }
+
+    .titulo h2 {
+        font-size: 20px;
+    }
+
+    .listaFavoritos {
+        gap: 15px;
+        padding: 0 15px 25px;
+    }
+
+    .imagemProduto {
+        height: 150px;
+    }
+
+    .infoProduto {
+        padding: 12px;
+    }
+
+    .preco {
+        font-size: 18px;
+    }
+
+}
+
+/*======================================
+RESPONSIVO CELULAR
+======================================*/
+
+@media (max-width:480px) {
+
+    .header {
+        height: 65px;
+    }
+
+    .titulo h2 {
+        font-size: 18px;
+    }
+
+    .pesquisa {
+        padding: 15px;
+    }
+
+    .campoPesquisa input {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .listaFavoritos {
+        grid-template-columns: 1fr;
+        padding: 0 15px 20px;
+    }
+
+    .imagemProduto {
+        height: 220px;
+    }
+
+    .infoProduto h3 {
+        font-size: 16px;
+        height: auto;
+    }
+
+    .preco {
+        font-size: 22px;
+    }
+
+    .btnAdicionar {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .menuInferior {
+        height: 65px;
+    }
+
+    .menuInferior a {
+        font-size: 12px;
+    }
+
+    .menuInferior a i {
+        font-size: 18px;
+    }
+
+}

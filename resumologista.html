@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resumo - Logista</title>
+
+    <link rel="stylesheet" href="../style/resumo-logista.css">
+
+    <script rel="stylesheet" href="./resumologista.html"></script>
+
+</head>
+
+<body>
+
+    <!-- MENU -->
+
+    <header class="topbar">
+
+        <div class="logo-box">
+
+            <h1 id="logoNome"></h1>
+
+        </div>
+
+        <div class="search-box">
+
+            <input type="text" id="campoBusca">
+
+        </div>
+
+        <div class="user-box">
+
+            <img id="avatarUsuario" alt="Usuário">
+
+            <div>
+
+                <span id="nomeUsuario"></span>
+
+                <small id="cargoUsuario"></small>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+
+    <main class="container">
+
+        <section class="titulo-area">
+
+            <h2 id="tituloPagina"></h2>
+
+            <p id="descricaoPagina"></p>
+
+        </section>
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <article class="card">
+
+                <span class="card-title">
+                    Pedidos
+                </span>
+
+                <h3 id="totalPedidos"></h3>
+
+                <small id="crescimentoPedidos"></small>
+
+            </article>
+
+            <article class="card">
+
+                <span class="card-title">
+                    Produtos
+                </span>
+
+                <h3 id="totalProdutos"></h3>
+
+                <small id="crescimentoProdutos"></small>
+
+            </article>
+
+            <article class="card">
+
+                <span class="card-title">
+                    Clientes Ativos
+                </span>
+
+                <h3 id="clientesAtivos"></h3>
+
+                <small id="crescimentoClientes"></small>
+
+            </article>
+
+            <article class="card">
+
+                <span class="card-title">
+                    Receita Total
+                </span>
+
+                <h3 id="receitaTotal"></h3>
+
+                <small id="crescimentoReceita"></small>
+
+            </article>
+
+        </section>
+
+        <!-- GRÁFICO -->
+
+        <section class="grafico-card">
+
+            <div class="grafico-header">
+
+                <h3>
+                    Desempenho de Vendas
+                </h3>
+
+                <button id="btnPeriodo">
+                </button>
+
+            </div>
+
+            <canvas id="graficoVendas"></canvas>
+
+        </section>
+
+        <!-- ÁREA INFERIOR -->
+
+        <section class="bottom-grid">
+
+            <!-- PRODUTOS -->
+
+            <div class="box">
+
+                <h3>
+                    Produtos Mais Vendidos
+                </h3>
+
+                <div class="produto">
+
+                    <img id="produtoImagem1" alt="Produto">
+
+                    <div>
+
+                        <strong id="produtoNome1"></strong>
+
+                        <small id="produtoQtd1"></small>
+
+                    </div>
+
+                    <span id="produtoValor1"></span>
+
+                </div>
+
+                <div class="produto">
+
+                    <img id="produtoImagem2" alt="Produto">
+
+                    <div>
+
+                        <strong id="produtoNome2"></strong>
+
+                        <small id="produtoQtd2"></small>
+
+                    </div>
+
+                    <span id="produtoValor2"></span>
+
+                </div>
+
+                <div class="produto">
+
+                    <img id="produtoImagem3" alt="Produto">
+
+                    <div>
+
+                        <strong id="produtoNome3"></strong>
+
+                        <small id="produtoQtd3"></small>
+
+                    </div>
+
+                    <span id="produtoValor3"></span>
+
+                </div>
+
+            </div>
+
+            <!-- PEDIDOS -->
+
+            <div class="box">
+
+                <div class="table-header">
+
+                    <h3>
+                        Pedidos Recentes
+                    </h3>
+
+                    <a href="#" id="verTodos">
+                    </a>
+
+                </div>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Pedido</th>
+                            <th>Cliente</th>
+                            <th>Status</th>
+                            <th>Total</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td id="pedido1"></td>
+                            <td id="cliente1"></td>
+                            <td id="status1"></td>
+                            <td id="valor1"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td id="pedido2"></td>
+                            <td id="cliente2"></td>
+                            <td id="status2"></td>
+                            <td id="valor2"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td id="pedido3"></td>
+                            <td id="cliente3"></td>
+                            <td id="status3"></td>
+                            <td id="valor3"></td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        <p id="footerTexto"></p>
+
+    </footer>
+
+    <script src="../js/resumo-logista.js"></script>
+
+</body>
+
+</html>
