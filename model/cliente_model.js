@@ -1,174 +1,179 @@
-const db = require("../conexao/conexao");
+// =====================================================
+// FORMULÁRIO DE CADASTRO
+// =====================================================
 
+const form = document.getElementById("formCadastro");
 
-// ==========================================
-// LISTAR TODOS OS CLIENTES
-// ==========================================
+const nome = document.getElementById("nome");
 
-exports.listar = (callback) => {
+const cpf = document.getElementById("cpf");
 
-    const sql = `
-        SELECT * FROM Cliente
-    `;
+const dataNascimento =
+    document.getElementById("dataNascimento");
 
-    db.query(sql, callback);
+const email = document.getElementById("email");
 
-};
+const telefone =
+    document.getElementById("telefone");
 
 
+// =====================================================
+// EVENTO SUBMIT
+// =====================================================
 
-// ==========================================
-// BUSCAR CLIENTE PELO ID
-// ==========================================
+form.addEventListener("submit", async (event) => {
 
-exports.buscarPorId = (id, callback) => {
+    event.preventDefault();
 
-    const sql = `
-        SELECT * FROM Cliente
-        WHERE idCliente = ?
-    `;
 
-    db.query(sql, [id], callback);
+    // =================================================
+    // VALIDAR FORMULÁRIO
+    // =================================================
 
-};
+    if (!validarFormulario()) {
 
+        return;
 
+    }
 
-// ==========================================
-// BUSCAR CLIENTE PELO EMAIL (LOGIN)
-// ==========================================
 
-exports.buscarEmail = (email, callback) => {
+    // =================================================
+    // MONTAR DADOS
+    // =================================================
 
-    const sql = `
-        SELECT * FROM Cliente
-        WHERE email = ?
-    `;
+    const dados = {
 
-    db.query(sql, [email], callback);
+        nome: nome.value.trim(),
 
-};
+        cpf: cpf.value.replace(/\D/g, ""),
 
+        dataNascimento: dataNascimento.value,
 
+        email: email.value.trim(),
 
-// ==========================================
-// LOGIN CLIENTE
-// ==========================================
+        telefone: telefone.value.replace(/\D/g, "")
 
-exports.login = (email, senha, callback) => {
+    };
 
-    const sql = `
-        SELECT * FROM Cliente
-        WHERE email = ?
-        AND senha = ?
-    `;
 
+    // =================================================
+    // BOTÃO
+    // =================================================
 
-    db.query(sql,
-        [
-            email,
-            senha
-        ],
-        callback);
+    const botao =
+        document.getElementById("btnCadastrar");
 
-};
 
+    botao.disabled = true;
 
+    botao.textContent = "Cadastrando...";
 
-// ==========================================
-// CADASTRAR CLIENTE
-// ==========================================
 
-exports.cadastrar = (dados, callback) => {
+    // =================================================
+    // ENVIAR PARA API
+    // =================================================
 
+    try {
 
-    const sql = `
+        const resposta = await fetch(
 
-        INSERT INTO Cliente
-        (
-            nome,
-            cpf,
-            telefone,
-            email,
-            senha
-        )
+            "http://127.0.0.1:3000/cliente",
 
-        VALUES(?,?,?,?,?)
+            {
 
-    `;
+                method: "POST",
 
+                headers: {
 
-    db.query(sql,
-        [
-            dados.nome,
-            dados.cpf,
-            dados.telefone,
-            dados.email,
-            dados.senha
-        ],
-        callback);
+                    "Content-Type":
+                        "application/json"
 
+                },
 
-};
+                body: JSON.stringify(dados)
 
+            }
 
+        );
 
-// ==========================================
-// ATUALIZAR CLIENTE
-// ==========================================
 
-exports.atualizar = (id, dados, callback) => {
+        // =================================================
+        // CONVERTER RESPOSTA
+        // =================================================
 
+        const resultado =
+            await resposta.json();
 
-    const sql = `
 
-        UPDATE Cliente SET
+        // =================================================
+        // VERIFICAR ERRO
+        // =================================================
 
-            nome = ?,
-            cpf = ?,
-            telefone = ?,
-            email = ?,
-            senha = ?
+        if (!resposta.ok) {
 
-        WHERE idCliente = ?
+            throw new Error(
 
-    `;
+                resultado.mensagem ||
 
+                resultado.message ||
 
-    db.query(sql,
-        [
+                "Erro ao cadastrar cliente."
 
-            dados.nome,
-            dados.cpf,
-            dados.telefone,
-            dados.email,
-            dados.senha,
-            id
+            );
 
-        ],
-        callback);
+        }
 
 
-};
+        // =================================================
+        // SUCESSO
+        // =================================================
 
+        alert(
 
+            resultado.mensagem ||
 
-// ==========================================
-// EXCLUIR CLIENTE
-// ==========================================
+            "Cliente cadastrado com sucesso!"
 
-exports.excluir = (id, callback) => {
+        );
 
 
-    const sql = `
+        // =================================================
+        // LIMPAR FORMULÁRIO
+        // =================================================
 
-        DELETE FROM Cliente
-        WHERE idCliente = ?
+        form.reset();
 
-    `;
 
+    } catch (erro) {
 
-    db.query(sql, [id], callback);
+        console.error(
 
+            "Erro ao cadastrar cliente:",
 
-};
+            erro
+
+        );
+
+
+        alert(
+
+            "Erro ao conectar ao servidor.\n\n" +
+
+            erro.message
+
+        );
+
+
+    } finally {
+
+        // ==============================================
+        // LIBERAR BOTÃO
+        // ==============================================
+
+        botao.disabled = false;
+
+        botao.textContent = "Cadastrar";
+
+    }
+
+});

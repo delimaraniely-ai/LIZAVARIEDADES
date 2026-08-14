@@ -1,230 +1,387 @@
-//==========================================
-// IMPORTA O MODEL
-//==========================================
+// ======================================================
+// IMPORTAR MODEL
+// ======================================================
 
-const enderecoModel = require("../model/endereco_model.js");
+const enderecoModel = require("../models/endereco_model.js");
 
 
-//==========================================
+// ======================================================
 // CADASTRAR ENDEREÇO
-//==========================================
+// ======================================================
 
-function cadastrar(req, res) {
+function cadastrarEndereco(req, res) {
 
-    const endereco = req.body;
+    const endereco = {
+
+        cep: req.body.cep,
+
+        logradouro: req.body.logradouro,
+
+        numero: req.body.numero,
+
+        complemento: req.body.complemento || "",
+
+        bairro: req.body.bairro,
+
+        cidade: req.body.cidade,
+
+        estado: req.body.estado
+
+    };
 
 
-    // Validação dos campos obrigatórios
+    // ==================================================
+    // VALIDAR CAMPOS
+    // ==================================================
 
     if (
-        !endereco.rua ||
         !endereco.cep ||
-        !endereco.bairro ||
+        !endereco.logradouro ||
         !endereco.numero ||
-        !endereco.completo ||
-        !endereco.tipo
+        !endereco.bairro ||
+        !endereco.cidade ||
+        !endereco.estado
     ) {
 
         return res.status(400).json({
+
             sucesso: false,
+
             mensagem: "Preencha todos os campos obrigatórios."
+
         });
 
     }
 
 
-    enderecoModel.cadastrar(endereco, (erro, resultado) => {
+    // ==================================================
+    // CADASTRAR
+    // ==================================================
+
+    enderecoModel.cadastrar(
+
+        endereco,
+
+        function (erro, resultado) {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao cadastrar endereço:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao cadastrar endereço.",
+
+                    erro: erro.message
+
+                });
+
+            }
 
 
-        if (erro) {
+            return res.status(201).json({
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao cadastrar endereço."
+                sucesso: true,
+
+                mensagem: "Endereço cadastrado com sucesso!",
+
+                idEndereco: resultado.insertId
+
             });
 
         }
 
-
-        return res.status(201).json({
-
-            sucesso: true,
-            mensagem: "Endereço cadastrado com sucesso!",
-            idEndereco: resultado.insertId
-
-        });
-
-
-    });
-
+    );
 
 }
 
 
-
-//==========================================
+// ======================================================
 // LISTAR ENDEREÇOS
-//==========================================
+// ======================================================
 
-function listar(req, res) {
+function listarEnderecos(req, res) {
+
+    enderecoModel.listar(
+
+        function (erro, resultado) {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao listar endereços:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao listar endereços."
+
+                });
+
+            }
 
 
-    enderecoModel.listar((erro, resultado) => {
+            return res.status(200).json({
 
+                sucesso: true,
 
-        if (erro) {
+                enderecos: resultado
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao listar endereços."
             });
 
         }
 
-
-        res.json(resultado);
-
-
-    });
-
+    );
 
 }
 
 
-
-//==========================================
+// ======================================================
 // BUSCAR ENDEREÇO POR ID
-//==========================================
+// ======================================================
 
-function buscarPorId(req, res) {
+function buscarEnderecoPorId(req, res) {
 
-
-    const id = req.params.id;
-
-
-    enderecoModel.buscarPorId(id, (erro, resultado) => {
+    const idEndereco = req.params.id;
 
 
-        if (erro) {
+    enderecoModel.buscarPorId(
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao buscar endereço."
+        idEndereco,
+
+        function (erro, resultado) {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao buscar endereço:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao buscar endereço."
+
+                });
+
+            }
+
+
+            if (resultado.length === 0) {
+
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Endereço não encontrado."
+
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                sucesso: true,
+
+                endereco: resultado[0]
+
             });
 
         }
 
-
-        if (resultado.length === 0) {
-
-            return res.status(404).json({
-                sucesso: false,
-                mensagem: "Endereço não encontrado."
-            });
-
-        }
-
-
-        res.json(resultado[0]);
-
-
-    });
-
+    );
 
 }
 
 
-
-//==========================================
+// ======================================================
 // ATUALIZAR ENDEREÇO
-//==========================================
+// ======================================================
 
-function atualizar(req, res) {
+function atualizarEndereco(req, res) {
 
-
-    const id = req.params.id;
-
-    const endereco = req.body;
+    const idEndereco = req.params.id;
 
 
+    const endereco = {
 
-    enderecoModel.atualizar(id, endereco, (erro, resultado) => {
+        idEndereco: idEndereco,
+
+        cep: req.body.cep,
+
+        logradouro: req.body.logradouro,
+
+        numero: req.body.numero,
+
+        complemento: req.body.complemento || "",
+
+        bairro: req.body.bairro,
+
+        cidade: req.body.cidade,
+
+        estado: req.body.estado
+
+    };
 
 
-        if (erro) {
+    if (
+        !endereco.cep ||
+        !endereco.logradouro ||
+        !endereco.numero ||
+        !endereco.bairro ||
+        !endereco.cidade ||
+        !endereco.estado
+    ) {
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao atualizar endereço."
+        return res.status(400).json({
+
+            sucesso: false,
+
+            mensagem: "Preencha todos os campos obrigatórios."
+
+        });
+
+    }
+
+
+    enderecoModel.atualizar(
+
+        endereco,
+
+        function (erro, resultado) {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao atualizar endereço:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao atualizar endereço."
+
+                });
+
+            }
+
+
+            if (resultado.affectedRows === 0) {
+
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Endereço não encontrado."
+
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                sucesso: true,
+
+                mensagem: "Endereço atualizado com sucesso!"
+
             });
 
         }
 
-
-        res.json({
-
-            sucesso: true,
-            mensagem: "Endereço atualizado com sucesso."
-
-        });
-
-
-    });
-
+    );
 
 }
 
 
-
-//==========================================
+// ======================================================
 // EXCLUIR ENDEREÇO
-//==========================================
+// ======================================================
 
-function excluir(req, res) {
+function excluirEndereco(req, res) {
 
-
-    const id = req.params.id;
-
+    const idEndereco = req.params.id;
 
 
-    enderecoModel.excluir(id, (erro, resultado) => {
+    enderecoModel.excluir(
+
+        idEndereco,
+
+        function (erro, resultado) {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao excluir endereço:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao excluir endereço."
+
+                });
+
+            }
 
 
-        if (erro) {
+            if (resultado.affectedRows === 0) {
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao excluir endereço."
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Endereço não encontrado."
+
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                sucesso: true,
+
+                mensagem: "Endereço excluído com sucesso!"
+
             });
 
         }
 
-
-        res.json({
-
-            sucesso: true,
-            mensagem: "Endereço excluído com sucesso."
-
-        });
-
-
-    });
-
+    );
 
 }
 
 
-
-//==========================================
-// EXPORTAÇÃO
-//==========================================
+// ======================================================
+// EXPORTAR
+// ======================================================
 
 module.exports = {
 
-    cadastrar,
-    listar,
-    buscarPorId,
-    atualizar,
-    excluir
+    cadastrarEndereco,
+
+    listarEnderecos,
+
+    buscarEnderecoPorId,
+
+    atualizarEndereco,
+
+    excluirEndereco
 
 };

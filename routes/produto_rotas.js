@@ -1,25 +1,101 @@
-// nesse arquivo, definimos as rotas relacionadas aos clientes e associamos cada rota a uma função do ClienteController. As rotas são:
-// POST /clientes: para cadastrar um novo cliente.
-// GET /clientes: para listar todos os clientes.
-// GET /clientes/:id: para buscar um cliente específico pelo ID.
-// PUT /clientes/:id: para atualizar as informações de um cliente específico pelo ID.
-// DELETE /clientes/:id: para excluir um cliente específico pelo ID.
+```javascript
+// ==================================================
+// ROTAS DE PRODUTOS
+// ==================================================
+//
+// Neste arquivo são definidas as rotas relacionadas
+// aos produtos e cada rota é associada a uma função
+// do ProdutoController.
+//
+// Rotas disponíveis:
+//
+// POST   /produtos       -> Cadastrar um novo produto
+// GET    /produtos       -> Listar todos os produtos
+// GET    /produtos/:id   -> Buscar um produto pelo ID
+// PUT    /produtos/:id   -> Atualizar um produto pelo ID
+// DELETE /produtos/:id   -> Excluir um produto pelo ID
+// ==================================================
 
+
+// ==================================================
+// IMPORTAR EXPRESS
+// ==================================================
 
 const express = require("express");
-// Importando o módulo express para criar rotas e lidar com requisições HTTP.
+
+
+// ==================================================
+// CRIAR ROUTER
+// ==================================================
+
 const router = express.Router();
-// Criando um objeto router para definir as rotas relacionadas aos clientes.
+
+
+// ==================================================
+// IMPORTAR CONTROLLER DE PRODUTO
+// ==================================================
+
 const produtoController = require("../controller/produto_controller.js");
 
-router.post("/", produtoController.cadastrar);
 
-router.get("/", produtoController.listar);
+// ==================================================
+// CADASTRAR PRODUTO
+// ==================================================
+// POST /produtos
 
-router.get("/:id", produtoController.buscarPorId);
+router.post(
+    "/",
+    produtoController.cadastrar
+);
 
-router.put("/:id", produtoController.atualizar);
 
-router.delete("/:id", produtoController.excluir);
+// ==================================================
+// LISTAR PRODUTOS
+// ==================================================
+// GET /produtos
+
+router.get(
+    "/",
+    produtoController.listar
+);
+
+
+// ==================================================
+// BUSCAR PRODUTO POR ID
+// ==================================================
+// GET /produtos/:id
+
+router.get(
+    "/:id",
+    produtoController.buscarPorId
+);
+
+
+// ==================================================
+// ATUALIZAR PRODUTO
+// ==================================================
+// PUT /produtos/:id
+
+router.put(
+    "/:id",
+    produtoController.atualizar
+);
+
+
+// ==================================================
+// EXCLUIR PRODUTO
+// ==================================================
+// DELETE /produtos/:id
+
+router.delete(
+    "/:id",
+    produtoController.excluir
+);
+
+
+// ==================================================
+// EXPORTAR ROTAS
+// ==================================================
 
 module.exports = router;
+```

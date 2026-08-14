@@ -1,734 +1,585 @@
-/*==================================================
-  DESCRIÇÃO DO PRODUTO - PARTE 1
-==================================================*/
+// ======================================================
+// API
+// ======================================================
 
-const produto = {
-    id: 1,
+const API = "http://localhost:3000";
 
-    categoria: "Smartphones",
 
-    marca: "Apple",
+// ======================================================
+// PEGAR ID DA URL
+// Exemplo:
+// descricaoproduto.html?id=1
+// ======================================================
 
-    nome: "iPhone 16 Pro Max Titanium 256GB",
+const parametros = new URLSearchParams(
+    window.location.search
+);
 
-    preco: "R$ 8.999,90",
+const idProduto = parametros.get("id");
 
-    parcelamento: "ou em até 12x de R$ 749,99 sem juros",
+console.log("ID recebido:", idProduto);
 
-    avaliacao: 4.9,
 
-    descricaoCurta:
-        "O iPhone 16 Pro Max combina desempenho, design premium e o poderoso chip A18 Pro.",
+// ======================================================
+// FORMATAR PREÇO
+// ======================================================
 
-    imagens: [
+function formatarPreco(valor) {
 
-        "../assets/img/iphone1.png",
-
-        "../assets/img/iphone2.png",
-
-        "../assets/img/iphone3.png",
-
-        "../assets/img/iphone4.png"
-
-    ],
-
-    cores: [
-
+    return Number(valor || 0).toLocaleString(
+        "pt-BR",
         {
-            nome: "Titânio Natural",
-            cor: "#B3B1AA"
-        },
-
-        {
-            nome: "Titânio Preto",
-            cor: "#3d3d3d"
-        },
-
-        {
-            nome: "Titânio Branco",
-            cor: "#efefef"
-        },
-
-        {
-            nome: "Titânio Azul",
-            cor: "#6d7d97"
+            style: "currency",
+            currency: "BRL"
         }
-
-    ],
-
-    armazenamento: [
-        "128GB",
-        "256GB",
-        "512GB",
-        "1TB"
-    ]
-};
-
-
-/*==================================================
-  ELEMENTOS HTML
-==================================================*/
-
-const breadcrumb = document.getElementById("caminhoProduto");
-
-const marca = document.getElementById("marcaProduto");
-
-const nome = document.getElementById("nomeProduto");
-
-const preco = document.getElementById("precoProduto");
-
-const parcelas = document.getElementById("parcelamento");
-
-const imagemPrincipal = document.getElementById("imagemPrincipal");
-
-const miniaturas = document.getElementById("miniaturas");
-
-const listaCores = document.getElementById("listaCores");
-
-const listaMemorias = document.getElementById("listaMemorias");
-
-const avaliacao = document.getElementById("avaliacaoProduto");
-
-
-/*==================================================
-  CARREGAR DADOS
-==================================================*/
-
-function carregarProduto() {
-
-    breadcrumb.innerHTML =
-        `Home > ${produto.categoria} > ${produto.nome}`;
-
-    marca.textContent = produto.marca;
-
-    nome.textContent = produto.nome;
-
-    preco.textContent = produto.preco;
-
-    parcelas.textContent = produto.parcelamento;
-
-    imagemPrincipal.src = produto.imagens[0];
-
-}
-
-carregarProduto();
-
-
-/*==================================================
-  AVALIAÇÃO
-==================================================*/
-
-function carregarAvaliacao() {
-
-    avaliacao.innerHTML = "";
-
-    for (let i = 1; i <= 5; i++) {
-
-        const estrela = document.createElement("i");
-
-        estrela.className = "fa-solid fa-star";
-
-        avaliacao.appendChild(estrela);
-
-    }
-
-    const nota = document.createElement("span");
-
-    nota.style.marginLeft = "10px";
-
-    nota.style.color = "#555";
-
-    nota.textContent = produto.avaliacao + " / 5";
-
-    avaliacao.appendChild(nota);
-
-}
-
-carregarAvaliacao();
-
-
-/*==================================================
-  GALERIA
-==================================================*/
-
-function carregarGaleria() {
-
-    miniaturas.innerHTML = "";
-
-    produto.imagens.forEach((foto) => {
-
-        const img = document.createElement("img");
-
-        img.src = foto;
-
-        img.onclick = () => {
-
-            imagemPrincipal.src = foto;
-
-        };
-
-        miniaturas.appendChild(img);
-
-    });
-
-}
-
-carregarGaleria();
-
-
-/*==================================================
-  CORES
-==================================================*/
-
-function carregarCores() {
-
-    listaCores.innerHTML = "";
-
-    produto.cores.forEach((item) => {
-
-        const botao = document.createElement("button");
-
-        botao.title = item.nome;
-
-        botao.style.background = item.cor;
-
-        botao.onclick = () => {
-
-            document.querySelectorAll("#listaCores button")
-                .forEach(btn => {
-
-                    btn.style.border = "2px solid #ddd";
-
-                });
-
-            botao.style.border = "3px solid #e61d48";
-
-        };
-
-        listaCores.appendChild(botao);
-
-    });
-
-}
-
-carregarCores();
-
-
-/*==================================================
-  MEMÓRIA
-==================================================*/
-
-function carregarMemorias() {
-
-    listaMemorias.innerHTML = "";
-
-    produto.armazenamento.forEach((memoria) => {
-
-        const botao = document.createElement("button");
-
-        botao.textContent = memoria;
-
-        botao.onclick = () => {
-
-            document.querySelectorAll("#listaMemorias button")
-                .forEach(btn => {
-
-                    btn.classList.remove("ativo");
-
-                });
-
-            botao.classList.add("ativo");
-
-        };
-
-        listaMemorias.appendChild(botao);
-
-    });
-
-}
-
-carregarMemorias();
-/*==================================================
-  DESCRIÇÃO DO PRODUTO
-==================================================*/
-
-const descricao = document.getElementById("descricao");
-
-descricao.innerHTML = `
-    <h2>Descrição do Produto</h2>
-
-    <p>
-        O ${produto.nome} foi desenvolvido para oferecer o máximo de desempenho,
-        velocidade e qualidade. Seu processador de última geração proporciona
-        excelente performance para jogos, vídeos, produtividade e multitarefas.
-    </p>
-
-    <p>
-        A câmera conta com tecnologia avançada para registrar fotos e vídeos
-        em alta resolução, mesmo em ambientes com pouca iluminação.
-    </p>
-
-    <p>
-        Sua bateria possui longa duração, permitindo utilizar o aparelho
-        durante todo o dia com apenas uma carga.
-    </p>
-
-    <p>
-        Possui tela Super Retina XDR, Face ID, carregamento rápido,
-        resistência à água e sistema operacional atualizado.
-    </p>
-`;
-
-
-/*==================================================
-  ESPECIFICAÇÕES
-==================================================*/
-
-const especificacoes = document.getElementById("especificacoes");
-
-especificacoes.innerHTML = `
-<h2>Especificações Técnicas</h2>
-
-<table>
-
-<tr>
-<td>Marca</td>
-<td>${produto.marca}</td>
-</tr>
-
-<tr>
-<td>Modelo</td>
-<td>${produto.nome}</td>
-</tr>
-
-<tr>
-<td>Armazenamento</td>
-<td>128GB / 256GB / 512GB / 1TB</td>
-</tr>
-
-<tr>
-<td>Tela</td>
-<td>Super Retina XDR OLED</td>
-</tr>
-
-<tr>
-<td>Tamanho</td>
-<td>6.9 Polegadas</td>
-</tr>
-
-<tr>
-<td>Processador</td>
-<td>Apple A18 Pro</td>
-</tr>
-
-<tr>
-<td>Memória RAM</td>
-<td>8 GB</td>
-</tr>
-
-<tr>
-<td>Câmera Traseira</td>
-<td>48 MP + 12 MP + 12 MP</td>
-</tr>
-
-<tr>
-<td>Câmera Frontal</td>
-<td>12 MP</td>
-</tr>
-
-<tr>
-<td>Sistema</td>
-<td>iOS</td>
-</tr>
-
-<tr>
-<td>Conectividade</td>
-<td>5G • Wi-Fi • Bluetooth • NFC</td>
-</tr>
-
-<tr>
-<td>Bateria</td>
-<td>Até 33 horas de vídeo</td>
-</tr>
-
-</table>
-`;
-
-
-/*==================================================
-  AVALIAÇÕES
-==================================================*/
-
-const avaliacoes = document.getElementById("avaliacoes");
-
-const listaAvaliacoes = [
-
-    {
-        nome: "Carlos Henrique",
-        estrelas: 5,
-        comentario: "Produto excelente. Superou minhas expectativas."
-    },
-
-    {
-        nome: "Maria Eduarda",
-        estrelas: 5,
-        comentario: "Entrega rápida e aparelho perfeito."
-    },
-
-    {
-        nome: "João Pedro",
-        estrelas: 4,
-        comentario: "Muito bom, bateria dura bastante."
-    },
-
-    {
-        nome: "Fernanda",
-        estrelas: 5,
-        comentario: "Vale cada centavo investido."
-    }
-
-];
-
-function carregarAvaliacoes() {
-
-    avaliacoes.innerHTML = "<h2>Avaliações dos Clientes</h2>";
-
-    listaAvaliacoes.forEach(cliente => {
-
-        const card = document.createElement("div");
-
-        card.className = "card-avaliacao";
-
-        let estrelas = "";
-
-        for (let i = 0; i < cliente.estrelas; i++) {
-
-            estrelas +=
-                `<i class="fa-solid fa-star"></i>`;
-
-        }
-
-        card.innerHTML = `
-
-        <h3>${cliente.nome}</h3>
-
-        <div class="estrelas">
-
-            ${estrelas}
-
-        </div>
-
-        <p>${cliente.comentario}</p>
-
-        `;
-
-        avaliacoes.appendChild(card);
-
-    });
-
-}
-
-carregarAvaliacoes();
-
-
-/*==================================================
-  CONTROLE DAS ABAS
-==================================================*/
-
-const abas = document.querySelectorAll(".aba");
-
-const conteudos =
-    document.querySelectorAll(".conteudo");
-
-abas.forEach((aba) => {
-
-    aba.addEventListener("click", () => {
-
-        abas.forEach((item) => {
-
-            item.classList.remove("ativa");
-
-        });
-
-        conteudos.forEach((conteudo) => {
-
-            conteudo.classList.remove("ativo");
-
-        });
-
-        aba.classList.add("ativa");
-
-        const destino =
-            document.getElementById(
-                aba.dataset.aba
-            );
-
-        destino.classList.add("ativo");
-
-    });
-
-});
-/*==================================================
-  PRODUTOS RELACIONADOS
-==================================================*/
-
-const produtosRelacionados = [
-
-    {
-        id: 2,
-        nome: "iPhone 16 128GB",
-        preco: "R$ 6.999,90",
-        imagem: "../assets/img/iphone16.png"
-    },
-
-    {
-        id: 3,
-        nome: "Apple Watch Series 10",
-        preco: "R$ 3.299,90",
-        imagem: "../assets/img/watch.png"
-    },
-
-    {
-        id: 4,
-        nome: "AirPods Pro 2",
-        preco: "R$ 2.199,90",
-        imagem: "../assets/img/airpods.png"
-    },
-
-    {
-        id: 5,
-        nome: "Carregador MagSafe",
-        preco: "R$ 499,90",
-        imagem: "../assets/img/magsafe.png"
-    }
-
-];
-
-const listaRelacionados =
-    document.getElementById("listaRelacionados");
-
-function carregarRelacionados() {
-
-    listaRelacionados.innerHTML = "";
-
-    produtosRelacionados.forEach(produto => {
-
-        const card = document.createElement("div");
-
-        card.className = "card";
-
-        card.innerHTML = `
-
-            <img src="${produto.imagem}" alt="${produto.nome}">
-
-            <div class="info">
-
-                <h3>${produto.nome}</h3>
-
-                <span>${produto.preco}</span>
-
-            </div>
-
-        `;
-
-        card.addEventListener("click", () => {
-
-            alert("Abrindo produto: " + produto.nome);
-
-        });
-
-        listaRelacionados.appendChild(card);
-
-    });
-
-}
-
-carregarRelacionados();
-
-
-/*==================================================
-  BOTÃO COMPRAR
-==================================================*/
-
-const btnComprar =
-    document.getElementById("comprar");
-
-btnComprar.addEventListener("click", () => {
-
-    alert("Redirecionando para o pagamento...");
-
-});
-
-
-/*==================================================
-  CARRINHO
-==================================================*/
-
-const btnCarrinho =
-    document.getElementById("carrinho");
-
-btnCarrinho.addEventListener("click", () => {
-
-    let carrinho =
-        JSON.parse(localStorage.getItem("carrinho")) || [];
-
-    carrinho.push({
-
-        id: produto.id,
-
-        nome: produto.nome,
-
-        preco: produto.preco,
-
-        imagem: produto.imagens[0]
-
-    });
-
-    localStorage.setItem(
-        "carrinho",
-        JSON.stringify(carrinho)
     );
 
-    alert("Produto adicionado ao carrinho!");
-
-});
+}
 
 
-/*==================================================
-  CÁLCULO DE FRETE (SIMULADO)
-==================================================*/
+// ======================================================
+// CARREGAR PRODUTO
+// ======================================================
 
-const btnFrete =
-    document.getElementById("btnFrete");
+async function carregarProduto() {
 
-const cep =
-    document.getElementById("cep");
+    const nome = document.getElementById("nomeProduto");
+    const descricao = document.getElementById("descricao");
+    const especificacoes = document.getElementById("especificacoes");
+    const marca = document.getElementById("marcaProduto");
+    const preco = document.getElementById("precoProduto");
+    const precoAntigo = document.getElementById("precoAntigo");
+    const caminho = document.getElementById("caminhoProduto");
 
-const resultadoFrete =
-    document.getElementById("resultadoFrete");
+    // --------------------------------------------------
+    // VERIFICAR ID
+    // --------------------------------------------------
 
-btnFrete.addEventListener("click", () => {
+    if (!idProduto) {
 
-    if (cep.value.length < 8) {
+        console.error(
+            "ID do produto não encontrado na URL."
+        );
 
-        resultadoFrete.style.color = "#e61d48";
+        if (nome) {
+            nome.textContent = "Produto não informado";
+        }
 
-        resultadoFrete.innerHTML =
-            "Informe um CEP válido.";
+        if (descricao) {
+            descricao.innerHTML = `
+                <h3>Erro</h3>
+                <p>
+                    Nenhum produto foi informado.
+                </p>
+            `;
+        }
 
         return;
+    }
+
+
+    try {
+
+        console.log(
+            "Buscando:",
+            `${API}/produtos/${idProduto}`
+        );
+
+
+        // --------------------------------------------------
+        // BUSCAR PRODUTO
+        // --------------------------------------------------
+
+        const resposta = await fetch(
+            `${API}/produtos/${idProduto}`
+        );
+
+
+        console.log(
+            "Status da API:",
+            resposta.status
+        );
+
+
+        const dados = await resposta.json();
+
+
+        console.log(
+            "Resposta da API:",
+            dados
+        );
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                dados.mensagem ||
+                "Produto não encontrado."
+            );
+
+        }
+
+
+        // --------------------------------------------------
+        // PEGAR PRODUTO
+        // --------------------------------------------------
+
+        const produto =
+            dados.produto || dados;
+
+
+        console.log(
+            "Produto:",
+            produto
+        );
+
+
+        if (!produto) {
+
+            throw new Error(
+                "Produto não encontrado."
+            );
+
+        }
+
+
+        // ==================================================
+        // NOME
+        // ==================================================
+
+        if (nome) {
+
+            nome.textContent =
+                produto.nome ||
+                "Produto sem nome";
+
+        }
+
+
+        // ==================================================
+        // DESCRIÇÃO
+        // ==================================================
+
+        if (descricao) {
+
+            descricao.innerHTML = "";
+
+
+            const titulo =
+                document.createElement("h3");
+
+            titulo.textContent =
+                "Descrição do produto";
+
+
+            const texto =
+                document.createElement("p");
+
+
+            texto.textContent =
+                produto.descricao ||
+                "Este produto não possui descrição cadastrada.";
+
+
+            descricao.appendChild(titulo);
+
+            descricao.appendChild(texto);
+
+        }
+
+
+        // ==================================================
+        // MARCA
+        // ==================================================
+
+        if (marca) {
+
+            marca.textContent =
+                produto.marca ||
+                produto.nomeMarca ||
+                produto.nome_marca ||
+                "";
+
+        }
+
+
+        // ==================================================
+        // PREÇO ANTIGO
+        // ==================================================
+
+        if (precoAntigo) {
+
+            if (
+                produto.preco_antigo !== null &&
+                produto.preco_antigo !== undefined
+            ) {
+
+                precoAntigo.textContent =
+                    formatarPreco(
+                        produto.preco_antigo
+                    );
+
+            } else {
+
+                precoAntigo.textContent = "";
+
+            }
+
+        }
+
+
+        // ==================================================
+        // PREÇO ATUAL
+        // ==================================================
+
+        if (preco) {
+
+            const valor =
+                produto.preco_promocional !== null &&
+                    produto.preco_promocional !== undefined &&
+                    Number(produto.preco_promocional) > 0
+
+                    ? produto.preco_promocional
+
+                    : produto.preco_antigo;
+
+
+            preco.textContent =
+                formatarPreco(valor);
+
+        }
+
+
+        // ==================================================
+        // CAMINHO
+        // ==================================================
+
+        if (caminho) {
+
+            caminho.textContent =
+                produto.nome ||
+                "Produto";
+
+        }
+
+
+        // ==================================================
+        // ESPECIFICAÇÕES
+        // ==================================================
+
+        if (especificacoes) {
+
+            especificacoes.innerHTML = `
+
+                <h3>Especificações do produto</h3>
+
+                <p>
+                    <strong>Código:</strong>
+                    ${produto.codigo || "Não informado"}
+                </p>
+
+                <p>
+                    <strong>Estoque:</strong>
+                    ${produto.quantidade_estoque ?? 0}
+                </p>
+
+                <p>
+                    <strong>Marca:</strong>
+                    ${produto.marca || "Não informada"}
+                </p>
+
+                <p>
+                    <strong>Categoria:</strong>
+                    ${produto.categoria || "Não informada"}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    ${Number(produto.ativo) === 1 ||
+                    produto.ativo === true
+                    ? "Ativo"
+                    : "Inativo"
+                }
+                </p>
+
+            `;
+
+        }
+
+
+        // ==================================================
+        // TÍTULO
+        // ==================================================
+
+        document.title =
+            produto.nome ||
+            "Descrição do Produto";
+
+
+        console.log(
+            "Produto carregado com sucesso."
+        );
+
+    } catch (erro) {
+
+        console.error(
+            "ERRO AO CARREGAR PRODUTO:",
+            erro
+        );
+
+
+        if (nome) {
+
+            nome.textContent =
+                "Erro ao carregar produto";
+
+        }
+
+
+        if (descricao) {
+
+            descricao.innerHTML = `
+
+                <h3>Erro ao carregar</h3>
+
+                <p>
+                    Não foi possível carregar
+                    os dados deste produto.
+                </p>
+
+                <p>
+                    Verifique se o servidor está funcionando.
+                </p>
+
+            `;
+
+        }
 
     }
 
-    const prazo =
-        Math.floor(Math.random() * 6) + 2;
-
-    const valor =
-        (Math.random() * 30 + 10).toFixed(2);
-
-    resultadoFrete.style.color = "#0b8a2f";
-
-    resultadoFrete.innerHTML = `
-
-        Frete: <strong>R$ ${valor}</strong><br>
-
-        Prazo estimado:
-        <strong>${prazo} dias úteis</strong>
-
-    `;
-
-});
+}
 
 
-/*==================================================
-  MÁSCARA CEP
-==================================================*/
+// ======================================================
+// ABAS
+// ======================================================
 
-cep.addEventListener("input", (e) => {
+function configurarAbas() {
 
-    let valor =
-        e.target.value.replace(/\D/g, "");
-
-    valor =
-        valor.replace(/(\d{5})(\d)/, "$1-$2");
-
-    e.target.value =
-        valor.substring(0, 9);
-
-});
+    const abas =
+        document.querySelectorAll(".aba");
 
 
-/*==================================================
-  ANIMAÇÃO IMAGEM PRINCIPAL
-==================================================*/
-
-imagemPrincipal.addEventListener("load", () => {
-
-    imagemPrincipal.style.opacity = "0";
-
-    imagemPrincipal.style.transform = "scale(.95)";
-
-    setTimeout(() => {
-
-        imagemPrincipal.style.transition = ".3s";
-
-        imagemPrincipal.style.opacity = "1";
-
-        imagemPrincipal.style.transform = "scale(1)";
-
-    }, 50);
-
-});
+    const conteudos =
+        document.querySelectorAll(".conteudo");
 
 
-/*==================================================
-  PRODUTO PADRÃO
-==================================================*/
+    abas.forEach(
+        function (aba) {
 
-document.querySelectorAll("#listaMemorias button")[1]?.click();
+            aba.addEventListener(
+                "click",
+                function () {
 
-document.querySelectorAll("#listaCores button")[0]?.click();
+                    const alvo =
+                        aba.dataset.aba;
 
 
-/*==================================================
-  NEWSLETTER
-==================================================*/
+                    abas.forEach(
+                        function (item) {
 
-const newsletter =
-    document.querySelector("footer input");
+                            item.classList.remove(
+                                "ativa"
+                            );
 
-const enviar =
-    document.querySelector("footer button");
+                        }
+                    );
 
-enviar.addEventListener("click", () => {
 
-    if (newsletter.value.trim() === "") {
+                    conteudos.forEach(
+                        function (conteudo) {
 
-        alert("Digite seu e-mail.");
+                            conteudo.classList.remove(
+                                "ativo"
+                            );
 
+                        }
+                    );
+
+
+                    aba.classList.add(
+                        "ativa"
+                    );
+
+
+                    const conteudo =
+                        document.getElementById(
+                            alvo
+                        );
+
+
+                    if (conteudo) {
+
+                        conteudo.classList.add(
+                            "ativo"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// FRETE
+// ======================================================
+
+function configurarFrete() {
+
+    const botao =
+        document.getElementById("btnFrete");
+
+    const campo =
+        document.getElementById("cep");
+
+    const resultado =
+        document.getElementById("resultadoFrete");
+
+
+    if (!botao) {
         return;
-
     }
 
-    alert("Cadastro realizado com sucesso!");
 
-    newsletter.value = "";
+    botao.addEventListener(
+        "click",
+        function () {
 
-});
+            const cep =
+                campo.value
+                    .replace(/\D/g, "");
 
 
-/*==================================================
-  INICIALIZAÇÃO
-==================================================*/
+            if (cep.length !== 8) {
 
-window.addEventListener("load", () => {
+                resultado.textContent =
+                    "Digite um CEP válido.";
 
-    window.scrollTo({
+                return;
 
-        top: 0,
+            }
 
-        behavior: "smooth"
 
-    });
+            resultado.textContent =
+                "Frete calculado com sucesso.";
 
-});
+        }
+    );
+
+}
+
+
+// ======================================================
+// BOTÃO CARRINHO
+// ======================================================
+
+function configurarCarrinho() {
+
+    const botao =
+        document.getElementById("carrinho");
+
+
+    if (!botao) {
+        return;
+    }
+
+
+    botao.addEventListener(
+        "click",
+        function () {
+
+            if (!idProduto) {
+
+                alert(
+                    "Produto não informado."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "Produto adicionado ao carrinho."
+            );
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// BOTÃO COMPRAR
+// ======================================================
+
+function configurarComprar() {
+
+    const botao =
+        document.getElementById("comprar");
+
+
+    if (!botao) {
+        return;
+    }
+
+
+    botao.addEventListener(
+        "click",
+        function () {
+
+            if (!idProduto) {
+
+                alert(
+                    "Produto não informado."
+                );
+
+                return;
+
+            }
+
+
+            window.location.href =
+                `carrinho.html?id=${idProduto}`;
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// INICIAR
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        carregarProduto();
+
+        configurarAbas();
+
+        configurarFrete();
+
+        configurarCarrinho();
+
+        configurarComprar();
+
+    }
+);

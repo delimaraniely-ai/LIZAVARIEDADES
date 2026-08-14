@@ -8,25 +8,23 @@ const conexao = require("../conexao/conexao.js");
 function cadastrar(imagem_produto, callback) {
 
     const sql = `
-        INSERT INTO IMAGEM_PRODUTOS
+        INSERT INTO Imagem_Produtos
         (
             arquivo,
-            PRODUTOID_PRODUTO
+            Produto_idProduto
         )
         VALUES (?, ?)
     `;
-
 
     conexao.query(
         sql,
         [
             imagem_produto.arquivo,
-            imagem_produto.PRODUTOID_PRODUTO
+            imagem_produto.Produto_idProduto
         ],
         callback
     );
 }
-
 
 
 // =========================
@@ -37,16 +35,14 @@ function listar(callback) {
 
     const sql = `
         SELECT *
-        FROM IMAGEM_PRODUTOS
+        FROM Imagem_Produtos
     `;
-
 
     conexao.query(
         sql,
         callback
     );
 }
-
 
 
 // =========================
@@ -57,10 +53,9 @@ function buscarPorId(id, callback) {
 
     const sql = `
         SELECT *
-        FROM IMAGEM_PRODUTOS
-        WHERE idimagem_produtos = ?
+        FROM Imagem_Produtos
+        WHERE idImagem_Produtos = ?
     `;
-
 
     conexao.query(
         sql,
@@ -70,7 +65,6 @@ function buscarPorId(id, callback) {
         callback
     );
 }
-
 
 
 // =========================
@@ -80,25 +74,23 @@ function buscarPorId(id, callback) {
 function atualizar(id, imagem_produto, callback) {
 
     const sql = `
-        UPDATE IMAGEM_PRODUTOS
+        UPDATE Imagem_Produtos
         SET
             arquivo = ?,
-            PRODUTOID_PRODUTO = ?
-        WHERE idimagem_produtos = ?
+            Produto_idProduto = ?
+        WHERE idImagem_Produtos = ?
     `;
-
 
     conexao.query(
         sql,
         [
             imagem_produto.arquivo,
-            imagem_produto.PRODUTOID_PRODUTO,
+            imagem_produto.Produto_idProduto,
             id
         ],
         callback
     );
 }
-
 
 
 // =========================
@@ -108,10 +100,9 @@ function atualizar(id, imagem_produto, callback) {
 function excluir(id, callback) {
 
     const sql = `
-        DELETE FROM IMAGEM_PRODUTOS
-        WHERE idimagem_produtos = ?
+        DELETE FROM Imagem_Produtos
+        WHERE idImagem_Produtos = ?
     `;
-
 
     conexao.query(
         sql,
@@ -123,6 +114,9 @@ function excluir(id, callback) {
 }
 
 
+// =========================
+// Exportar
+// =========================
 
 module.exports = {
 

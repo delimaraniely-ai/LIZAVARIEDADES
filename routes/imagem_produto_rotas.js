@@ -1,37 +1,23 @@
 const express = require("express");
+
 const router = express.Router();
 
+const imagemProdutosController =
+    require("../controller/imagem_produto_controller.js");
 
-const controller = require("../controller/imagem_produtos_controller");
-
-
-
-// listar imagens
-router.get("/", controller.listar);
+const upload =
+    require("../config/upload.js");
 
 
+//==========================================
+// CADASTRAR IMAGEM
+//==========================================
 
-
-
-// buscar id
-router.get("/:id",
-    controller.buscarPorId);
-
-
-// cadastrar
-router.post("/",
-    controller.cadastrar);
-
-
-// atualizar
-router.put("/:id",
-    controller.atualizar);
-
-
-// excluir
-router.delete("/:id",
-    controller.excluir);
-
+router.post(
+    "/imagem-produto",
+    upload.single("imagem"),
+    imagemProdutosController.cadastrar
+);
 
 
 module.exports = router;

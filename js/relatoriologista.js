@@ -4,10 +4,11 @@ document.getElementById("empresaNome").textContent =
     "LOGISTA REPORTS";
 
 document.getElementById("avatarUsuario").src =
-    "./assets/avatar.png";
+    "../assets/avatar.png";
 
 document.getElementById("nomeUsuario").textContent =
     "Liza Medeiros";
+
 
 /* CABEÇALHO */
 
@@ -16,6 +17,7 @@ document.getElementById("tituloRelatorio").textContent =
 
 document.getElementById("descricaoRelatorio").textContent =
     "Analise performance, faturamento e vendas em tempo real.";
+
 
 /* CARDS */
 
@@ -43,6 +45,7 @@ document.getElementById("lucro").textContent =
 document.getElementById("lucroCrescimento").textContent =
     "+5%";
 
+
 /* TABELA */
 
 document.getElementById("dataLinha1").textContent = "29/04/2024";
@@ -63,6 +66,7 @@ document.getElementById("faturamentoLinha3").textContent = "R$ 35.990";
 document.getElementById("crescimentoLinha3").textContent = "+2,7%";
 document.getElementById("statusLinha3").textContent = "Concluído";
 
+
 /* EXPORTAÇÃO */
 
 document.getElementById("pdfTitulo").textContent =
@@ -77,50 +81,61 @@ document.getElementById("excelTitulo").textContent =
 document.getElementById("footerTexto").textContent =
     "© Logista Analytics - Todos os direitos reservados";
 
+
 /* GRÁFICO */
 
-const ctx =
-    document.getElementById("salesChart");
+const canvas = document.getElementById("salesChart");
 
-new Chart(ctx, {
+if (canvas && typeof Chart !== "undefined") {
 
-    type: "line",
+    new Chart(canvas, {
 
-    data: {
+        type: "line",
 
-        labels: [
-            "Jul",
-            "Ago",
-            "Set",
-            "Out",
-            "Nov",
-            "Dez",
-            "Jan",
-            "Fev"
-        ],
+        data: {
 
-        datasets: [
-            {
-                label: "Vendas",
-                data: [
-                    12000,
-                    18000,
-                    16000,
-                    24000,
-                    22000,
-                    30000,
-                    28000,
-                    35000
-                ],
-                borderColor: "#4f46e5",
-                tension: .4
-            }
-        ]
-    },
+            labels: [
+                "Jul",
+                "Ago",
+                "Set",
+                "Out",
+                "Nov",
+                "Dez",
+                "Jan",
+                "Fev"
+            ],
 
-    options: {
-        responsive: true,
-        maintainAspectRatio: false
-    }
+            datasets: [
+                {
+                    label: "Vendas",
 
-});
+                    data: [
+                        12000,
+                        18000,
+                        16000,
+                        24000,
+                        22000,
+                        30000,
+                        28000,
+                        35000
+                    ],
+
+                    borderColor: "#4f46e5",
+
+                    backgroundColor: "rgba(79, 70, 229, 0.10)",
+
+                    tension: 0.4,
+
+                    fill: true
+                }
+            ]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+
+    });
+
+}

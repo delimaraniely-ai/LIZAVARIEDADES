@@ -2,44 +2,56 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Localização</title>
 
-    <link rel="stylesheet" href="./localizacao.css">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Localização - Liza Variedades</title>
+
+    <link rel="stylesheet" href="../style/localizacao.css">
+
 </head>
 
 <body>
 
-    <!-- MENU -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
     <header class="header">
 
-        <button id="btnVoltar">
+        <button id="btnVoltar" type="button">
             ←
         </button>
 
         <h1 id="tituloPagina"></h1>
 
-        <button id="btnCompartilhar">
+        <button id="btnCompartilhar" type="button">
             ⤴
         </button>
 
     </header>
 
-    <!-- CONTEÚDO -->
+
+    <!-- =====================================================
+         CONTEÚDO
+    ====================================================== -->
 
     <main>
 
-        <!-- MAPA -->
+
+        <!-- =================================================
+             MAPA
+        ================================================== -->
 
         <section class="map-section">
 
-            <img id="mapaImagem" src="" alt="">
+            <img id="mapaImagem" src="" alt="Mapa da localização da loja">
 
             <div class="map-overlay">
 
-                <button id="btnMinhaLocalizacao">
+                <button id="btnMinhaLocalizacao" type="button">
                     📍 Minha Localização
                 </button>
 
@@ -47,13 +59,16 @@
 
         </section>
 
-        <!-- INFORMAÇÕES -->
+
+        <!-- =================================================
+             INFORMAÇÕES DA LOJA
+        ================================================== -->
 
         <section class="location-card">
 
             <div class="location-icon">
 
-                <img id="pinIcon" src="" alt="">
+                <img id="pinIcon" src="" alt="Localização">
 
             </div>
 
@@ -67,7 +82,10 @@
 
         </section>
 
-        <!-- DISTÂNCIA -->
+
+        <!-- =================================================
+             DISTÂNCIA
+        ================================================== -->
 
         <section class="distance-card">
 
@@ -81,6 +99,7 @@
 
             </div>
 
+
             <div class="distance-item">
 
                 <span class="label">
@@ -93,19 +112,26 @@
 
         </section>
 
-        <!-- AÇÕES -->
+
+        <!-- =================================================
+             AÇÕES
+        ================================================== -->
 
         <section class="actions-section">
 
-            <button id="btnRota" class="btn-primary">
+            <button id="btnRota" class="btn-primary" type="button">
             </button>
 
-            <button id="btnWaze" class="btn-secondary">
+
+            <button id="btnWaze" class="btn-secondary" type="button">
             </button>
 
         </section>
 
-        <!-- STATUS -->
+
+        <!-- =================================================
+             STATUS
+        ================================================== -->
 
         <section class="status-card">
 
@@ -123,16 +149,24 @@
 
     </main>
 
-    <!-- RODAPÉ -->
+
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
 
     <footer class="footer">
 
-        <button id="btnOutrasLojas">
+        <button id="btnOutrasLojas" type="button">
         </button>
 
     </footer>
 
-    <script src="/js/localizacao.js"></script>
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/localizacao.js"></script>
 
 </body>
 

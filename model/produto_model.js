@@ -1,137 +1,183 @@
+const conexao = require("../conexao/conexao.js");
 
-const db = require("../conexao/conexao");
+// ==================================================
+// CADASTRAR PRODUTO
+// ==================================================
 
-const Produto = {
+function cadastrar(produto, callback) {
 
+    const sql = `
+        INSERT INTO Produto
+        (
+            nome,
+            descricao,
+            codigo,
+            preco_antigo,
+            preco_promocional,
+            quantidade_estoque,
+            ativo,
+            Loja_idLoja,
+            Marca_idMarca,
+            Categoria_idCategoria
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
 
-    listar: (callback) => {
-
-
-        const sql = `
-
-SELECT 
-produto.*,
-marca.nome AS marca
-
-FROM produto
-
-LEFT JOIN marca
-ON produto.marca_idmarca = marca.idmarca
-
-`;
-
-        db.query(sql, callback);
-
-
-    },
-
-
-    buscarPorId: (id, callback) => {
-
-
-        db.query(
-            `
-SELECT * FROM produto
-WHERE idproduto=?
-`,
-            [id],
-            callback
-        );
-
-
-    },
-
-
-    inserir: (dados, callback) => {
+    conexao.query(
+        sql,
+        [
+            produto.nome,
+            produto.descricao,
+            produto.codigo,
+            produto.preco_antigo,
+            produto.preco_promocional,
+            produto.quantidade_estoque,
+            produto.ativo,
+            produto.Loja_idLoja,
+            produto.Marca_idMarca,
+            produto.Categoria_idCategoria
+        ],
+        callback
+    );
+}
 
 
-        const sql = `
+// ==================================================
+// LISTAR PRODUTOS
+// ==================================================
 
-INSERT INTO produto
-(
-nome,
-descricao,
-preco,
-estoque,
-imagem,
-marca_idmarca
-)
+function listar(callback) {
 
-VALUES (?,?,?,?,?,?)
+    const sql = `
+        SELECT
+            Produto.*,
+            Marca.nome AS marca,
+            Categoria.nome AS categoria
 
-`;
+        FROM Produto
 
+        LEFT JOIN Marca
+            ON Produto.Marca_idMarca = Marca.idMarca
 
-        db.query(sql, [
+        LEFT JOIN Categoria
+            ON Produto.Categoria_idCategoria = Categoria.idCategoria
 
-            dados.nome,
-            dados.descricao,
-            dados.preco,
-            dados.estoque,
-            dados.imagem,
-            dados.marca_idmarca
+        ORDER BY Produto.idProduto DESC
+    `;
 
-        ], callback);
-
-
-
-    },
+    conexao.query(
+        sql,
+        callback
+    );
+}
 
 
-    atualizar: (id, dados, callback) => {
+// ==================================================
+// BUSCAR PRODUTO POR ID
+// ==================================================
 
+function buscarPorId(id, callback) {
 
-        const sql = `
+    const sql = `
+        SELECT
+            Produto.*,
+            Marca.nome AS marca,
+            Categoria.nome AS categoria
 
-UPDATE produto SET
+        FROM Produto
 
-nome=?,
-descricao=?,
-preco=?,
-estoque=?,
-imagem=?,
-marca_idmarca=?
+        LEFT JOIN Marca
+            ON Produto.Marca_idMarca = Marca.idMarca
 
-WHERE idproduto=?
+        LEFT JOIN Categoria
+            ON Produto.Categoria_idCategoria = Categoria.idCategoria
 
-`;
+        WHERE Produto.idProduto = ?
+    `;
 
-
-        db.query(sql, [
-
-            dados.nome,
-            dados.descricao,
-            dados.preco,
-            dados.estoque,
-            dados.imagem,
-            dados.marca_idmarca,
+    conexao.query(
+        sql,
+        [
             id
-
-        ], callback);
-
-
-
-    },
+        ],
+        callback
+    );
+}
 
 
-    excluir: (id, callback) => {
+// ==================================================
+// ATUALIZAR PRODUTO
+// ==================================================
+
+function atualizar(id, produto, callback) {
+
+    const sql = `
+        UPDATE Produto
+
+        SET
+            nome = ?,
+            descricao = ?,
+            codigo = ?,
+            preco_antigo = ?,
+            preco_promocional = ?,
+            quantidade_estoque = ?,
+            ativo = ?,
+            Loja_idLoja = ?,
+            Marca_idMarca = ?,
+            Categoria_idCategoria = ?
+
+        WHERE idProduto = ?
+    `;
+
+    conexao.query(
+        sql,
+        [
+            produto.nome,
+            produto.descricao,
+            produto.codigo,
+            produto.preco_antigo,
+            produto.preco_promocional,
+            produto.quantidade_estoque,
+            produto.ativo,
+            produto.Loja_idLoja,
+            produto.Marca_idMarca,
+            produto.Categoria_idCategoria,
+            id
+        ],
+        callback
+    );
+}
 
 
-        db.query(
-            `
-DELETE FROM produto
-WHERE idproduto=?
-`,
-            [id],
-            callback
-        );
+// ==================================================
+// EXCLUIR PRODUTO
+// ==================================================
+
+function excluir(id, callback) {
+
+    const sql = `
+        DELETE FROM Produto
+        WHERE idProduto = ?
+    `;
+
+    conexao.query(
+        sql,
+        [
+            id
+        ],
+        callback
+    );
+}
 
 
-    }
+// ==================================================
+// EXPORTAR FUNÇÕES
+// ==================================================
 
-
-
+module.exports = {
+    cadastrar,
+    listar,
+    buscarPorId,
+    atualizar,
+    excluir
 };
-
-
-module.exports = Produto;

@@ -1,25 +1,49 @@
-// nesse arquivo, definimos as rotas relacionadas aos clientes e associamos cada rota a uma função do ClienteController. As rotas são:
-// POST /clientes: para cadastrar um novo cliente.
-// GET /clientes: para listar todos os clientes.
-// GET /clientes/:id: para buscar um cliente específico pelo ID.
-// PUT /clientes/:id: para atualizar as informações de um cliente específico pelo ID.
-// DELETE /clientes/:id: para excluir um cliente específico pelo ID.
-
-
 const express = require("express");
-// Importando o módulo express para criar rotas e lidar com requisições HTTP.
+const multer = require("multer");
+
 const router = express.Router();
-// Criando um objeto router para definir as rotas relacionadas aos clientes.
+
 const marcaController = require("../controller/marca_controller.js");
 
-router.post("/", marcaController.cadastrar);
 
-router.get("/", marcaController.listar);
+// Configuração para receber imagem em memória
+const storage = multer.memoryStorage();
 
-router.get("/:id", marcaController.buscarPorId);
+const upload = multer({
+    storage: storage
+});
 
-router.put("/:id", marcaController.atualizar);
 
-router.delete("/:id", marcaController.excluir);
+router.post(
+    "/",
+    upload.single("logo"),
+    marcaController.cadastrar
+);
+
+
+router.get(
+    "/",
+    marcaController.listar
+);
+
+
+router.get(
+    "/:id",
+    marcaController.buscarPorId
+);
+
+
+router.put(
+    "/:id",
+    upload.single("logo"),
+    marcaController.atualizar
+);
+
+
+router.delete(
+    "/:id",
+    marcaController.excluir
+);
+
 
 module.exports = router;

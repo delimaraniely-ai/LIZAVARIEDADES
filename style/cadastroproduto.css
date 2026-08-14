@@ -1,0 +1,455 @@
+/* ======================================================
+   RESET
+====================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ======================================================
+   BODY
+====================================================== */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f5f5f5;
+
+    color: #333;
+
+    min-height: 100vh;
+
+    padding: 30px 20px;
+}
+
+
+/* ======================================================
+   CONTAINER
+====================================================== */
+
+.container {
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+
+/* ======================================================
+   TÍTULO
+====================================================== */
+
+.titulo {
+    margin-bottom: 25px;
+}
+
+
+.titulo h1 {
+    color: #a85f6e;
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+
+.titulo p {
+    color: #777;
+
+    font-size: 15px;
+}
+
+
+/* ======================================================
+   CARD
+====================================================== */
+
+.card {
+    width: 100%;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+/* ======================================================
+   FORM GRID
+====================================================== */
+
+.form-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+/* ======================================================
+   CAMPOS
+====================================================== */
+
+.campo {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* ======================================================
+   CAMPO COMPLETO
+====================================================== */
+
+.campo-completo {
+    grid-column: 1 / -1;
+}
+
+
+/* ======================================================
+   LABEL
+====================================================== */
+
+.campo label {
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #444;
+}
+
+
+/* ======================================================
+   OBRIGATÓRIO
+====================================================== */
+
+.obrigatorio {
+    color: #c28282;
+
+    font-weight: bold;
+}
+
+
+/* ======================================================
+   INPUT
+====================================================== */
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+
+    border: 1px solid #d0d0d0;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #333;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+/* ======================================================
+   INPUT E SELECT
+====================================================== */
+
+.campo input,
+.campo select {
+    height: 45px;
+
+    padding: 0 12px;
+}
+
+
+/* ======================================================
+   TEXTAREA
+====================================================== */
+
+.campo textarea {
+    min-height: 120px;
+
+    resize: vertical;
+
+    padding: 12px;
+}
+
+
+/* ======================================================
+   PLACEHOLDER
+====================================================== */
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #999;
+}
+
+
+/* ======================================================
+   FOCO
+====================================================== */
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: #c28282;
+
+    box-shadow:
+        0 0 0 3px rgba(194, 130, 130, 0.15);
+}
+
+
+/* ======================================================
+   SELECT
+====================================================== */
+
+.campo select {
+    cursor: pointer;
+}
+
+
+/* ======================================================
+   MENSAGEM
+====================================================== */
+
+.mensagem {
+    width: 100%;
+
+    min-height: 20px;
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* ======================================================
+   MENSAGEM DE ERRO
+====================================================== */
+
+.mensagem.erro {
+    color: #b42318;
+
+    background: #fff1f0;
+
+    border: 1px solid #f1b5b0;
+
+    border-radius: 6px;
+
+    padding: 12px;
+}
+
+
+/* ======================================================
+   MENSAGEM DE SUCESSO
+====================================================== */
+
+.mensagem.sucesso {
+    color: #18794e;
+
+    background: #edfdf5;
+
+    border: 1px solid #a8dfc5;
+
+    border-radius: 6px;
+
+    padding: 12px;
+}
+
+
+/* ======================================================
+   BOTÃO CONTAINER
+====================================================== */
+
+.botao-container {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+
+/* ======================================================
+   BOTÃO
+====================================================== */
+
+#btnProduto {
+    min-width: 190px;
+
+    height: 46px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #c28282;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    padding: 0 25px;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+
+/* ======================================================
+   HOVER
+====================================================== */
+
+#btnProduto:hover {
+    background: #a85f6e;
+
+    transform: translateY(-1px);
+}
+
+
+/* ======================================================
+   BOTÃO DESABILITADO
+====================================================== */
+
+#btnProduto:disabled {
+    background: #c9a4a4;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    opacity: 0.8;
+}
+
+
+/* ======================================================
+   RESPONSIVIDADE - TABLET
+====================================================== */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 20px 12px;
+    }
+
+
+    .titulo h1 {
+        font-size: 25px;
+    }
+
+
+    .card {
+        padding: 22px;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .campo-completo {
+        grid-column: auto;
+    }
+
+
+    .botao-container {
+        justify-content: stretch;
+    }
+
+
+    #btnProduto {
+        width: 100%;
+    }
+
+}
+
+
+/* ======================================================
+   RESPONSIVIDADE - CELULAR
+====================================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px 10px;
+    }
+
+
+    .titulo {
+        margin-bottom: 18px;
+    }
+
+
+    .titulo h1 {
+        font-size: 22px;
+    }
+
+
+    .titulo p {
+        font-size: 13px;
+    }
+
+
+    .card {
+        padding: 18px;
+    }
+
+
+    .campo input,
+    .campo select {
+        height: 44px;
+    }
+
+
+    .campo textarea {
+        min-height: 100px;
+    }
+
+
+    #btnProduto {
+        height: 44px;
+
+        font-size: 14px;
+    }
+
+}

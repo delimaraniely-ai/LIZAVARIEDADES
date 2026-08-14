@@ -2,10 +2,11 @@
 
 const mysql = require("mysql2");
 const conexao = mysql.createConnection({
-    host: 'localhost',
+    host: "altaria.proxy.rlwy.net",
     user: 'root',
-    password: "", // senha do MySQL
-    database: "Lizavariedades"
+    port: 31727,
+    password: "kpqusEkZMGDrvEtRkUZUqaqbkQnTpJbQ", // senha do MySQL
+    database: "railway"
 });
 conexao.connect((erro) => {
 

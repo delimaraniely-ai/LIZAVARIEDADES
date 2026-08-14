@@ -11,54 +11,110 @@ const imagemProdutosModel = require("../model/imagem_produto_model");
 
 function cadastrar(req, res) {
 
+    const Produto_idProduto = req.body.Produto_idProduto;
 
-    const imagem = req.body;
+    // Arquivo enviado pelo FormData
+    const arquivo = req.file;
 
 
-    // Validação dos campos obrigatórios
+    //==========================================
+    // VERIFICAR ARQUIVO
+    //==========================================
 
-    if (
-        !imagem.arquivo ||
-        !imagem.Produto_idProduto
-    ) {
+    if (!arquivo) {
 
         return res.status(400).json({
+
             sucesso: false,
-            mensagem: "Informe o arquivo da imagem e o produto."
+
+            mensagem: "Selecione uma imagem."
+
         });
 
     }
 
 
+    //==========================================
+    // VERIFICAR PRODUTO
+    //==========================================
 
-    imagemProdutosModel.cadastrar(imagem, (erro, resultado) => {
+    if (!Produto_idProduto) {
 
+        return res.status(400).json({
 
-        if (erro) {
+            sucesso: false,
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao cadastrar imagem do produto."
-            });
-
-        }
-
-
-
-        return res.status(201).json({
-
-            sucesso: true,
-            mensagem: "Imagem cadastrada com sucesso!",
-            idImagem: resultado.insertId
+            mensagem: "Informe o produto."
 
         });
 
+    }
 
-    });
 
+    //==========================================
+    // CRIAR OBJETO
+    //==========================================
+
+    const imagem = {
+
+        arquivo: arquivo.filename,
+
+        Produto_idProduto: Number(Produto_idProduto)
+
+    };
+
+
+    console.log("Imagem que será cadastrada:", imagem);
+
+
+    //==========================================
+    // CADASTRAR NO BANCO
+    //==========================================
+
+    imagemProdutosModel.cadastrar(
+        imagem,
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao cadastrar imagem:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem:
+                        "Erro ao cadastrar imagem do produto.",
+
+                    erro: erro.message
+
+                });
+
+            }
+
+
+            return res.status(201).json({
+
+                sucesso: true,
+
+                mensagem:
+                    "Imagem cadastrada com sucesso!",
+
+                idImagem:
+                    resultado.insertId,
+
+                arquivo:
+                    arquivo.filename
+
+            });
+
+        }
+    );
 
 }
-
 
 
 //==========================================
@@ -67,28 +123,41 @@ function cadastrar(req, res) {
 
 function listar(req, res) {
 
+    imagemProdutosModel.listar(
+        (erro, resultado) => {
 
-    imagemProdutosModel.listar((erro, resultado) => {
+            if (erro) {
+
+                console.error(
+                    "Erro ao listar imagens:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao listar imagens.",
+
+                    erro: erro.message
+
+                });
+
+            }
 
 
-        if (erro) {
+            return res.status(200).json({
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao listar imagens."
+                sucesso: true,
+
+                imagens: resultado
+
             });
 
         }
-
-
-        res.json(resultado);
-
-
-    });
-
+    );
 
 }
-
 
 
 //==========================================
@@ -97,44 +166,71 @@ function listar(req, res) {
 
 function buscarPorId(req, res) {
 
-
     const id = req.params.id;
 
 
+    if (!id) {
 
-    imagemProdutosModel.buscarPorId(id, (erro, resultado) => {
+        return res.status(400).json({
+
+            sucesso: false,
+
+            mensagem: "ID da imagem não informado."
+
+        });
+
+    }
 
 
-        if (erro) {
+    imagemProdutosModel.buscarPorId(
+        id,
+        (erro, resultado) => {
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao buscar imagem."
+            if (erro) {
+
+                console.error(
+                    "Erro ao buscar imagem:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao buscar imagem.",
+
+                    erro: erro.message
+
+                });
+
+            }
+
+
+            if (resultado.length === 0) {
+
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Imagem não encontrada."
+
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                sucesso: true,
+
+                imagem: resultado[0]
+
             });
 
         }
-
-
-
-        if (resultado.length === 0) {
-
-            return res.status(404).json({
-                sucesso: false,
-                mensagem: "Imagem não encontrada."
-            });
-
-        }
-
-
-
-        res.json(resultado[0]);
-
-
-    });
-
+    );
 
 }
-
 
 
 //==========================================
@@ -143,40 +239,105 @@ function buscarPorId(req, res) {
 
 function atualizar(req, res) {
 
-
     const id = req.params.id;
 
-    const imagem = req.body;
+    const Produto_idProduto =
+        req.body.Produto_idProduto;
+
+    const arquivo =
+        req.file;
 
 
+    if (!id) {
 
-    imagemProdutosModel.atualizar(id, imagem, (erro, resultado) => {
+        return res.status(400).json({
 
+            sucesso: false,
 
-        if (erro) {
-
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao atualizar imagem."
-            });
-
-        }
-
-
-
-        res.json({
-
-            sucesso: true,
-            mensagem: "Imagem atualizada com sucesso."
+            mensagem: "ID da imagem não informado."
 
         });
 
+    }
 
-    });
 
+    if (!Produto_idProduto) {
+
+        return res.status(400).json({
+
+            sucesso: false,
+
+            mensagem: "Informe o produto."
+
+        });
+
+    }
+
+
+    const imagem = {
+
+        Produto_idProduto:
+            Number(Produto_idProduto),
+
+        arquivo:
+            arquivo
+                ? arquivo.filename
+                : req.body.arquivo
+
+    };
+
+
+    imagemProdutosModel.atualizar(
+        id,
+        imagem,
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao atualizar imagem:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao atualizar imagem.",
+
+                    erro: erro.message
+
+                });
+
+            }
+
+
+            if (resultado.affectedRows === 0) {
+
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Imagem não encontrada."
+
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                sucesso: true,
+
+                mensagem:
+                    "Imagem atualizada com sucesso."
+
+            });
+
+        }
+    );
 
 }
-
 
 
 //==========================================
@@ -185,38 +346,72 @@ function atualizar(req, res) {
 
 function excluir(req, res) {
 
-
     const id = req.params.id;
 
 
+    if (!id) {
 
-    imagemProdutosModel.excluir(id, (erro, resultado) => {
+        return res.status(400).json({
 
+            sucesso: false,
 
-        if (erro) {
-
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao excluir imagem."
-            });
-
-        }
-
-
-
-        res.json({
-
-            sucesso: true,
-            mensagem: "Imagem excluída com sucesso."
+            mensagem: "ID da imagem não informado."
 
         });
 
+    }
 
-    });
 
+    imagemProdutosModel.excluir(
+        id,
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao excluir imagem:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao excluir imagem.",
+
+                    erro: erro.message
+
+                });
+
+            }
+
+
+            if (resultado.affectedRows === 0) {
+
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Imagem não encontrada."
+
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                sucesso: true,
+
+                mensagem:
+                    "Imagem excluída com sucesso."
+
+            });
+
+        }
+    );
 
 }
-
 
 
 //==========================================

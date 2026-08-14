@@ -1,154 +1,159 @@
+//==========================================
+// IMPORTAÇÕES
+//==========================================
+
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+
+const app = express();
+
+console.log(">>> ESTE SERVIDOR.JS ESTÁ RODANDO <<<");
+
+
+//==========================================
+// CONFIGURAÇÕES
+//==========================================
+
+app.use(cors());
+
+app.use(express.json());
+
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+);
+
+
+//==========================================
+// ARQUIVOS PÚBLICOS / ASSETS
+//==========================================
+
+app.use(
+    "/assets",
+    express.static(
+        path.join(__dirname, "..", "assets")
+    )
+);
+
+
+//==========================================
+// CONEXÃO COM O BANCO
+//==========================================
+
+const conexao = require("./conexao");
+
+
+//==========================================
+// ARQUIVOS ESTÁTICOS
+//==========================================
+
+// Arquivos da raiz do projeto
+app.use(
+    express.static(
+        path.join(__dirname, "..")
+    )
+);
+
+
+// Arquivos da pasta PAGES
+app.use(
+    "/pages",
+    express.static(
+        path.join(__dirname, "..", "PAGES")
+    )
+);
+
+
+// Arquivos da pasta STYLE
+app.use(
+    "/style",
+    express.static(
+        path.join(__dirname, "..", "STYLE")
+    )
+);
+
+
+// Arquivos da pasta JS
+app.use(
+    "/js",
+    express.static(
+        path.join(__dirname, "..", "JS")
+    )
+);
+
+
+//==========================================
+// PÁGINA INICIAL
+//==========================================
+
+app.get("/", (req, res) => {
+
+    res.sendFile(
+        path.join(
+            __dirname,
+            "..",
+            "index.html"
+        )
+    );
+
+});
+const conexao = require("./conexao.js");
 
 // ==========================================
 // IMPORTAÇÃO DAS ROTAS
 // ==========================================
-// express é um framework para criar 
-// aplicações web com Node.js
-const express = require("express");
-// cors é um pacote que permite que o servidor
-// aceite requisições de outros domínios
-const cors = require("cors");
 
-// criar uma instância do express
-const app = express();
-
-// permitir que o servidor aceite requisições de 
-// outros domínios
-app.use(cors());
-app.use(express.json());
-
-// importar a conexão com o banco de dados
-const conexao = require("./conexao");
-
-// CLIENTE
 const clienteRoutes = require("../routes/cliente_rotas.js");
-
-
-// CATEGORIA
 const categoriaRoutes = require("../routes/categoria_rotas.js");
-
-
-// CORES
 const coresRoutes = require("../routes/cores_rotas.js");
-
-
-// TAMANHO
 const tamanhoRoutes = require("../routes/tamanho_rotas.js");
-
-
-// PRODUTO
 const produtoRoutes = require("../routes/produto_rotas.js");
-
-
-// MARCA
 const marcaRoutes = require("../routes/marca_rotas.js");
 
-
-// BANNER
 const bannerRoutes = require("../routes/banner_rotas.js");
+const bannerProdutoRoutes = require("../routes/banner_has_produto_rotas.js");
 
+// Verifique se este é realmente o nome do arquivo
+const avaliacaoRoutes = require("../routes/avaliacao_produtos_rotas.js");
 
-// BANNER PRODUTO
-const bannerProdutoRoutes =
-    require("../routes/banner_has_produto_rotas.js");
+const carrinhoRoutes = require("../routes/carrinho_rotas.js");
+const carrinhoProdutoRoutes = require("../routes/carrinho_has_produto.js");
 
+const cartaoRoutes = require("../routes/cartao_pagamento_rotas.js");
 
-// AVALIAÇÃO
-const avaliacaoRoutes =
-    require("../routes/avaliacao_produtos_rotas.js");
+const cuponsRoutes = require("../routes/cupons_rotas.js");
+const cuponsProdutosRoutes = require("../routes/cupons_has_produtos_rotas.js");
+const cuponsCategoriaRoutes = require("../routes/cupons_has_categoria.js");
 
+const enderecoRoutes = require("../routes/endereco_rotas.js");
+const enderecoClienteRoutes = require("../routes/endereco_has_cliente_rotas.js");
 
-// CARRINHO
-const carrinhoRoutes =
-    require("../routes/carrinho_rotas.js");
+const formasPagamentoRoutes = require("../routes/formas_pagamento_rotas.js");
 
+const freteRoutes = require("../routes/frete_rotas.js");
+const freteEnderecoRoutes = require("../routes/frete_endereco_rotas.js");
 
-// CARRINHO PRODUTO
-const carrinhoProdutoRoutes =
-    require("../routes/carrinho_has_produto.js");
+const imagemProdutoRoutes = require("../routes/imagem_produto_rotas.js");
 
+const pedidosRoutes = require("../routes/pedidos_rotas.js");
+const pedidosProdutoRoutes = require("../routes/pedidos_has_produto.js");
 
-// CARTÃO
-const cartaoRoutes =
-    require("../routes/cartao_pagamento_rotas.js");
+const produtoCoresRoutes = require("../routes/produto_has_cores_rotas.js");
 
+const promocaoRoutes = require("../routes/promocao_rotas.js");
+const promocaoCategoriaRoutes = require("../routes/promocao_has_categoria_rotas.js");
+const promocaoProdutoRoutes = require("../routes/promocao_has_produto_rotas.js");
 
-// CUPONS
-const cuponsRoutes =
-    require("../routes/cupons_rotas.js");
+const produtoRoutes =
+    require("./routes/produto_routes.js");
 
-
-// CUPONS PRODUTOS
-const cuponsProdutosRoutes =
-    require("../routes/cupons_has_produtos_rotas.js");
-
-
-// CUPONS CATEGORIA
-const cuponsCategoriaRoutes =
-    require("../routes/cupons_has_categoria.js");
-
-
-// ENDEREÇO
-const enderecoRoutes =
-    require("../routes/endereco_rotas.js");
-
-
-// ENDEREÇO CLIENTE
-const enderecoClienteRoutes =
-    require("../routes/endereco_has_cliente_rotas.js");
-
-
-// FORMAS PAGAMENTO
-const formasPagamentoRoutes =
-    require("../routes/formas_pagamento_rotas.js");
-
-
-// FRETE
-const freteRoutes =
-    require("../routes/frete_rotas.js");
-
-
-// FRETE ENDEREÇO
-const freteEnderecoRoutes =
-    require("../routes/frete_endereco_rotas.js");
-
-
-// IMAGEM PRODUTO
-const imagemProdutoRoutes =
-    require("../routes/imagem_produto_rotas.js");
-
-
-// PEDIDOS
-const pedidosRoutes =
-    require("../routes/pedidos_rotas.js");
-
-
-// PEDIDOS PRODUTO
-const pedidosProdutoRoutes =
-    require("../routes/pedidos_has_produto.js");
-
-
-// PRODUTO CORES
-const produtoCoresRoutes =
-    require("../routes/produto_has_cores_rotas.js");
-
-
-// PROMOÇÃO
-const promocaoRoutes =
-    require("../routes/promocao_rotas.js");
-
-
-// PROMOÇÃO CATEGORIA
-const promocaoCategoriaRoutes =
-    require("../routes/promocao_has_categoria_rotas.js");
-
-
-// PROMOÇÃO PRODUTO
-const promocaoProdutoRoutes =
-    require("../routes/promocao_has_produto_rotas.js");
-
+app.use(
+    produtoRoutes
+);
 // ==========================================
-// TESTE DA API
+// ROTAS
 // ==========================================
 
 app.use("/cliente", clienteRoutes);
@@ -205,7 +210,29 @@ app.use("/promocao-categoria", promocaoCategoriaRoutes);
 
 app.use("/promocao-produto", promocaoProdutoRoutes);
 
-// importar as rotas da aplicação
+
+
+
+
+
+// ==========================================
+// ROTA FINANCEIRO
+// ==========================================
+
+const financeiroRoutes =
+    require("./routes/financeiro_routes.js");
+
+app.use(financeiroRoutes);
+
+
+// ==========================================
+// SERVIDOR
+// ==========================================
+
 app.listen(3000, () => {
-    console.log("Servidor iniciado!");
+
+    console.log(
+        "Servidor rodando em http://localhost:3000"
+    );
+
 });

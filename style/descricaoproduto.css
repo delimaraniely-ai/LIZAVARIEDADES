@@ -1,631 +1,833 @@
-/*==========================
-RESET
-==========================*/
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
+
+/* =====================================================
+   BODY
+===================================================== */
+
 body {
-    background: #f5f6f8;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7f7;
     color: #333;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
 
-img {
-    display: block;
-    max-width: 100%;
-}
+/* =====================================================
+   HEADER
+===================================================== */
 
-button {
-    cursor: pointer;
-    border: none;
-}
-
-ul {
-    list-style: none;
-}
-
-/*==========================
-HEADER
-==========================*/
-
-#header {
+.header {
     width: 100%;
-    height: 75px;
-    background: #fff;
+    min-height: 75px;
+
+    background: #c28282;
+
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 60px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
 
-.logo a {
-    font-size: 24px;
-    font-weight: bold;
-    color: #e61d48;
-}
+    padding: 15px 5%;
 
-.pesquisa {
-    width: 45%;
-    display: flex;
-    align-items: center;
-}
-
-.pesquisa input {
-    width: 100%;
-    height: 45px;
-    border: 1px solid #ddd;
-    border-right: none;
-    border-radius: 8px 0 0 8px;
-    padding: 0 15px;
-    outline: none;
-}
-
-.pesquisa button {
-    width: 55px;
-    height: 45px;
-    background: #e61d48;
-    color: #fff;
-    border-radius: 0 8px 8px 0;
-}
-
-.acoes {
-    display: flex;
     gap: 25px;
 }
 
-.acoes a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 15px;
+
+.logo a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 23px;
+    font-weight: bold;
+
+    white-space: nowrap;
 }
 
-/*==========================
-BREADCRUMB
-==========================*/
 
-.breadcrumb {
-    width: 90%;
-    margin: 25px auto;
-    color: #777;
+.pesquisa {
+    display: flex;
+
+    width: 45%;
+
+    max-width: 550px;
+}
+
+
+.pesquisa input {
+    width: 100%;
+
+    height: 42px;
+
+    border: none;
+
+    padding: 0 15px;
+
+    outline: none;
+
+    border-radius: 6px 0 0 6px;
+
     font-size: 14px;
 }
 
-/*==========================
-PRODUTO
-==========================*/
 
-.produto {
-    width: 90%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 55% 45%;
-    gap: 40px;
-    align-items: flex-start;
+.pesquisa button {
+    width: 50px;
+
+    border: none;
+
+    background: white;
+
+    border-left: 1px solid #ddd;
+
+    border-radius: 0 6px 6px 0;
+
+    cursor: pointer;
+
+    font-size: 18px;
 }
 
-/*==========================
-GALERIA
-==========================*/
 
-.galeria {
+.acoes {
     display: flex;
+
+    align-items: center;
+
     gap: 20px;
 }
 
-.miniaturas {
-    width: 90px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+
+.acoes a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: bold;
 }
+
+
+.acoes a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   BREADCRUMB
+===================================================== */
+
+.breadcrumb {
+    max-width: 1200px;
+
+    margin: 20px auto;
+
+    padding: 0 20px;
+
+    display: flex;
+
+    gap: 8px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.breadcrumb a {
+    color: #a85f6e;
+
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   PRODUTO
+===================================================== */
+
+.produto {
+    max-width: 1200px;
+
+    margin: 0 auto 40px;
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+}
+
+
+/* =====================================================
+   GALERIA
+===================================================== */
+
+.galeria {
+    display: flex;
+
+    gap: 20px;
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+
+    min-height: 500px;
+}
+
+
+.miniaturas {
+    width: 80px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
 
 .miniaturas img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+
+    height: 70px;
+
     object-fit: cover;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    background: #fff;
-    padding: 5px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
     cursor: pointer;
-    transition: .3s;
+
+    padding: 4px;
 }
 
+
 .miniaturas img:hover {
-    border-color: #e61d48;
+    border-color: #c28282;
 }
+
 
 .imagemPrincipal {
     flex: 1;
-    background: #fff;
-    border-radius: 15px;
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    padding: 30px;
-    min-height: 520px;
+
+    justify-content: center;
 }
 
+
 .imagemPrincipal img {
-    max-width: 100%;
-    max-height: 470px;
+    width: 100%;
+
+    max-height: 450px;
+
     object-fit: contain;
 }
 
-/*==========================
-INFORMAÇÕES
-==========================*/
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
 
 .informacoes {
-    background: #fff;
-    border-radius: 15px;
+    background: white;
+
+    border-radius: 12px;
+
     padding: 30px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
 }
 
+
 .marca {
-    display: block;
-    color: #888;
+    display: inline-block;
+
+    color: #a85f6e;
+
+    font-weight: bold;
+
     font-size: 14px;
+
     margin-bottom: 10px;
 }
 
-#nomeProduto {
-    font-size: 34px;
-    line-height: 42px;
-    margin-bottom: 20px;
-    color: #222;
+
+.informacoes h1 {
+    font-size: 28px;
+
+    color: #333;
+
+    margin-bottom: 15px;
 }
 
+
 .avaliacao {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: #ffb400;
+    color: #e5a400;
+
     margin-bottom: 20px;
 }
+
 
 .preco {
     border-top: 1px solid #eee;
+
     border-bottom: 1px solid #eee;
+
     padding: 20px 0;
-    margin-bottom: 25px;
+
+    margin-bottom: 20px;
 }
 
-#precoProduto {
-    color: #e61d48;
-    font-size: 40px;
-    margin-bottom: 10px;
-}
 
-#parcelamento {
-    color: #666;
-    font-size: 15px;
-}
-
-/*==========================
-CORES
-==========================*/
-
-.cores {
-    margin-bottom: 25px;
-}
-
-.cores h3 {
-    margin-bottom: 12px;
-    font-size: 18px;
-}
-
-#listaCores {
-    display: flex;
-    gap: 15px;
-}
-
-#listaCores button {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 2px solid #ddd;
-    transition: .3s;
-}
-
-#listaCores button:hover {
-    transform: scale(1.1);
-    border-color: #e61d48;
-}
-
-/*==========================
-ARMAZENAMENTO
-==========================*/
-
-.armazenamento {
-    margin-bottom: 25px;
-}
-
-.armazenamento h3 {
-    margin-bottom: 12px;
-    font-size: 18px;
-}
-
-#listaMemorias {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-#listaMemorias button {
-    padding: 12px 22px;
-    border: 1px solid #ccc;
-    background: #fff;
-    border-radius: 8px;
-    transition: .3s;
-    font-weight: bold;
-}
-
-#listaMemorias button:hover {
-    background: #db798e;
-    color: #fff;
-    border-color: #d46f85;
-}
-
-/*==========================
-CEP
-==========================*/
-
-.cep {
-    margin-top: 25px;
-    margin-bottom: 30px;
-}
-
-.cep label {
+.precoAntigo {
     display: block;
+
+    color: #999;
+
+    text-decoration: line-through;
+
+    font-size: 15px;
+
+    margin-bottom: 5px;
+}
+
+
+.preco h2 {
+    color: #a85f6e;
+
+    font-size: 30px;
+
+    margin-bottom: 5px;
+}
+
+
+.preco small {
+    color: #777;
+}
+
+
+/* =====================================================
+   OPÇÕES
+===================================================== */
+
+.opcao {
+    margin-bottom: 20px;
+}
+
+
+.opcao h3 {
     margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
+
+    font-size: 16px;
 }
 
-.cep {
+
+.listaOpcoes {
     display: flex;
+
     flex-wrap: wrap;
-    gap: 10px;
+
+    gap: 8px;
 }
 
-.cep label {
-    width: 100%;
+
+.listaOpcoes button {
+    border: 1px solid #ccc;
+
+    background: white;
+
+    padding: 9px 15px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
 }
 
-.cep input {
-    flex: 1;
-    min-width: 180px;
-    height: 48px;
-    border: 1px solid #dcdcdc;
-    border-radius: 8px;
-    padding: 0 15px;
-    outline: none;
-    font-size: 15px;
+
+.listaOpcoes button:hover,
+.listaOpcoes button.selecionado {
+    border-color: #c28282;
+
+    background: #f9e8e8;
+
+    color: #a85f6e;
 }
 
-.cep button {
-    width: 140px;
-    height: 48px;
-    background: #222;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: .3s;
-}
 
-.cep button:hover {
-    background: #e61d48;
-}
+/* =====================================================
+   FRETE
+===================================================== */
 
-.resultadoFrete {
-    margin-top: 15px;
-    color: #0a8f43;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-/*==========================
-BOTÕES
-==========================*/
-
-.botoes {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 35px 0;
-}
-
-#comprar {
-    width: 100%;
-    height: 55px;
-    background: #e61d48;
-    color: #fff;
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    transition: .3s;
-}
-
-#comprar:hover {
-    background: #c8133b;
-}
-
-#carrinho {
-    width: 100%;
-    height: 55px;
-    background: #fff;
-    color: #333;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    transition: .3s;
-}
-
-#carrinho:hover {
-    border-color: #e61d48;
-    color: #e61d48;
-}
-
-/*==========================
-BENEFÍCIOS
-==========================*/
-
-.beneficios {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
+.frete {
     margin-top: 20px;
 }
 
-.beneficios div {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #fafafa;
-    border: 1px solid #ececec;
-    border-radius: 10px;
-    padding: 15px;
+
+.frete label {
+    display: block;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
 }
 
-.beneficios i {
-    color: #e61d48;
-    font-size: 22px;
+
+.freteLinha {
+    display: flex;
 }
+
+
+.frete input {
+    flex: 1;
+
+    height: 42px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px 0 0 6px;
+
+    padding: 0 12px;
+
+    outline: none;
+}
+
+
+.frete button {
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    background: #c28282;
+
+    color: white;
+
+    font-weight: bold;
+
+    border-radius: 0 6px 6px 0;
+
+    cursor: pointer;
+}
+
+
+.resultadoFrete {
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #555;
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.botoes {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+.botoes button {
+    flex: 1;
+
+    min-height: 48px;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+
+.btnComprar {
+    border: none;
+
+    background: #c28282;
+
+    color: white;
+}
+
+
+.btnComprar:hover {
+    background: #a85f6e;
+}
+
+
+.btnCarrinho {
+    border: 1px solid #c28282;
+
+    background: white;
+
+    color: #a85f6e;
+}
+
+
+.btnCarrinho:hover {
+    background: #f9e8e8;
+}
+
+
+/* =====================================================
+   BENEFÍCIOS
+===================================================== */
+
+.beneficios {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #eee;
+}
+
+
+.beneficios div {
+    text-align: center;
+
+    font-size: 13px;
+
+    color: #666;
+}
+
 
 .beneficios span {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 20px;
+
+    display: block;
+
+    margin-bottom: 5px;
 }
 
-/*==========================
-ABAS
-==========================*/
+
+/* =====================================================
+   ABAS
+===================================================== */
 
 .abas {
-    width: 90%;
-    margin: 60px auto 0;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 0 20px;
+
     display: flex;
-    border-bottom: 2px solid #ececec;
+
+    border-bottom: 1px solid #ddd;
 }
+
 
 .aba {
-    background: none;
-    padding: 18px 30px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #666;
+    padding: 15px 25px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    color: #777;
+
     border-bottom: 3px solid transparent;
-    transition: .3s;
 }
+
 
 .aba:hover {
-    color: #e61d48;
+    color: #a85f6e;
 }
+
 
 .aba.ativa {
-    color: #e61d48;
-    border-bottom-color: #e61d48;
+    color: #a85f6e;
+
+    border-bottom-color: #c28282;
 }
 
-/*==========================
-CONTEÚDO DAS ABAS
-==========================*/
+
+/* =====================================================
+   CONTEÚDO ABAS
+===================================================== */
 
 .conteudoAbas {
-    width: 90%;
-    margin: auto;
-    background: #fff;
-    border-radius: 0 0 12px 12px;
-    padding: 35px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+    max-width: 1200px;
+
+    margin: 0 auto 50px;
+
+    padding: 25px 20px;
 }
+
 
 .conteudo {
     display: none;
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 8px;
+
+    line-height: 1.7;
+
+    color: #555;
 }
+
 
 .conteudo.ativo {
     display: block;
 }
 
-.conteudo h2 {
-    margin-bottom: 20px;
-    color: #222;
-}
 
-.conteudo p {
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.conteudo table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.conteudo table td {
-    border: 1px solid #ececec;
-    padding: 14px;
-}
-
-/*==========================
-RELACIONADOS
-==========================*/
+/* =====================================================
+   RELACIONADOS
+===================================================== */
 
 .relacionados {
-    width: 90%;
-    margin: 60px auto;
+    max-width: 1200px;
+
+    margin: 0 auto 50px;
+
+    padding: 0 20px;
 }
 
-.relacionados .titulo {
-    margin-bottom: 30px;
+
+.titulo {
+    margin-bottom: 20px;
 }
 
-.relacionados h2 {
-    font-size: 28px;
+
+.titulo h2 {
+    color: #333;
+
+    font-size: 23px;
 }
+
 
 .listaRelacionados {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+
+    gap: 20px;
 }
 
-.listaRelacionados .card {
-    background: #df9090;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: .3s;
+
+.produtoRelacionado {
+    background: white;
+
+    border-radius: 10px;
+
+    padding: 15px;
+
     box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+
+    cursor: pointer;
+
+    transition: .2s;
 }
 
-.listaRelacionados .card:hover {
-    transform: translateY(-5px);
+
+.produtoRelacionado:hover {
+    transform: translateY(-3px);
 }
 
-.listaRelacionados img {
+
+.produtoRelacionado img {
     width: 100%;
-    height: 220px;
+
+    height: 180px;
+
     object-fit: contain;
-    background: #fafafa;
-    padding: 20px;
+
+    margin-bottom: 10px;
 }
 
-.listaRelacionados .info {
-    padding: 18px;
+
+.produtoRelacionado h3 {
+    font-size: 15px;
+
+    margin-bottom: 8px;
 }
 
-.listaRelacionados h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
-    height: 45px;
-    overflow: hidden;
+
+.produtoRelacionado strong {
+    color: #a85f6e;
+
+    font-size: 18px;
 }
 
-.listaRelacionados span {
-    display: block;
-    font-size: 22px;
-    color: #e61d48;
-    font-weight: bold;
-}
 
-/*==========================
-FOOTER
-==========================*/
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer {
-    background: #d88a98;
-    color: #fff;
-    margin-top: 70px;
+    background: #333;
+
+    color: white;
+
+    margin-top: 50px;
 }
+
 
 .footerContainer {
-    width: 90%;
+    max-width: 1200px;
+
     margin: auto;
+
+    padding: 45px 20px;
+
     display: grid;
+
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    padding: 50px 0;
+
+    gap: 30px;
 }
+
 
 .footerContainer h3 {
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
-.footerContainer p,
-.footerContainer li {
-    color: #e69595;
-    margin-bottom: 10px;
-    font-size: 15px;
+
+.footerContainer p {
+    color: #ccc;
+
+    line-height: 1.5;
 }
+
+
+.footerContainer ul {
+    list-style: none;
+}
+
+
+.footerContainer li {
+    margin-bottom: 8px;
+}
+
+
+.footerContainer a {
+    color: #ccc;
+
+    text-decoration: none;
+}
+
+
+.footerContainer a:hover {
+    color: white;
+}
+
 
 .footerContainer input {
     width: 100%;
-    height: 45px;
+
+    height: 40px;
+
+    padding: 0 10px;
+
     border: none;
-    border-radius: 8px;
-    padding: 0 15px;
-    margin-bottom: 10px;
+
+    border-radius: 5px;
+
+    margin-bottom: 8px;
 }
+
 
 .footerContainer button {
-    width: 100%;
-    height: 45px;
-    background: #dd90a0;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: bold;
+    height: 40px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #c28282;
+
+    color: white;
+
+    cursor: pointer;
 }
+
 
 .copyright {
-    border-top: 1px solid rgba(255, 255, 255, .2);
     text-align: center;
+
+    border-top: 1px solid #555;
+
     padding: 18px;
-    font-size: 14px;
+
+    color: #bbb;
+
+    font-size: 13px;
 }
 
-/*==========================
-RESPONSIVO
-==========================*/
 
-@media(max-width:992px) {
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
 
-    #header {
-        padding: 20px;
+@media (max-width: 900px) {
+
+    .header {
         flex-wrap: wrap;
-        height: auto;
-        gap: 15px;
     }
+
 
     .pesquisa {
+        order: 3;
+
         width: 100%;
+
+        max-width: none;
     }
+
 
     .produto {
         grid-template-columns: 1fr;
+
+        gap: 25px;
     }
+
 
     .listaRelacionados {
         grid-template-columns: repeat(2, 1fr);
     }
+
 
     .footerContainer {
         grid-template-columns: repeat(2, 1fr);
@@ -633,70 +835,79 @@ RESPONSIVO
 
 }
 
-@media(max-width:768px) {
+
+@media (max-width: 600px) {
+
+    .logo a {
+        font-size: 18px;
+    }
+
+
+    .acoes {
+        gap: 10px;
+    }
+
+
+    .acoes a {
+        font-size: 12px;
+    }
+
 
     .galeria {
-        flex-direction: column-reverse;
+        flex-direction: column;
+
+        min-height: auto;
     }
+
 
     .miniaturas {
         width: 100%;
+
         flex-direction: row;
-        justify-content: center;
+
+        overflow-x: auto;
     }
 
-    .imagemPrincipal {
-        min-height: 350px;
+
+    .informacoes {
+        padding: 20px;
     }
 
-    #nomeProduto {
-        font-size: 28px;
-        line-height: 35px;
+
+    .informacoes h1 {
+        font-size: 23px;
     }
 
-    #precoProduto {
-        font-size: 34px;
-    }
 
-    .beneficios {
+    .botoes {
         flex-direction: column;
     }
+
+
+    .beneficios {
+        grid-template-columns: 1fr;
+    }
+
 
     .abas {
         overflow-x: auto;
     }
 
+
+    .aba {
+        white-space: nowrap;
+
+        padding: 14px 18px;
+    }
+
+
     .listaRelacionados {
         grid-template-columns: 1fr;
     }
 
+
     .footerContainer {
         grid-template-columns: 1fr;
-    }
-
-}
-
-@media(max-width:480px) {
-
-    .produto,
-    .breadcrumb,
-    .abas,
-    .conteudoAbas,
-    .relacionados {
-        width: 95%;
-    }
-
-    .cep {
-        flex-direction: column;
-    }
-
-    .cep input,
-    .cep button {
-        width: 100%;
-    }
-
-    .botoes button {
-        width: 100%;
     }
 
 }

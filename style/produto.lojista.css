@@ -1,0 +1,493 @@
+/* ======================================
+   CONFIGURAÇÕES GERAIS
+====================================== */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+
+body {
+
+    background: #f3f5f7;
+    color: #263238;
+
+}
+
+
+
+.container {
+
+    display: flex;
+    min-height: 100vh;
+
+}
+
+
+
+/* ======================================
+   MENU LATERAL
+====================================== */
+
+
+.sidebar {
+
+    width: 230px;
+    background: #c78b95;
+    color: white;
+    padding: 25px 15px;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+.logo {
+
+    margin-bottom: 40px;
+    padding-left: 10px;
+
+}
+
+
+.logo h2 {
+
+    font-size: 20px;
+    letter-spacing: 1px;
+
+}
+
+
+.logo span {
+
+    font-size: 9px;
+    color: #38b8d6;
+    letter-spacing: 2px;
+
+}
+
+
+
+
+
+.sidebar nav a {
+
+
+    display: block;
+
+    padding: 13px 15px;
+
+    margin-bottom: 8px;
+
+    color: #d6dde2;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+
+}
+
+
+
+.sidebar nav a:hover,
+.sidebar nav .ativo {
+
+
+    background: #c78b95;
+
+    color: white;
+
+}
+
+
+
+.config {
+
+
+    margin-top: auto;
+
+    padding: 15px;
+
+    font-size: 12px;
+
+    color: #ccd4da;
+
+}
+
+
+
+/* ======================================
+   ÁREA PRINCIPAL
+====================================== */
+
+
+main {
+
+    flex: 1;
+
+    padding: 20px 30px;
+
+}
+
+
+
+
+header {
+
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+
+}
+
+
+
+header input {
+
+
+    width: 280px;
+
+    border: none;
+
+    background: white;
+
+    padding: 12px 18px;
+
+    border-radius: 25px;
+
+    outline: none;
+
+    font-size: 12px;
+
+
+}
+
+
+
+.usuario {
+
+
+    background: white;
+
+    padding: 12px 20px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+}
+
+
+
+
+h1 {
+
+
+    margin-top: 25px;
+
+    font-size: 26px;
+
+    color: #1d2c38;
+
+}
+
+
+main p {
+
+    font-size: 12px;
+
+    color: #7b8790;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+/* ======================================
+   ÁREA DOS CARDS
+====================================== */
+
+
+.cards {
+
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+
+}
+
+
+
+
+.card {
+
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.05);
+
+
+}
+
+
+
+.card.grande {
+
+
+    grid-column: span 3;
+
+
+}
+
+
+
+.card h2 {
+
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+
+    color: #263746;
+
+
+}
+
+
+
+
+/* ======================================
+   FORMULÁRIOS
+====================================== */
+
+
+label {
+
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #5d6870;
+
+    margin-bottom: 7px;
+
+
+}
+
+
+
+input,
+textarea,
+select {
+
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #e2e7ea;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    margin-bottom: 18px;
+
+    font-size: 13px;
+
+    background: #fafafa;
+
+
+}
+
+
+
+input:focus,
+textarea:focus,
+select:focus {
+
+
+    border-color: #c78b95;
+
+    background: white;
+
+
+}
+
+
+
+textarea {
+
+
+    height: 90px;
+
+    resize: none;
+
+
+}
+
+
+
+/* ======================================
+   LINHAS DOS CAMPOS
+====================================== */
+
+
+.linha {
+
+
+    display: flex;
+
+    gap: 20px;
+
+
+}
+
+
+
+.linha div {
+
+    flex: 1;
+
+}
+
+
+
+/* ======================================
+   BOTÕES
+====================================== */
+
+
+button {
+
+
+    width: 100%;
+
+    border: none;
+
+    padding: 13px;
+
+    border-radius: 10px;
+
+    background: #c78b95;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+
+}
+
+
+
+button:hover {
+
+
+    background: #c78b95;
+
+
+}
+
+
+
+
+
+/* ======================================
+   INPUT FILE
+====================================== */
+
+
+input[type="file"] {
+
+
+    padding: 8px;
+
+    background: #fff;
+
+
+}
+
+
+
+
+
+/* ======================================
+   RESPONSIVIDADE
+====================================== */
+
+
+@media(max-width:1000px) {
+
+
+    .sidebar {
+
+        width: 180px;
+
+    }
+
+
+    .cards {
+
+
+        grid-template-columns: 1fr;
+
+
+    }
+
+
+
+    .card.grande {
+
+
+        grid-column: auto;
+
+
+    }
+
+
+
+    .linha {
+
+
+        flex-direction: column;
+
+    }
+
+
+}

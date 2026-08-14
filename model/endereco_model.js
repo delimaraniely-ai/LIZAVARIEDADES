@@ -1,176 +1,146 @@
-const db = require("../conexao/conexao");
+const conexao = require("../conexao/conexao.js");
 
 
-// ==========================================
-// LISTAR TODOS OS ENDEREÇOS
-// ==========================================
-
-exports.listar = (callback) => {
-
-    const sql = `
-        SELECT * FROM Endereco
-    `;
-
-    db.query(sql, callback);
-
-};
-
-
-
-// ==========================================
-// BUSCAR ENDEREÇO PELO ID
-// ==========================================
-
-exports.buscarPorId = (id, callback) => {
-
-    const sql = `
-
-        SELECT * FROM Endereco
-        WHERE idEndereco = ?
-
-    `;
-
-    db.query(sql, [id], callback);
-
-};
-
-
-
-// ==========================================
-// BUSCAR ENDEREÇOS DO CLIENTE
-// ==========================================
-
-exports.buscarPorCliente = (idCliente, callback) => {
-
-
-    const sql = `
-
-        SELECT 
-            Endereco.*
-
-        FROM Endereco
-
-        INNER JOIN Endereco_has_Clientes
-
-        ON Endereco.idEndereco = Endereco_has_Clientes.Endereco_idEndereco
-
-        WHERE Endereco_has_Clientes.Cliente_idCliente = ?
-
-    `;
-
-
-    db.query(sql, [idCliente], callback);
-
-
-};
-
-
-
-// ==========================================
+// ======================================================
 // CADASTRAR ENDEREÇO
-// ==========================================
+// ======================================================
 
-exports.cadastrar = (dados, callback) => {
-
+function cadastrar(endereco, callback) {
 
     const sql = `
-
         INSERT INTO Endereco
-
         (
             cep,
-            rua,
+            logradouro,
             numero,
+            complemento,
             bairro,
             cidade,
-            estado,
-            complemento
+            estado
         )
-
-        VALUES(?,?,?,?,?,?,?)
-
+        VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
-
-    db.query(sql,
+    conexao.query(
+        sql,
         [
-
-            dados.cep,
-            dados.rua,
-            dados.numero,
-            dados.bairro,
-            dados.cidade,
-            dados.estado,
-            dados.complemento
-
+            endereco.cep,
+            endereco.logradouro,
+            endereco.numero,
+            endereco.complemento,
+            endereco.bairro,
+            endereco.cidade,
+            endereco.estado
         ],
-        callback);
+        callback
+    );
+}
 
 
-};
+// ======================================================
+// LISTAR ENDEREÇOS
+// ======================================================
 
-
-
-// ==========================================
-// ATUALIZAR ENDEREÇO
-// ==========================================
-
-exports.atualizar = (id, dados, callback) => {
-
+function listar(callback) {
 
     const sql = `
+        SELECT *
+        FROM Endereco
+        ORDER BY idEndereco DESC
+    `;
 
-        UPDATE Endereco SET
+    conexao.query(
+        sql,
+        callback
+    );
+}
 
+
+// ======================================================
+// BUSCAR POR ID
+// ======================================================
+
+function buscarPorId(idEndereco, callback) {
+
+    const sql = `
+        SELECT *
+        FROM Endereco
+        WHERE idEndereco = ?
+    `;
+
+    conexao.query(
+        sql,
+        [idEndereco],
+        callback
+    );
+}
+
+
+// ======================================================
+// ATUALIZAR ENDEREÇO
+// ======================================================
+
+function atualizar(endereco, callback) {
+
+    const sql = `
+        UPDATE Endereco
+        SET
             cep = ?,
-            rua = ?,
+            logradouro = ?,
             numero = ?,
+            complemento = ?,
             bairro = ?,
             cidade = ?,
-            estado = ?,
-            complemento = ?
-
+            estado = ?
         WHERE idEndereco = ?
-
     `;
 
-
-    db.query(sql,
+    conexao.query(
+        sql,
         [
-
-            dados.cep,
-            dados.rua,
-            dados.numero,
-            dados.bairro,
-            dados.cidade,
-            dados.estado,
-            dados.complemento,
-            id
-
+            endereco.cep,
+            endereco.logradouro,
+            endereco.numero,
+            endereco.complemento,
+            endereco.bairro,
+            endereco.cidade,
+            endereco.estado,
+            endereco.idEndereco
         ],
-        callback);
+        callback
+    );
+}
 
 
-};
-
-
-
-// ==========================================
+// ======================================================
 // EXCLUIR ENDEREÇO
-// ==========================================
+// ======================================================
 
-exports.excluir = (id, callback) => {
-
+function excluir(idEndereco, callback) {
 
     const sql = `
-
         DELETE FROM Endereco
         WHERE idEndereco = ?
-
     `;
 
+    conexao.query(
+        sql,
+        [idEndereco],
+        callback
+    );
+}
 
-    db.query(sql, [id], callback);
 
+// ======================================================
+// EXPORTAR
+// ======================================================
+
+module.exports = {
+
+    cadastrar,
+    listar,
+    buscarPorId,
+    atualizar,
+    excluir
 
 };

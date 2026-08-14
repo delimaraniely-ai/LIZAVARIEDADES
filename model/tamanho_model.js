@@ -10,7 +10,7 @@ function cadastrar(tamanho, callback) {
     const sql = `
         INSERT INTO Tamanho
         (
-            tamanho
+            tm
         )
         VALUES (?)
     `;
@@ -19,7 +19,7 @@ function cadastrar(tamanho, callback) {
     conexao.query(
         sql,
         [
-            tamanho.tamanho
+            tamanho.tm
         ],
         callback
     );
@@ -34,8 +34,7 @@ function cadastrar(tamanho, callback) {
 function listar(callback) {
 
     const sql = `
-        SELECT *
-        FROM Tamanho
+        select * from tamanho
     `;
 
 
@@ -80,7 +79,7 @@ function atualizar(id, tamanho, callback) {
     const sql = `
         UPDATE Tamanho
         SET
-            tamanho = ?
+            tm = ?
         WHERE idTamanho = ?
     `;
 
@@ -88,7 +87,7 @@ function atualizar(id, tamanho, callback) {
     conexao.query(
         sql,
         [
-            tamanho.tamanho,
+            tamanho.tm,
             id
         ],
         callback

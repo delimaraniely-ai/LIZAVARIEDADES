@@ -2,20 +2,37 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Home - Liza Variedades</title>
 
-    <link rel="stylesheet" href="./home.html">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style/home.css">
+
 </head>
+
 
 <body>
 
-    <!-- MENU SUPERIOR -->
+
+    <!-- =====================================================
+         MENU SUPERIOR
+    ====================================================== -->
 
     <header class="header">
 
-        <button id="btnFavoritos" class="icon-btn">♡</button>
+
+        <!-- FAVORITOS -->
+
+        <button id="btnFavoritos" class="icon-btn" type="button">
+            ♡
+        </button>
+
+
+        <!-- PESQUISA -->
 
         <div class="search-box">
 
@@ -23,47 +40,80 @@
 
         </div>
 
-        <button id="btnCarrinho" class="icon-btn">🛒</button>
 
-        <button id="btnPerfil" class="icon-btn">👤</button>
+        <!-- CARRINHO -->
+
+        <button id="btnCarrinho" class="icon-btn" type="button">
+            🛒
+        </button>
+
+
+        <!-- PERFIL -->
+
+        <button id="btnPerfil" class="icon-btn" type="button">
+            👤
+        </button>
+
 
     </header>
 
-    <!-- CONTEÚDO -->
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
 
     <main>
 
-        <!-- BANNER -->
+
+        <!-- =================================================
+             BANNER
+        ================================================== -->
 
         <section class="banner-section">
 
-            <img id="bannerPrincipal" src="" alt="">
+            <img id="bannerPrincipal" src="" alt="Banner principal">
 
         </section>
 
-        <!-- DESTAQUES -->
+
+
+        <!-- =================================================
+             DESTAQUES
+        ================================================== -->
 
         <section class="section-title">
+
 
             <h2>
                 Destaques da Semana
             </h2>
 
+
             <div class="title-buttons">
 
-                <button id="btnVerTodos1">
+
+                <button id="btnVerTodos1" type="button">
                     Ver Tudo
                 </button>
 
-                <button id="btnCategoria1">
+
+                <button id="btnCategoria1" type="button">
                     Mais Vendidos
                 </button>
 
+
             </div>
+
 
         </section>
 
-        <section class="products-grid">
+
+
+        <!-- PRODUTOS DESTAQUE -->
+
+        <section class="products-grid" id="produtosDestaque">
+
 
             <!-- PRODUTO 01 -->
 
@@ -77,6 +127,8 @@
 
             </article>
 
+
+
             <!-- PRODUTO 02 -->
 
             <article class="product-card">
@@ -88,6 +140,8 @@
                 <span id="produtoPreco2"></span>
 
             </article>
+
+
 
             <!-- PRODUTO 03 -->
 
@@ -101,6 +155,8 @@
 
             </article>
 
+
+
             <!-- PRODUTO 04 -->
 
             <article class="product-card">
@@ -112,6 +168,8 @@
                 <span id="produtoPreco4"></span>
 
             </article>
+
+
 
             <!-- PRODUTO 05 -->
 
@@ -125,6 +183,8 @@
 
             </article>
 
+
+
             <!-- PRODUTO 06 -->
 
             <article class="product-card">
@@ -137,31 +197,49 @@
 
             </article>
 
+
         </section>
 
-        <!-- DESCONTOS -->
+
+
+        <!-- =================================================
+             DESCONTOS
+        ================================================== -->
 
         <section class="section-title">
+
 
             <h2>
                 Produtos com Descontos
             </h2>
 
+
             <div class="title-buttons">
 
-                <button id="btnVerTodos2">
+
+                <button id="btnVerTodos2" type="button">
                     Ver Tudo
                 </button>
 
-                <button id="btnCategoria2">
+
+                <button id="btnCategoria2" type="button">
                     Promoções
                 </button>
 
+
             </div>
+
 
         </section>
 
-        <section class="products-grid">
+
+
+        <!-- PRODUTOS COM DESCONTO -->
+
+        <section class="products-grid" id="produtosDesconto">
+
+
+            <!-- PRODUTO 01 -->
 
             <article class="product-card">
 
@@ -173,6 +251,10 @@
 
             </article>
 
+
+
+            <!-- PRODUTO 02 -->
+
             <article class="product-card">
 
                 <img id="descontoImagem2" src="" alt="">
@@ -182,6 +264,10 @@
                 <span id="descontoPreco2"></span>
 
             </article>
+
+
+
+            <!-- PRODUTO 03 -->
 
             <article class="product-card">
 
@@ -193,6 +279,10 @@
 
             </article>
 
+
+
+            <!-- PRODUTO 04 -->
+
             <article class="product-card">
 
                 <img id="descontoImagem4" src="" alt="">
@@ -202,6 +292,10 @@
                 <span id="descontoPreco4"></span>
 
             </article>
+
+
+
+            <!-- PRODUTO 05 -->
 
             <article class="product-card">
 
@@ -213,6 +307,10 @@
 
             </article>
 
+
+
+            <!-- PRODUTO 06 -->
+
             <article class="product-card">
 
                 <img id="descontoImagem6" src="" alt="">
@@ -223,73 +321,110 @@
 
             </article>
 
+
         </section>
 
-        <!-- RESUMO PEDIDO -->
+
+
+        <!-- =================================================
+             RESUMO DO PEDIDO
+        ================================================== -->
 
         <section class="pedido-section">
+
 
             <h2>
                 Resumo do Pedido
             </h2>
 
+
             <div class="pedido-grid">
+
 
                 <div class="pedido-item">
 
-                    <span>Total Itens</span>
+                    <span>
+                        Total Itens
+                    </span>
 
                     <strong id="pedidoItens"></strong>
 
                 </div>
 
+
+
                 <div class="pedido-item">
 
-                    <span>Total Produtos</span>
+                    <span>
+                        Total Produtos
+                    </span>
 
                     <strong id="pedidoProdutos"></strong>
 
                 </div>
 
+
+
                 <div class="pedido-item">
 
-                    <span>Total Pedido</span>
+                    <span>
+                        Total Pedido
+                    </span>
 
                     <strong id="pedidoValor"></strong>
 
                 </div>
 
+
+
                 <div class="pedido-item">
 
-                    <span>Status</span>
+                    <span>
+                        Status
+                    </span>
 
                     <strong id="pedidoStatus"></strong>
 
                 </div>
 
+
             </div>
+
 
         </section>
 
+
     </main>
 
-    <!-- RODAPÉ -->
+
+
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
 
     <footer class="footer">
+
 
         <h3>
             Carrinho de Compras
         </h3>
 
-        <button id="btnFinalizarCompra">
+
+        <button id="btnFinalizarCompra" type="button">
             Finalizar Pedido
         </button>
 
+
     </footer>
 
-    <scriptsrc=" src="/js/home.js">
-        </scriptsrc>
-        </script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/home.js"></script>
+
 
 </body>
 

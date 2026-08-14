@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Imagens do Produto</title>
+
+    <link rel="stylesheet" href="../style/imagemproduto.css">
+
+</head>
+
+<body>
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+
+    <header class="header">
+
+        <div>
+
+            <h1>
+                Imagens do Produto
+            </h1>
+
+            <p id="nomeProduto">
+                Carregando produto...
+            </p>
+
+        </div>
+
+
+        <button id="btnVoltar" type="button">
+            Voltar
+        </button>
+
+    </header>
+
+
+    <!-- ==================================================
+         CONTEÚDO
+    =================================================== -->
+
+    <main class="container">
+
+
+        <!-- ==================================================
+             CADASTRAR IMAGEM
+        =================================================== -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    Adicionar imagem
+                </h2>
+
+                <p>
+                    Selecione uma imagem para adicionar ao produto.
+                </p>
+
+            </div>
+
+
+            <!-- PREVIEW -->
+
+            <div class="preview-container">
+
+                <img id="previewImagem" src="" alt="Pré-visualização">
+
+                <span id="textoPreview">
+                    Nenhuma imagem selecionada
+                </span>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="campo">
+
+                <label for="imagemProduto">
+                    Selecionar imagem
+                </label>
+
+                <input type="file" id="imagemProduto" accept="image/*">
+
+            </div>
+
+
+            <!-- BOTÃO -->
+
+            <button id="btnCadastrarImagem" class="btn-primary" type="button">
+                Cadastrar Imagem
+            </button>
+
+
+            <!-- MENSAGEM -->
+
+            <div id="mensagem" class="mensagem"></div>
+
+        </section>
+
+
+        <!-- ==================================================
+             IMAGENS CADASTRADAS
+        =================================================== -->
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <h2>
+                    Imagens cadastradas
+                </h2>
+
+                <p id="quantidadeImagens">
+                    0 imagens
+                </p>
+
+            </div>
+
+
+            <div id="listaImagens" class="lista-imagens">
+
+                <!-- JS INSERE AS IMAGENS -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script src="../js/imagemproduto.js"></script>
+
+</body>
+
+</html>

@@ -2,160 +2,282 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Descrição do Produto</title>
 
     <link rel="stylesheet" href="../style/descricao.css">
-    <link rel="stylesheet" href="./descricaoproduto.css">
+
 </head>
 
 <body>
 
-    <!-- HEADER -->
 
-    <header id="header">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
 
         <div class="logo">
-            <a href="home.html">LIZA VARIEDADES</a>
+
+            <a href="home.html">
+                LIZA VARIEDADES
+            </a>
+
         </div>
 
+
         <div class="pesquisa">
+
             <input type="text" id="buscar" placeholder="Buscar produtos...">
-            <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
+
+            <button type="button" id="btnBuscar">
+                🔍
             </button>
+
         </div>
+
 
         <div class="acoes">
 
-            <a href="#">
-                <i class="fa-regular fa-user"></i>
-                Minha Conta
+            <a href="#" id="btnConta">
+                👤 Minha Conta
             </a>
 
-            <a href="#">
-                <i class="fa-solid fa-cart-shopping"></i>
-                Carrinho
+            <a href="#" id="btnCarrinho">
+                🛒 Carrinho
             </a>
 
         </div>
 
     </header>
 
-    <!-- BREADCRUMB -->
+
+
+    <!-- =====================================================
+         BREADCRUMB
+    ====================================================== -->
 
     <section class="breadcrumb">
 
-        <span id="caminhoProduto"></span>
+        <a href="home.html">
+            Início
+        </a>
+
+        <span>›</span>
+
+        <span id="caminhoProduto">
+            Produto
+        </span>
 
     </section>
 
-    <!-- PRODUTO -->
+
+
+    <!-- =====================================================
+         PRODUTO
+    ====================================================== -->
 
     <main class="produto">
 
-        <!-- GALERIA -->
+
+        <!-- =================================================
+             GALERIA
+        ================================================== -->
 
         <section class="galeria">
 
             <div class="miniaturas" id="miniaturas">
-
             </div>
+
 
             <div class="imagemPrincipal">
 
-                <img id="imagemPrincipal">
+                <img id="imagemPrincipal" src="" alt="Imagem do produto">
 
             </div>
 
         </section>
 
-        <!-- INFORMAÇÕES -->
+
+
+        <!-- =================================================
+             INFORMAÇÕES DO PRODUTO
+        ================================================== -->
 
         <section class="informacoes">
 
-            <span class="marca" id="marcaProduto"></span>
 
-            <h1 id="nomeProduto"></h1>
+            <!-- MARCA -->
+
+            <span class="marca" id="marcaProduto">
+            </span>
+
+
+            <!-- NOME -->
+
+            <h1 id="nomeProduto">
+                Carregando produto...
+            </h1>
+
+
+            <!-- AVALIAÇÃO -->
 
             <div class="avaliacao" id="avaliacaoProduto">
-
             </div>
+
+
+            <!-- PREÇO -->
 
             <div class="preco">
 
-                <h2 id="precoProduto"></h2>
+                <span id="precoAntigo" class="precoAntigo">
+                </span>
 
-                <small id="parcelamento"></small>
+
+                <h2 id="precoProduto">
+                    R$ 0,00
+                </h2>
+
+
+                <small id="parcelamento">
+                    Em até 12x
+                </small>
 
             </div>
+
+
+
+            <!-- =================================================
+                 CORES
+            ================================================== -->
 
             <div class="cores">
 
-                <h3>Cores</h3>
+                <h3>
+                    Cores
+                </h3>
 
-                <div id="listaCores"></div>
+
+                <div id="listaCores" class="listaOpcoes">
+                </div>
 
             </div>
+
+
+
+            <!-- =================================================
+                 TAMANHOS
+            ================================================== -->
 
             <div class="armazenamento">
 
-                <h3>Armazenamento</h3>
+                <h3>
+                    Tamanhos
+                </h3>
 
-                <div id="listaMemorias"></div>
+
+                <div id="listaMemorias" class="listaOpcoes">
+                </div>
 
             </div>
+
+
+
+            <!-- =================================================
+                 FRETE
+            ================================================== -->
 
             <div class="cep">
 
-                <label>Calcule o Frete</label>
+                <label for="cep">
+                    Calcule o Frete
+                </label>
 
-                <input type="text" placeholder="00000-000" id="cep">
 
-                <button id="btnFrete">
+                <div class="freteLinha">
 
-                    Calcular
+                    <input type="text" id="cep" maxlength="9" placeholder="00000-000">
 
-                </button>
+
+                    <button type="button" id="btnFrete">
+                        Calcular
+                    </button>
+
+                </div>
 
             </div>
 
-            <div class="resultadoFrete" id="resultadoFrete">
 
+            <div id="resultadoFrete" class="resultadoFrete">
             </div>
+
+
+
+            <!-- =================================================
+                 BOTÕES
+            ================================================== -->
 
             <div class="botoes">
 
-                <button id="comprar">
-
+                <button type="button" id="comprar" class="btnComprar">
                     Comprar Agora
-
                 </button>
 
-                <button id="carrinho">
 
+                <button type="button" id="carrinho" class="btnCarrinho">
                     Adicionar ao Carrinho
-
                 </button>
 
             </div>
+
+
+
+            <!-- =================================================
+                 BENEFÍCIOS
+            ================================================== -->
 
             <div class="beneficios">
 
                 <div>
 
-                    <i class="fa-solid fa-shield"></i>
+                    <span>
+                        🔒
+                    </span>
 
-                    <span>Compra Segura</span>
+                    <p>
+                        Compra Segura
+                    </p>
 
                 </div>
 
+
                 <div>
 
-                    <i class="fa-solid fa-truck-fast"></i>
+                    <span>
+                        🚚
+                    </span>
 
-                    <span>Entrega Rápida</span>
+                    <p>
+                        Entrega Rápida
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        ↩️
+                    </span>
+
+                    <p>
+                        Compra Protegida
+                    </p>
 
                 </div>
 
@@ -165,147 +287,240 @@
 
     </main>
 
-    <!-- ABAS -->
+
+
+    <!-- =====================================================
+         ABAS
+    ====================================================== -->
 
     <section class="abas">
 
-        <button class="aba ativa" data-aba="descricao">
-
+        <button type="button" class="aba ativa" data-aba="descricao">
             Descrição
-
         </button>
 
-        <button class="aba" data-aba="especificacoes">
 
+        <button type="button" class="aba" data-aba="especificacoes">
             Especificações
-
         </button>
 
-        <button class="aba" data-aba="avaliacoes">
 
+        <button type="button" class="aba" data-aba="avaliacoes">
             Avaliações
-
         </button>
 
     </section>
 
-    <!-- CONTEÚDO -->
+
+
+    <!-- =====================================================
+         CONTEÚDO DAS ABAS
+    ====================================================== -->
 
     <section class="conteudoAbas">
 
+
+        <!-- DESCRIÇÃO -->
+
         <div id="descricao" class="conteudo ativo">
 
+            <!-- O JavaScript irá colocar a descrição aqui -->
+
         </div>
+
+
+
+        <!-- ESPECIFICAÇÕES -->
 
         <div id="especificacoes" class="conteudo">
 
+            <!-- O JavaScript irá colocar as especificações aqui -->
+
         </div>
 
+
+
+        <!-- AVALIAÇÕES -->
+
         <div id="avaliacoes" class="conteudo">
+
+            <!-- O JavaScript irá colocar as avaliações aqui -->
 
         </div>
 
     </section>
 
-    <!-- PRODUTOS RELACIONADOS -->
+
+
+    <!-- =====================================================
+         PRODUTOS RELACIONADOS
+    ====================================================== -->
 
     <section class="relacionados">
 
         <div class="titulo">
 
             <h2>
-
-                Quem viu este produto também comprou
-
+                Produtos relacionados
             </h2>
 
         </div>
 
-        <div class="listaRelacionados" id="listaRelacionados">
 
+        <div class="listaRelacionados" id="listaRelacionados">
         </div>
 
     </section>
 
-    <!-- RODAPÉ -->
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
     <footer>
 
         <div class="footerContainer">
 
+
+            <!-- EMPRESA -->
+
             <div>
 
-                <h3>LIZA VARIEDADES</h3>
+                <h3>
+                    LIZA VARIEDADES
+                </h3>
 
                 <p>
-
-                    Produtos de qualidade com os melhores preços.
-
+                    Produtos de qualidade
+                    com os melhores preços.
                 </p>
 
             </div>
 
+
+
+            <!-- CATEGORIAS -->
+
             <div>
 
-                <h3>Categorias</h3>
+                <h3>
+                    Categorias
+                </h3>
 
                 <ul>
 
-                    <li><a href="#">Celulares</a></li>
+                    <li>
+                        <a href="#">
+                            Celulares
+                        </a>
+                    </li>
 
-                    <li><a href="#">Informática</a></li>
+                    <li>
+                        <a href="#">
+                            Informática
+                        </a>
+                    </li>
 
-                    <li><a href="#">Acessórios</a></li>
+                    <li>
+                        <a href="#">
+                            Acessórios
+                        </a>
+                    </li>
 
-                    <li><a href="#">Eletrônicos</a></li>
+                    <li>
+                        <a href="#">
+                            Eletrônicos
+                        </a>
+                    </li>
 
                 </ul>
 
             </div>
 
+
+
+            <!-- INSTITUCIONAL -->
+
             <div>
 
-                <h3>Institucional</h3>
+                <h3>
+                    Institucional
+                </h3>
 
                 <ul>
 
-                    <li><a href="#">Sobre Nós</a></li>
+                    <li>
+                        <a href="#">
+                            Sobre Nós
+                        </a>
+                    </li>
 
-                    <li><a href="#">Política</a></li>
+                    <li>
+                        <a href="#">
+                            Política
+                        </a>
+                    </li>
 
-                    <li><a href="#">Trocas</a></li>
+                    <li>
+                        <a href="#">
+                            Trocas
+                        </a>
+                    </li>
 
-                    <li><a href="#">Contato</a></li>
+                    <li>
+                        <a href="#">
+                            Contato
+                        </a>
+                    </li>
 
                 </ul>
 
             </div>
 
+
+
+            <!-- NEWSLETTER -->
+
             <div>
 
-                <h3>Newsletter</h3>
+                <h3>
+                    Newsletter
+                </h3>
 
-                <input type="email" placeholder="Seu e-mail">
 
-                <button>
+                <input type="email" id="emailNewsletter" placeholder="Seu e-mail">
 
+
+                <button type="button" id="btnNewsletter">
                     Enviar
-
                 </button>
 
             </div>
 
         </div>
 
+
+
+        <!-- COPYRIGHT -->
+
         <div class="copyright">
 
-            © 2026 Liza Variedades - Todos os direitos reservados.
+            © 2026 Liza Variedades -
+            Todos os direitos reservados.
 
         </div>
 
     </footer>
 
-    <script src="/js/descricaoproduto.js"></script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/descricaoproduto.js"></script>
+
 
 </body>
 

@@ -2,8 +2,7 @@
 // IMPORTA O MODEL
 //==========================================
 
-const marcaModel = require("../model/marca_model.js");
-
+const marcaModel = require("../model/marca_model");
 
 
 //==========================================
@@ -12,13 +11,11 @@ const marcaModel = require("../model/marca_model.js");
 
 function cadastrar(req, res) {
 
+    const nome = req.body.nome;
 
-    const marca = req.body;
 
-
-    // Validação dos campos obrigatórios
-
-    if (!marca.nome) {
+    // Validação do nome
+    if (!nome) {
 
         return res.status(400).json({
             sucesso: false,
@@ -28,11 +25,33 @@ function cadastrar(req, res) {
     }
 
 
+    // Validação da imagem
+    if (!req.file) {
 
-    marcaModel.cadastrar(marca, (erro, resultado) => {
+        return res.status(400).json({
+            sucesso: false,
+            mensagem: "Informe o logo da marca."
+        });
+
+    }
+
+
+    // Monta objeto para enviar ao model
+    const marca = {
+
+        nome: nome,
+
+        logo: req.file.buffer
+
+    };
+
+
+    marcaModel.inserir(marca, (erro, resultado) => {
 
 
         if (erro) {
+
+            console.log(erro);
 
             return res.status(500).json({
                 sucesso: false,
@@ -42,11 +61,12 @@ function cadastrar(req, res) {
         }
 
 
-
         return res.status(201).json({
 
             sucesso: true,
+
             mensagem: "Marca cadastrada com sucesso!",
+
             idMarca: resultado.insertId
 
         });
@@ -72,12 +92,14 @@ function listar(req, res) {
         if (erro) {
 
             return res.status(500).json({
+
                 sucesso: false,
+
                 mensagem: "Erro ao listar marcas."
+
             });
 
         }
-
 
 
         res.json(resultado);
@@ -100,30 +122,33 @@ function buscarPorId(req, res) {
     const id = req.params.id;
 
 
-
     marcaModel.buscarPorId(id, (erro, resultado) => {
 
 
         if (erro) {
 
             return res.status(500).json({
+
                 sucesso: false,
+
                 mensagem: "Erro ao buscar marca."
+
             });
 
         }
-
 
 
         if (resultado.length === 0) {
 
             return res.status(404).json({
+
                 sucesso: false,
+
                 mensagem: "Marca não encontrada."
+
             });
 
         }
-
 
 
         res.json(resultado[0]);
@@ -145,29 +170,44 @@ function atualizar(req, res) {
 
     const id = req.params.id;
 
-    const marca = req.body;
+
+    const marca = {
+
+        nome: req.body.nome,
+
+        logo: req.file ? req.file.buffer : null
+
+    };
 
 
 
     if (!marca.nome) {
 
         return res.status(400).json({
+
             sucesso: false,
+
             mensagem: "Informe o nome da marca."
+
         });
 
     }
 
 
 
-    marcaModel.atualizar(id, marca, (erro, resultado) => {
+    marcaModel.atualizar(id, marca, (erro) => {
 
 
         if (erro) {
 
+            console.log(erro);
+
             return res.status(500).json({
+
                 sucesso: false,
+
                 mensagem: "Erro ao atualizar marca."
+
             });
 
         }
@@ -177,6 +217,7 @@ function atualizar(req, res) {
         res.json({
 
             sucesso: true,
+
             mensagem: "Marca atualizada com sucesso."
 
         });
@@ -200,14 +241,17 @@ function excluir(req, res) {
 
 
 
-    marcaModel.excluir(id, (erro, resultado) => {
+    marcaModel.excluir(id, (erro) => {
 
 
         if (erro) {
 
             return res.status(500).json({
+
                 sucesso: false,
+
                 mensagem: "Erro ao excluir marca."
+
             });
 
         }
@@ -217,6 +261,7 @@ function excluir(req, res) {
         res.json({
 
             sucesso: true,
+
             mensagem: "Marca excluída com sucesso."
 
         });
@@ -236,9 +281,13 @@ function excluir(req, res) {
 module.exports = {
 
     cadastrar,
+
     listar,
+
     buscarPorId,
+
     atualizar,
+
     excluir
 
 };

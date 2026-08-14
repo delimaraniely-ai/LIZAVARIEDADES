@@ -1,31 +1,72 @@
 const express = require("express");
+
 const router = express.Router();
 
-const enderecoController = require("../controller/endereco_controller.js");
+
+// ======================================================
+// IMPORTAR CONTROLLER
+// ======================================================
+
+const enderecoController = require("../controllers/endereco_controller.js");
 
 
-// LISTAR
-router.get("/", enderecoController.listar);
-
-
-// BUSCAR POR ID
-router.get("/:id", enderecoController.buscarPorId);
-
-
-
-
-
+// ======================================================
 // CADASTRAR
-router.post("/", enderecoController.cadastrar);
+// POST /enderecos
+// ======================================================
+
+router.post(
+    "/",
+    enderecoController.cadastrarEndereco
+);
 
 
+// ======================================================
+// LISTAR
+// GET /enderecos
+// ======================================================
+
+router.get(
+    "/",
+    enderecoController.listarEnderecos
+);
+
+
+// ======================================================
+// BUSCAR POR ID
+// GET /enderecos/1
+// ======================================================
+
+router.get(
+    "/:id",
+    enderecoController.buscarEnderecoPorId
+);
+
+
+// ======================================================
 // ATUALIZAR
-router.put("/:id", enderecoController.atualizar);
+// PUT /enderecos/1
+// ======================================================
+
+router.put(
+    "/:id",
+    enderecoController.atualizarEndereco
+);
 
 
+// ======================================================
 // EXCLUIR
-router.delete("/:id", enderecoController.excluir);
+// DELETE /enderecos/1
+// ======================================================
+
+router.delete(
+    "/:id",
+    enderecoController.excluirEndereco
+);
 
 
+// ======================================================
+// EXPORTAR
+// ======================================================
 
 module.exports = router;

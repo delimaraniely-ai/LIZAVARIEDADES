@@ -1,136 +1,163 @@
 const conexao = require("../conexao/conexao.js");
 
 
-// =========================
-// Cadastrar Promoção
-// =========================
+// ==================================================
+// CADASTRAR CLIENTE
+// ==================================================
 
-function cadastrar(promocao, callback) {
+function cadastrar(cliente, callback) {
 
     const sql = `
-        INSERT INTO Promocao
+        INSERT INTO Cliente
         (
-            data_inicio,
-            data_final,
-            valor_promocao,
-            nome
+            nome,
+            cpf,
+            dataNascimento,
+            email,
+            telefone
         )
-        VALUES (?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?)
     `;
 
 
     conexao.query(
+
         sql,
+
         [
-            promocao.data_inicio,
-            promocao.data_final,
-            promocao.valor_promocao,
-            promocao.nome
+            cliente.nome,
+            cliente.cpf,
+            cliente.dataNascimento,
+            cliente.email,
+            cliente.telefone
         ],
+
         callback
+
     );
+
 }
 
 
-
-// =========================
-// Listar Promoções
-// =========================
+// ==================================================
+// LISTAR CLIENTES
+// ==================================================
 
 function listar(callback) {
 
     const sql = `
         SELECT *
-        FROM Promocao
+        FROM Cliente
     `;
 
 
     conexao.query(
+
         sql,
+
         callback
+
     );
+
 }
 
 
-
-// =========================
-// Buscar Promoção por ID
-// =========================
+// ==================================================
+// BUSCAR CLIENTE POR ID
+// ==================================================
 
 function buscarPorId(id, callback) {
 
     const sql = `
         SELECT *
-        FROM Promocao
-        WHERE idpromocao = ?
+        FROM Cliente
+        WHERE idCliente = ?
     `;
 
 
     conexao.query(
+
         sql,
+
         [
             id
         ],
+
         callback
+
     );
+
 }
 
 
+// ==================================================
+// ATUALIZAR CLIENTE
+// ==================================================
 
-// =========================
-// Atualizar Promoção
-// =========================
-
-function atualizar(id, promocao, callback) {
+function atualizar(id, cliente, callback) {
 
     const sql = `
-        UPDATE Promocao
+        UPDATE Cliente
         SET
-            data_inicio = ?,
-            data_final = ?,
-            valor_promocao = ?,
-            nome = ?
-        WHERE idpromocao = ?
+            nome = ?,
+            cpf = ?,
+            dataNascimento = ?,
+            email = ?,
+            telefone = ?
+        WHERE idCliente = ?
     `;
 
 
     conexao.query(
+
         sql,
+
         [
-            promocao.data_inicio,
-            promocao.data_final,
-            promocao.valor_promocao,
-            promocao.nome,
+            cliente.nome,
+            cliente.cpf,
+            cliente.dataNascimento,
+            cliente.email,
+            cliente.telefone,
             id
         ],
+
         callback
+
     );
+
 }
 
 
-
-// =========================
-// Excluir Promoção
-// =========================
+// ==================================================
+// EXCLUIR CLIENTE
+// ==================================================
 
 function excluir(id, callback) {
 
     const sql = `
-        DELETE FROM Promocao
-        WHERE idpromocao = ?
+        DELETE FROM Cliente
+        WHERE idCliente = ?
     `;
 
 
     conexao.query(
+
         sql,
+
         [
             id
         ],
+
         callback
+
     );
+
 }
 
 
+// ==================================================
+// EXPORTAR
+// ==================================================
 
 module.exports = {
 

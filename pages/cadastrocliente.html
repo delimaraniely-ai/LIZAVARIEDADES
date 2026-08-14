@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Cliente</title>
+
+    <link rel="stylesheet" href="../style/cadastrocliente.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header class="header">
+
+        <div class="header-left">
+
+            <h1>
+                Cadastro de Cliente
+            </h1>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <button type="button" id="btnVoltar">
+
+                Voltar
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="container">
+
+
+        <section class="card">
+
+
+            <!-- =========================================
+                 TÍTULO
+            ========================================== -->
+
+            <div class="card-title">
+
+                <h2>
+                    Dados do Cliente
+                </h2>
+
+                <p>
+                    Preencha os dados abaixo para cadastrar um novo cliente.
+                </p>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 FORMULÁRIO
+            ========================================== -->
+
+            <form id="formCliente">
+
+
+                <!-- =========================================
+                     INFORMAÇÕES PESSOAIS
+                ========================================== -->
+
+                <div class="section-title">
+
+                    <h3>
+                        Informações pessoais
+                    </h3>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- NOME -->
+
+                    <div class="form-group">
+
+                        <label for="nome">
+                            Nome completo
+                        </label>
+
+                        <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" maxlength="120"
+                            autocomplete="name" required>
+
+                    </div>
+
+
+
+                    <!-- CPF -->
+
+                    <div class="form-group">
+
+                        <label for="cpf">
+                            CPF
+                        </label>
+
+                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"
+                            inputmode="numeric" required>
+
+                    </div>
+
+
+
+                    <!-- DATA DE NASCIMENTO -->
+
+                    <div class="form-group">
+
+                        <label for="dataNascimento">
+                            Data de nascimento
+                        </label>
+
+                        <input type="date" id="dataNascimento" name="dataNascimento" required>
+
+                    </div>
+
+
+
+                    <!-- TELEFONE -->
+
+                    <div class="form-group">
+
+                        <label for="telefone">
+                            Telefone
+                        </label>
+
+                        <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000" maxlength="15"
+                            inputmode="numeric" autocomplete="tel" required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     DADOS DE ACESSO
+                ========================================== -->
+
+                <div class="section-title">
+
+                    <h3>
+                        Dados de acesso
+                    </h3>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input type="email" id="email" name="email" placeholder="cliente@email.com" maxlength="120"
+                            autocomplete="email" required>
+
+                    </div>
+
+
+
+                    <!-- SENHA -->
+
+                    <div class="form-group">
+
+                        <label for="senha">
+                            Senha
+                        </label>
+
+                        <input type="password" id="senha" name="senha" placeholder="Digite uma senha" maxlength="100"
+                            autocomplete="new-password" required>
+
+                    </div>
+
+
+
+                    <!-- CONFIRMAR SENHA -->
+
+                    <div class="form-group">
+
+                        <label for="confirmarSenha">
+                            Confirmar senha
+                        </label>
+
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme a senha"
+                            maxlength="100" autocomplete="new-password" required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     ENDEREÇO
+                ========================================== -->
+
+                <div class="section-title">
+
+                    <h3>
+                        Endereço
+                    </h3>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <!-- CEP -->
+
+                    <div class="form-group">
+
+                        <label for="cep">
+                            CEP
+                        </label>
+
+                        <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" inputmode="numeric"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- LOGRADOURO -->
+
+                    <div class="form-group">
+
+                        <label for="logradouro">
+                            Logradouro
+                        </label>
+
+                        <input type="text" id="logradouro" name="logradouro" placeholder="Rua, Avenida..."
+                            maxlength="150" required>
+
+                    </div>
+
+
+
+                    <!-- NÚMERO -->
+
+                    <div class="form-group">
+
+                        <label for="numero">
+                            Número
+                        </label>
+
+                        <input type="text" id="numero" name="numero" placeholder="Número" maxlength="10" required>
+
+                    </div>
+
+
+
+                    <!-- COMPLEMENTO -->
+
+                    <div class="form-group">
+
+                        <label for="complemento">
+                            Complemento
+                        </label>
+
+                        <input type="text" id="complemento" name="complemento" placeholder="Apartamento, casa..."
+                            maxlength="100">
+
+                    </div>
+
+
+
+                    <!-- BAIRRO -->
+
+                    <div class="form-group">
+
+                        <label for="bairro">
+                            Bairro
+                        </label>
+
+                        <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro" maxlength="100"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- CIDADE -->
+
+                    <div class="form-group">
+
+                        <label for="cidade">
+                            Cidade
+                        </label>
+
+                        <input type="text" id="cidade" name="cidade" placeholder="Digite a cidade" maxlength="100"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- ESTADO -->
+
+                    <div class="form-group">
+
+                        <label for="estado">
+                            Estado
+                        </label>
+
+                        <select id="estado" name="estado" required>
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                     BOTÕES
+                ========================================== -->
+
+                <div class="buttons">
+
+
+                    <button type="button" id="btnLimpar" class="btn-secondary">
+
+                        Limpar
+
+                    </button>
+
+
+
+                    <button type="submit" id="btnCadastrar" class="btn-primary">
+
+                        Cadastrar Cliente
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="../js/cadastrocliente.js"></script>
+
+
+</body>
+
+</html>

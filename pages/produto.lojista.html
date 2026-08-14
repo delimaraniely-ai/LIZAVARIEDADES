@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro Produtos - KL Moda Fitness</title>
+
+    <link rel="stylesheet" href="../style/produto.lojista.css">
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+
+            <div class="logo">
+
+                <h2>LIZA</h2>
+                <span>Variedades</span>
+
+            </div>
+
+
+
+            <nav>
+
+                <a>Dashboard</a>
+                <a>Pedidos</a>
+                <a class="ativo">Produtos</a>
+                <a>Clientes</a>
+                <a>Relatórios</a>
+
+
+            </nav>
+
+
+            <div class="config">
+                ⚙ Configurações
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- CONTEÚDO -->
+
+        <main>
+
+
+            <header>
+
+
+                <input id="pesquisa" type="text" placeholder="Pesquisar produtos...">
+
+
+                <div class="usuario">
+
+                    Admin KL
+
+                </div>
+
+
+            </header>
+
+
+
+
+
+            <h1>
+                Cadastro de Produtos
+            </h1>
+
+            <p>
+                Gerencie produtos, marcas, categorias, tamanhos e imagens.
+            </p>
+
+
+
+
+
+
+            <section class="cards">
+
+
+
+                <!-- PRODUTO -->
+
+
+                <div class="card grande">
+
+                    <h2>Cadastro Produto</h2>
+
+
+                    <label>Nome do Produto</label>
+
+                    <input id="produtoNome">
+
+
+
+                    <label>Descrição</label>
+
+                    <textarea id="produtoDescricao"></textarea>
+
+
+
+                    <div class="linha">
+
+
+                        <div>
+
+                            <label>Código</label>
+                            <input id="produtoCodigo">
+
+                        </div>
+
+
+
+                        <div>
+
+                            <label>Preço Antigo</label>
+
+                            <input id="produtoPrecoAntigo" type="number">
+
+
+                        </div>
+
+
+
+                        <div>
+
+                            <label>Preço Promoção</label>
+
+                            <input id="produtoPrecoPromo" type="number">
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="linha">
+
+
+                        <div>
+
+                            <label>Estoque</label>
+
+                            <input id="produtoEstoque" type="number">
+
+                        </div>
+
+
+
+                        <div>
+
+                            <label>Marca</label>
+
+
+                            <select id="produtoMarca">
+
+                            </select>
+
+
+                        </div>
+
+
+
+
+                        <div>
+
+                            <label>Categoria</label>
+
+
+                            <select id="produtoCategoria">
+
+                            </select>
+
+
+                        </div>
+
+
+                        <div>
+
+                            <label>Cor</label>
+
+
+                            <select id="corProduto">
+
+                            </select>
+
+
+                        </div>
+
+                        <div>
+
+                            <label>Tamanho</label>
+
+
+                            <select id="tamanhoProduto">
+
+                            </select>
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <label>Status</label>
+
+
+                    <select id="produtoStatus">
+
+                        <option value="true">
+                            Ativo
+                        </option>
+
+
+                        <option value="false">
+                            Inativo
+                        </option>
+
+
+                    </select>
+
+
+
+                    <button id="btnProduto">
+                        Cadastrar Produto
+                    </button>
+
+
+
+                </div>
+
+
+
+
+
+
+
+                <!-- MARCA -->
+
+
+                <div class="card">
+
+
+                    <h2>Marca</h2>
+
+
+                    <label>Nome</label>
+
+
+                    <input id="marcaNome">
+
+
+
+                    <label>Logo</label>
+
+
+                    <input id="marcaLogo" type="file">
+
+
+
+                    <button id="btnMarca">
+                        Salvar Marca
+                    </button>
+
+
+                </div>
+
+
+
+
+
+
+
+                <!-- CATEGORIA -->
+
+
+                <div class="card">
+
+
+                    <h2>Categoria</h2>
+
+
+                    <label>Nome Categoria</label>
+
+
+                    <input id="categoriaNome">
+
+
+
+                    <button id="btnCategoria">
+
+                        Salvar Categoria
+
+                    </button>
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <!-- COR -->
+
+
+                <div class="card">
+
+
+                    <h2>Cores</h2>
+
+
+                    <label>Nome</label>
+
+
+                    <input id="corNome">
+
+
+
+                    <label>Código Cor</label>
+
+
+                    <input id="corCodigo" placeholder="#FFFFFF">
+
+
+
+                    <button id="btnCor">
+
+                        Salvar Cor
+
+                    </button>
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <!-- TAMANHO -->
+
+
+                <div class="card">
+
+
+                    <h2>Tamanho</h2>
+
+
+                    <label>Tamanho</label>
+
+
+                    <input id="tamanhoNome" placeholder="P,M,G,GG">
+
+
+                    <button id="btnTamanho">
+
+                        Salvar Tamanho
+
+                    </button>
+
+
+                </div>
+
+
+
+
+
+
+
+                <!-- IMAGEM -->
+
+                <div class="card">
+
+
+                    <h2>Imagem Produto</h2>
+
+
+
+                    <label>Produto</label>
+
+
+                    <select id="imagemProduto">
+
+                    </select>
+
+
+
+
+                    <label>Arquivo</label>
+
+
+                    <input id="imagemArquivo" type="file">
+
+
+
+                    <button id="btnImagem">
+
+                        Salvar Imagem
+
+                    </button>
+
+
+
+                </div>
+
+
+
+
+
+            </section>
+
+
+
+
+        </main>
+
+
+    </div>
+
+
+
+
+    <script src="../js/produto.cadastro.js"></script>
+
+
+</body>
+
+</html>

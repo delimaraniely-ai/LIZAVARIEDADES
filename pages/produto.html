@@ -2,109 +2,328 @@
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>produto</title>
-    <!--conexação com CSS-->
+
+    <title>Produto - Liza Variedades</title>
+
+    <!-- ==========================================
+         CONEXÃO COM CSS
+    =========================================== -->
+
     <link rel="stylesheet" href="/style/produto.css">
-    <!--logo da empresa para o navegador -->
+
+    <!-- ==========================================
+         LOGO DO NAVEGADOR
+    =========================================== -->
+
     <link rel="icon" type="image/png" href="/assets/logo_navegador.png">
+
 </head>
 
+
 <body>
+
+
+    <!-- ==========================================
+         CABEÇALHO
+    =========================================== -->
+
     <header>
+
         <div class="topo">
 
+
+            <!-- ==================================
+                 LOGO
+            =================================== -->
+
             <div class="logo">
-                <img src="/assets/logo.png" alt="logo da Lizavariedades">
+
+                <img src="/assets/logo.png" alt="Logo da Liza Variedades">
 
             </div>
-            <!-- caixa de pesquisa -->
+
+
+            <!-- ==================================
+                 CAIXA DE PESQUISA
+            =================================== -->
+
             <div class="caixa-pesquisa">
-                <input type="text" placeholder="O que voce esta procurando?">
-                <img src="assets/pesquisa.png">
+
+                <input type="text" id="campo-pesquisa" placeholder="O que você está procurando?">
+
+                <img src="/assets/pesquisa.png" alt="Pesquisar">
+
             </div>
-            <!-- icones -->
+
+
+            <!-- ==================================
+                 ÍCONES
+            =================================== -->
+
             <div class="icones">
-                <a href="">
-                    <img src="assets/carrinho.png" alt="carrinho">
-                    <small>MEMU</small>
+
+
+                <!-- CARRINHO -->
+
+                <a href="#" id="link-carrinho">
+
+                    <img src="/assets/carrinho.png" alt="Carrinho">
+
+                    <small>MENU</small>
+
                     <p>CARRINHO</p>
+
                 </a>
-                <a href="">
-                    <img src="assets/usuario.png" alt="login">
-                    <small>Ola visitante</small>
+
+
+                <!-- USUÁRIO -->
+
+                <a href="#" id="link-usuario">
+
+                    <img src="/assets/usuario.png" alt="Login">
+
+                    <small>Olá visitante</small>
+
                     <p>ENTRAR</p>
+
                 </a>
+
+
             </div>
+
 
         </div>
-        <!-- MENU DE NAVEGAÇAO -->
-        <NAV class="menu">
+
+
+        <!-- ==========================================
+             MENU DE NAVEGAÇÃO
+        =========================================== -->
+
+        <nav class="menu">
 
             <a href="#">HOME</a>
-            <a id="idcarrinho" href="#">CARRINHO</a>
-            <a href="#">BRINQUEDOS</a>
-            <a href="#">MAQUIAGENS</a>
-            <a href="#">CAMAMESAEBANHO</a>
-            <a href="#">UNTESILIOSDECASA</a>
 
-        </NAV>
+            <a id="idcarrinho" href="#">
+                CARRINHO
+            </a>
+
+            <a href="#">BRINQUEDOS</a>
+
+            <a href="#">MAQUIAGENS</a>
+
+            <a href="#">CAMA MESA E BANHO</a>
+
+            <a href="#">UTENSÍLIOS DE CASA</a>
+
+        </nav>
+
 
     </header>
-    <!-- AREA DOS DADOS DO PRODUTO -->
-    <div class="area-detalhes">
+
+
+    <!-- ==========================================
+         ÁREA DOS DADOS DO PRODUTO
+    =========================================== -->
+
+    <main class="area-detalhes">
+
+
+        <!-- ======================================
+             ÁREA DAS IMAGENS
+        ======================================= -->
+
         <div class="area-imagens">
+
+
+            <!-- IMAGENS LATERAIS -->
+
             <div class="img-lateral" id="img-lateral">
-                <!--não criamos tang img aqui porque não temos como saber a quantidade de imagens que o lojista vai cadastrar-->
+
+                <!--
+                    As imagens serão criadas
+                    dinamicamente pelo JavaScript.
+
+                    Não colocamos imagens fixas aqui,
+                    pois o produto poderá possuir
+                    várias imagens.
+                -->
+
             </div>
+
+
+            <!-- IMAGEM PRINCIPAL -->
+
             <div class="img-principal" id="img-principal">
-                <img id="imagem-maior">
+
+                <img id="imagem-maior" src="" alt="Imagem do produto">
+
             </div>
 
 
         </div>
+
+
+        <!-- ======================================
+             ÁREA DOS TEXTOS
+        ======================================= -->
+
         <div class="area-textos">
-            <!--nome do produtos-->
+
+
+            <!-- NOME DO PRODUTO -->
+
             <h1 id="nome-produto"></h1>
-            <!--area das avaliacoes do produto-->
+
+
+            <!-- ==================================
+                 AVALIAÇÃO DO PRODUTO
+            =================================== -->
+
             <div class="avaliacoes-produto">
-                <img id="estrela-avaliacao">
+
+                <img id="estrela-avaliacao" src="" alt="Avaliação">
+
                 <span id="valor-avaliacao"></span>
+
             </div>
+
+
+            <!-- ==================================
+                 PREÇO ANTIGO
+            =================================== -->
+
             <p id="preco-antigo"></p>
-            <!--area do preco promocional-->
+
+
+            <!-- ==================================
+                 PREÇO PROMOCIONAL
+            =================================== -->
+
             <div class="preco-promocional">
+
                 <p id="preco-promocional"></p>
+
                 <span id="desconto"></span>
+
             </div>
-            <div id="tamanhos"></div>
-            <div id="cores"></div>
+
+
+            <!-- ==================================
+                 TAMANHOS
+            =================================== -->
+
+            <div id="tamanhos" class="area-tamanhos">
+
+                <!--
+                    Os tamanhos serão inseridos
+                    pelo JavaScript.
+                -->
+
+            </div>
+
+
+            <!-- ==================================
+                 CORES
+            =================================== -->
+
+            <div id="cores" class="area-cores">
+
+                <!--
+                    As cores serão inseridas
+                    pelo JavaScript.
+                -->
+
+            </div>
+
+
+            <!-- ==================================
+                 QUANTIDADE
+            =================================== -->
+
             <div class="quantidade">
-                <button id="dimunuir">-</button>
-                <span id="numero-quantidade"></span>
-                <button id="aumentar">+</button>
+
+                <button type="button" id="diminuir">
+                    -
+                </button>
+
+
+                <span id="numero-quantidade">
+                    1
+                </span>
+
+
+                <button type="button" id="aumentar">
+                    +
+                </button>
+
             </div>
+
+
+            <!-- ==================================
+                 BOTÃO ADICIONAR AO CARRINHO
+            =================================== -->
+
             <div id="btn-add-carrinho">
-                <button id="bnt-add-carrinho"></button>
+
+                <button type="button" id="btn-add-carrinho-produto">
+                    ADICIONAR AO CARRINHO
+                </button>
+
             </div>
+
+
+            <!-- ==================================
+                 BOTÃO COMPRAR
+            =================================== -->
+
             <div class="btn-comprar">
-                <button id="bnt-comprar"></button>
+
+                <button type="button" id="btn-comprar">
+                    COMPRAR AGORA
+                </button>
+
             </div>
+
+
+            <!-- ==================================
+                 ÁREA DO FRETE
+            =================================== -->
+
             <div class="area-frete">
-                <p>Calcular o frete </p>
-                <input id="frete">
-                <button id="btn-calcular-frete">Calcular</button>
+
+                <p>Calcular o frete</p>
+
+
+                <input type="text" id="frete" placeholder="Digite seu CEP" maxlength="9">
+
+
+                <button type="button" id="btn-calcular-frete">
+                    Calcular
+                </button>
+
+
+                <div id="resultado-frete"></div>
+
             </div>
-
-
 
 
         </div>
-        <!--FAZENDO A CONEXÃO COM JAVASCRIPT-->
-        <script src="/js/produto.js"></script>
+
+
+    </main>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="/js/produto.js"></script>
+
+
 </body>
-
-
 
 </html>

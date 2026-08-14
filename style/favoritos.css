@@ -1,108 +1,160 @@
-/*======================================
-RESET
-======================================*/
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
+
+/* =========================================================
+   BODY
+========================================================= */
+
 body {
-    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7f7;
     color: #333;
+    min-height: 100vh;
     padding-bottom: 90px;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
 
-img {
-    max-width: 100%;
-    display: block;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    outline: none;
-}
-
-/*======================================
-HEADER
-======================================*/
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header {
     width: 100%;
     height: 70px;
-    background: #fff;
+
+    background: #c28282;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+
+    padding: 0 35px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-.voltar a,
-.carrinho a {
+
+/* VOLTAR */
+
+.voltar {
     width: 40px;
-    height: 40px;
-    background: #f5f5f5;
-    border-radius: 50%;
+}
+
+.voltar a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 24px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    transition: .3s;
+
+    transition: 0.2s;
 }
 
-.voltar a:hover,
-.carrinho a:hover {
-    background: #e61d48;
-    color: #fff;
+.voltar a:hover {
+    transform: translateX(-3px);
+}
+
+
+/* TÍTULO */
+
+.titulo {
+    flex: 1;
+    text-align: center;
 }
 
 .titulo h2 {
-    font-size: 22px;
-    color: #222;
+    color: white;
+    font-size: 24px;
+}
+
+
+/* CARRINHO */
+
+.carrinho {
+    width: 100px;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.carrinho a {
+    position: relative;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 23px;
 }
 
 #contadorCarrinho {
     position: absolute;
-    top: -5px;
-    right: -5px;
-    width: 18px;
-    height: 18px;
-    background: #e61d48;
-    color: #fff;
+
+    top: -10px;
+    right: -12px;
+
+    min-width: 20px;
+    height: 20px;
+
+    background: #a85f6e;
+    color: white;
+
     border-radius: 50%;
+
     font-size: 11px;
+    font-weight: bold;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/*======================================
-PESQUISA
-======================================*/
+
+/* =========================================================
+   PESQUISA
+========================================================= */
 
 .pesquisa {
-    padding: 20px;
+    width: 100%;
+
+    padding: 25px 20px 10px;
+
+    display: flex;
+    justify-content: center;
 }
 
 .campoPesquisa {
-    background: #c58282;
-    border-radius: 12px;
+    width: 100%;
+    max-width: 700px;
+
+    height: 48px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
     display: flex;
     align-items: center;
+
     padding: 0 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.05);
 }
 
 .campoPesquisa i {
@@ -112,294 +164,418 @@ PESQUISA
 
 .campoPesquisa input {
     width: 100%;
-    height: 48px;
+    height: 100%;
+
     border: none;
     outline: none;
+
+    font-size: 14px;
+
     background: transparent;
-    font-size: 15px;
 }
 
-/*======================================
-INFORMAÇÕES
-======================================*/
+.campoPesquisa input::placeholder {
+    color: #999;
+}
+
+
+/* =========================================================
+   INFORMAÇÕES
+========================================================= */
 
 .informacoes {
-    padding: 0 20px 15px;
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 15px auto;
+
+    padding: 0 20px;
 }
 
-#quantidadeFavoritos {
+.informacoes p {
     color: #777;
-    font-size: 15px;
+    font-size: 14px;
 }
 
-/*======================================
-LISTA DE FAVORITOS
-======================================*/
+
+/* =========================================================
+   LISTA DE FAVORITOS
+========================================================= */
 
 .listaFavoritos {
-    padding: 0 20px 30px;
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 10px 20px;
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
 }
 
-/*======================================
-CARD
-======================================*/
+
+/* =========================================================
+   CARD DO PRODUTO
+========================================================= */
 
 .cardFavorito {
-    background: #0c0b0b;
-    border-radius: 16px;
+    background: white;
+
+    border-radius: 12px;
+
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, .08);
-    transition: .3s;
+
+    border: 1px solid #eee;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+
+    transition: 0.25s;
+
     position: relative;
 }
 
 .cardFavorito:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
 }
 
-.imagemProduto {
+
+/* =========================================================
+   IMAGEM
+========================================================= */
+
+.imagemFavorito {
     width: 100%;
-    height: 170px;
+    height: 220px;
+
     background: #fafafa;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+
+    overflow: hidden;
 }
 
-.imagemProduto img {
-    width: 80%;
-    height: 80%;
+.imagemFavorito img {
+    width: 100%;
+    height: 100%;
+
     object-fit: contain;
+
+    padding: 15px;
+
+    transition: 0.3s;
 }
 
-/*======================================
-BOTÃO FAVORITO
-======================================*/
+.cardFavorito:hover .imagemFavorito img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   BOTÃO FAVORITO
+========================================================= */
 
 .btnFavorito {
     position: absolute;
+
     top: 12px;
     right: 12px;
+
     width: 38px;
     height: 38px;
+
+    border: none;
+
     border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #e61d48;
-    font-size: 18px;
-    transition: .3s;
+
+    background: white;
+
+    color: #c28282;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+    transition: 0.2s;
 }
 
 .btnFavorito:hover {
-    background: #e61d48;
-    color: #fff;
+    background: #c28282;
+    color: white;
 }
 
-/*======================================
-INFORMAÇÕES DO PRODUTO
-======================================*/
 
-.infoProduto {
-    padding: 15px;
+/* =========================================================
+   INFORMAÇÕES DO PRODUTO
+========================================================= */
+
+.infoFavorito {
+    padding: 18px;
 }
 
-.infoProduto h3 {
-    font-size: 15px;
+.infoFavorito h3 {
+    font-size: 16px;
+
     color: #333;
-    height: 42px;
+
+    margin-bottom: 8px;
+
+    line-height: 1.4;
+
+    min-height: 44px;
+}
+
+.infoFavorito p {
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    margin-bottom: 12px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
     overflow: hidden;
-    line-height: 21px;
-    margin-bottom: 10px;
 }
 
-.preco {
+
+/* =========================================================
+   PREÇO
+========================================================= */
+
+.precoAntigo {
+    display: block;
+
+    color: #999;
+
+    font-size: 13px;
+
+    text-decoration: line-through;
+
+    margin-bottom: 3px;
+}
+
+.precoFavorito {
+    color: #a85f6e;
+
     font-size: 20px;
+
     font-weight: bold;
-    color: #e61d48;
-    margin-bottom: 15px;
 }
 
-/*======================================
-BOTÃO ADICIONAR
-======================================*/
 
-.btnAdicionar {
+/* =========================================================
+   BOTÃO COMPRAR
+========================================================= */
+
+.btnComprar {
     width: 100%;
+
     height: 42px;
-    background: #e61d48;
-    color: #fff;
-    border-radius: 8px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #c28282;
+
+    color: white;
+
     font-size: 14px;
+
     font-weight: bold;
-    transition: .3s;
+
+    cursor: pointer;
+
+    transition: 0.2s;
 }
 
-.btnAdicionar:hover {
-    background: #c4143d;
+.btnComprar:hover {
+    background: #a85f6e;
 }
 
-/*======================================
-TELA VAZIA
-======================================*/
+
+/* =========================================================
+   LISTA VAZIA
+========================================================= */
 
 .vazio {
-    display: none;
-    padding: 60px 25px;
-    text-align: center;
-}
+    width: 100%;
+    max-width: 600px;
 
-.vazio.ativo {
-    display: block;
+    margin: 70px auto;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
 }
 
 .vazio i {
-    font-size: 70px;
-    color: #e61d48;
+    font-size: 55px;
+
+    color: #c28282;
+
     margin-bottom: 20px;
 }
 
 .vazio h3 {
-    font-size: 24px;
-    color: #333;
+    font-size: 21px;
+
+    color: #444;
+
     margin-bottom: 10px;
 }
 
 .vazio p {
-    color: #0f0c0c;
-    line-height: 1.6;
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
     margin-bottom: 25px;
 }
 
+
+/* =========================================================
+   BOTÃO CONTINUAR COMPRANDO
+========================================================= */
+
 .btnVoltar {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
-    padding: 14px 28px;
-    background: #e61d48;
-    color: #fff;
-    border-radius: 10px;
+
+    min-width: 200px;
+
+    height: 43px;
+
+    padding: 0 20px;
+
+    background: #c28282;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
     font-weight: bold;
-    transition: .3s;
+
+    transition: 0.2s;
 }
 
 .btnVoltar:hover {
-    background: #050505;
+    background: #a85f6e;
 }
 
-/*======================================
-MENU INFERIOR
-======================================*/
+
+/* =========================================================
+   MENU INFERIOR
+========================================================= */
 
 .menuInferior {
     position: fixed;
+
     left: 0;
     bottom: 0;
+
     width: 100%;
-    height: 70px;
-    background: #d89a9a;
+    height: 72px;
+
+    background: white;
+
+    border-top: 1px solid #ddd;
+
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, .08);
-    z-index: 999;
+    justify-content: space-around;
+
+    z-index: 1000;
+
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .menuInferior a {
-    flex: 1;
     height: 100%;
+
+    min-width: 80px;
+
+    color: #777;
+
+    text-decoration: none;
+
     display: flex;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
+
     gap: 5px;
-    color: #888;
-    font-size: 13px;
-    transition: .3s;
+
+    font-size: 12px;
+
+    transition: 0.2s;
 }
 
 .menuInferior a i {
-    font-size: 20px;
+    font-size: 19px;
 }
 
-.menuInferior a:hover {
-    color: #dd8699;
+.menuInferior a:hover,
+.menuInferior a.ativo {
+    color: #c28282;
 }
 
-.menuInferior .ativo {
-    color: #d88597;
+.menuInferior a.ativo {
     font-weight: bold;
 }
 
-/*======================================
-ANIMAÇÕES
-======================================*/
 
-.cardFavorito {
-    animation: fadeUp .4s ease;
-}
+/* =========================================================
+   RESPONSIVIDADE - TABLET
+========================================================= */
 
-@keyframes fadeUp {
+@media (max-width: 1000px) {
 
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .listaFavoritos {
+        grid-template-columns: repeat(3, 1fr);
     }
 
 }
 
-.btnAdicionar {
-    transition: .3s;
-}
 
-.btnAdicionar:active {
-    transform: scale(.97);
-}
+/* =========================================================
+   RESPONSIVIDADE - TABLET PEQUENO
+========================================================= */
 
-.btnFavorito:active {
-    transform: scale(.90);
-}
-
-/*======================================
-SCROLLBAR
-======================================*/
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #a77373;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #d4d4d4;
-    border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #b9b9b9;
-}
-
-/*======================================
-RESPONSIVO TABLET
-======================================*/
-
-@media (max-width:768px) {
+@media (max-width: 750px) {
 
     .header {
-        padding: 0 15px;
+        padding: 0 20px;
     }
 
     .titulo h2 {
@@ -407,80 +583,155 @@ RESPONSIVO TABLET
     }
 
     .listaFavoritos {
+        grid-template-columns: repeat(2, 1fr);
+
         gap: 15px;
-        padding: 0 15px 25px;
     }
 
-    .imagemProduto {
-        height: 150px;
-    }
-
-    .infoProduto {
-        padding: 12px;
-    }
-
-    .preco {
-        font-size: 18px;
+    .imagemFavorito {
+        height: 190px;
     }
 
 }
 
-/*======================================
-RESPONSIVO CELULAR
-======================================*/
 
-@media (max-width:480px) {
+/* =========================================================
+   RESPONSIVIDADE - CELULAR
+========================================================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding-bottom: 75px;
+    }
+
 
     .header {
-        height: 65px;
+        height: 60px;
+
+        padding: 0 15px;
     }
+
 
     .titulo h2 {
         font-size: 18px;
     }
 
-    .pesquisa {
-        padding: 15px;
+
+    .voltar {
+        width: 35px;
     }
 
-    .campoPesquisa input {
-        height: 45px;
-        font-size: 14px;
+
+    .carrinho {
+        width: 45px;
     }
+
+
+    .pesquisa {
+        padding: 18px 12px 8px;
+    }
+
+
+    .informacoes {
+        padding: 0 12px;
+    }
+
 
     .listaFavoritos {
-        grid-template-columns: 1fr;
-        padding: 0 15px 20px;
+        grid-template-columns: repeat(2, 1fr);
+
+        padding: 10px 12px;
+
+        gap: 12px;
     }
 
-    .imagemProduto {
-        height: 220px;
+
+    .imagemFavorito {
+        height: 150px;
     }
 
-    .infoProduto h3 {
-        font-size: 16px;
-        height: auto;
+
+    .infoFavorito {
+        padding: 12px;
     }
 
-    .preco {
-        font-size: 22px;
+
+    .infoFavorito h3 {
+        font-size: 14px;
+
+        min-height: 40px;
     }
 
-    .btnAdicionar {
-        height: 45px;
-        font-size: 15px;
+
+    .precoFavorito {
+        font-size: 17px;
     }
 
-    .menuInferior {
-        height: 65px;
-    }
 
-    .menuInferior a {
+    .btnComprar {
+        height: 38px;
+
         font-size: 12px;
     }
 
+
+    .vazio {
+        margin: 40px 15px;
+
+        width: auto;
+
+        padding: 30px 15px;
+    }
+
+
+    .vazio i {
+        font-size: 45px;
+    }
+
+
+    .vazio h3 {
+        font-size: 18px;
+    }
+
+
+    .menuInferior {
+        height: 68px;
+    }
+
+
+    .menuInferior a {
+        min-width: 60px;
+
+        font-size: 10px;
+    }
+
+
     .menuInferior a i {
         font-size: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR MUITO PEQUENO
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .listaFavoritos {
+        grid-template-columns: 1fr;
+    }
+
+
+    .imagemFavorito {
+        height: 220px;
+    }
+
+
+    .titulo h2 {
+        font-size: 16px;
     }
 
 }

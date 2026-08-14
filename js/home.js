@@ -1,77 +1,638 @@
-/* BANNER */
+// ======================================================
+// API
+// ======================================================
 
-document.getElementById("bannerPrincipal").src =
-    "./assets/banner-home.jpg";
+const API = "http://localhost:3000";
 
-/* DESTAQUES */
 
-document.getElementById("produtoImagem1").src = "./assets/produto1.jpg";
-document.getElementById("produtoNome1").textContent = "Kit Canetas";
-document.getElementById("produtoPreco1").textContent = "R$ 14,90";
+// ======================================================
+// ELEMENTOS
+// ======================================================
 
-document.getElementById("produtoImagem2").src = "./assets/produto2.jpg";
-document.getElementById("produtoNome2").textContent = "Almofada";
-document.getElementById("produtoPreco2").textContent = "R$ 39,90";
+const campoBusca = document.getElementById("campoBusca");
 
-document.getElementById("produtoImagem3").src = "./assets/produto3.jpg";
-document.getElementById("produtoNome3").textContent = "Batom";
-document.getElementById("produtoPreco3").textContent = "R$ 12,90";
+const btnBuscar = document.getElementById("btnBuscar");
 
-document.getElementById("produtoImagem4").src = "./assets/produto4.jpg";
-document.getElementById("produtoNome4").textContent = "Kit Infantil";
-document.getElementById("produtoPreco4").textContent = "R$ 24,90";
+const btnFavoritos =
+    document.getElementById("btnFavoritos");
 
-document.getElementById("produtoImagem5").src = "./assets/produto5.jpg";
-document.getElementById("produtoNome5").textContent = "Dinossauro";
-document.getElementById("produtoPreco5").textContent = "R$ 34,90";
+const btnCarrinho =
+    document.getElementById("btnCarrinho");
 
-document.getElementById("produtoImagem6").src = "./assets/produto6.jpg";
-document.getElementById("produtoNome6").textContent = "Shampoo";
-document.getElementById("produtoPreco6").textContent = "R$ 19,90";
+const btnPerfil =
+    document.getElementById("btnPerfil");
 
-/* DESCONTOS */
 
-document.getElementById("descontoImagem1").src = "./assets/desconto1.jpg";
-document.getElementById("descontoNome1").textContent = "Toalha";
-document.getElementById("descontoPreco1").textContent = "R$ 29,90";
+// ======================================================
+// CARREGAR HOME
+// ======================================================
 
-document.getElementById("descontoImagem2").src = "./assets/desconto2.jpg";
-document.getElementById("descontoNome2").textContent = "Tênis";
-document.getElementById("descontoPreco2").textContent = "R$ 89,90";
+async function carregarHome() {
 
-document.getElementById("descontoImagem3").src = "./assets/desconto3.jpg";
-document.getElementById("descontoNome3").textContent = "Roupa Infantil";
-document.getElementById("descontoPreco3").textContent = "R$ 34,90";
+    try {
 
-document.getElementById("descontoImagem4").src = "./assets/desconto4.jpg";
-document.getElementById("descontoNome4").textContent = "Taça";
-document.getElementById("descontoPreco4").textContent = "R$ 15,90";
+        console.log("Carregando produtos...");
 
-document.getElementById("descontoImagem5").src = "./assets/desconto5.jpg";
-document.getElementById("descontoNome5").textContent = "Bola";
-document.getElementById("descontoPreco5").textContent = "R$ 49,90";
 
-document.getElementById("descontoImagem6").src = "./assets/desconto6.jpg";
-document.getElementById("descontoNome6").textContent = "Kit Maquiagem";
-document.getElementById("descontoPreco6").textContent = "R$ 59,90";
+        const resposta = await fetch(
+            `${API}/produtos`
+        );
 
-/* RESUMO */
 
-document.getElementById("pedidoItens").textContent =
-    "12";
+        if (!resposta.ok) {
 
-document.getElementById("pedidoProdutos").textContent =
-    "8 Produtos";
+            throw new Error(
+                "Erro ao buscar produtos."
+            );
 
-document.getElementById("pedidoValor").textContent =
-    "R$ 342,80";
+        }
 
-document.getElementById("pedidoStatus").textContent =
-    "Aguardando Pagamento";
 
-document.getElementById("btnFinalizarCompra")
-    .addEventListener("click", () => {
+        const dados = await resposta.json();
 
-        alert("Redirecionando para pagamento");
 
-    });
+        console.log(
+            "Produtos recebidos:",
+            dados
+        );
+
+
+        // ==================================================
+        // ACEITAR DIFERENTES FORMATOS DA API
+        // ==================================================
+
+        let produtos = [];
+
+
+        if (Array.isArray(dados)) {
+
+            produtos = dados;
+
+        } else if (Array.isArray(dados.produtos)) {
+
+            produtos = dados.produtos;
+
+        } else if (Array.isArray(dados.data)) {
+
+            produtos = dados.data;
+
+        }
+
+
+        console.log(
+            "Lista de produtos:",
+            produtos
+        );
+
+
+        if (produtos.length === 0) {
+
+            console.warn(
+                "Nenhum produto encontrado."
+            );
+
+            return;
+
+        }
+
+
+        // ==================================================
+        // DESTAQUES
+        // ==================================================
+
+        for (
+            let i = 0;
+            i < 6 && i < produtos.length;
+            i++
+        ) {
+
+            preencherProduto(
+                produtos[i],
+                i + 1
+            );
+
+        }
+
+
+        // ==================================================
+        // PRODUTOS COM DESCONTO
+        // ==================================================
+
+        const produtosDesconto =
+            produtos.filter(produto => {
+
+                return Number(
+                    produto.preco_promocional
+                ) > 0;
+
+            });
+
+
+        for (
+            let i = 0;
+            i < 6 && i < produtosDesconto.length;
+            i++
+        ) {
+
+            preencherDesconto(
+                produtosDesconto[i],
+                i + 1
+            );
+
+        }
+
+
+        // ==================================================
+        // BANNER
+        // ==================================================
+
+        carregarBanner();
+
+    } catch (erro) {
+
+        console.error(
+            "Erro na Home:",
+            erro
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// PREENCHER PRODUTO
+// ======================================================
+
+function preencherProduto(
+    produto,
+    numero
+) {
+
+    const imagem =
+        document.getElementById(
+            `produtoImagem${numero}`
+        );
+
+    const nome =
+        document.getElementById(
+            `produtoNome${numero}`
+        );
+
+    const preco =
+        document.getElementById(
+            `produtoPreco${numero}`
+        );
+
+
+    if (nome) {
+
+        nome.textContent =
+            produto.nome ||
+            "Produto";
+
+    }
+
+
+    if (preco) {
+
+        const valor =
+            produto.preco_promocional ||
+            produto.preco_antigo ||
+            0;
+
+
+        preco.textContent =
+            formatarPreco(valor);
+
+    }
+
+
+    if (imagem) {
+
+        imagem.src =
+            obterImagem(produto);
+
+        imagem.alt =
+            produto.nome ||
+            "Produto";
+
+    }
+
+
+    // ==================================================
+    // CLICAR NO PRODUTO
+    // ==================================================
+
+    const card =
+        imagem?.closest(".product-card");
+
+
+    if (card) {
+
+        card.addEventListener(
+            "click",
+            function () {
+
+                abrirProduto(produto);
+
+            }
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// PREENCHER DESCONTO
+// ======================================================
+
+function preencherDesconto(
+    produto,
+    numero
+) {
+
+    const imagem =
+        document.getElementById(
+            `descontoImagem${numero}`
+        );
+
+    const nome =
+        document.getElementById(
+            `descontoNome${numero}`
+        );
+
+    const preco =
+        document.getElementById(
+            `descontoPreco${numero}`
+        );
+
+
+    if (nome) {
+
+        nome.textContent =
+            produto.nome ||
+            "Produto";
+
+    }
+
+
+    if (preco) {
+
+        preco.textContent =
+            formatarPreco(
+                produto.preco_promocional
+            );
+
+    }
+
+
+    if (imagem) {
+
+        imagem.src =
+            obterImagem(produto);
+
+        imagem.alt =
+            produto.nome ||
+            "Produto";
+
+    }
+
+
+    const card =
+        imagem?.closest(".product-card");
+
+
+    if (card) {
+
+        card.addEventListener(
+            "click",
+            function () {
+
+                abrirProduto(produto);
+
+            }
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// OBTER IMAGEM
+// ======================================================
+
+function obterImagem(produto) {
+
+    if (produto.imagem) {
+
+        return produto.imagem;
+
+    }
+
+
+    if (produto.url_imagem) {
+
+        return produto.url_imagem;
+
+    }
+
+
+    if (produto.imagem_produto) {
+
+        return produto.imagem_produto;
+
+    }
+
+
+    if (produto.foto) {
+
+        return produto.foto;
+
+    }
+
+
+    return "https://via.placeholder.com/300x300?text=Produto";
+
+}
+
+
+// ======================================================
+// FORMATAR PREÇO
+// ======================================================
+
+function formatarPreco(valor) {
+
+    return Number(valor || 0)
+        .toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
+        );
+
+}
+
+
+// ======================================================
+// ABRIR DESCRIÇÃO DO PRODUTO
+// ======================================================
+
+function abrirProduto(produto) {
+
+    if (!produto.idProduto) {
+
+        console.error(
+            "idProduto não encontrado:",
+            produto
+        );
+
+        return;
+
+    }
+
+
+    window.location.href =
+        `descricaoproduto.html?id=${produto.idProduto}`;
+
+}
+
+
+// ======================================================
+// BUSCAR PRODUTO
+// ======================================================
+
+function pesquisarProduto() {
+
+    const texto =
+        campoBusca.value
+            .trim()
+            .toLowerCase();
+
+
+    if (!texto) {
+
+        carregarHome();
+
+        return;
+
+    }
+
+
+    window.location.href =
+        `pesquisa.html?busca=${encodeURIComponent(texto)}`;
+
+}
+
+
+if (btnBuscar) {
+
+    btnBuscar.addEventListener(
+        "click",
+        pesquisarProduto
+    );
+
+}
+
+
+if (campoBusca) {
+
+    campoBusca.addEventListener(
+        "keydown",
+        function (evento) {
+
+            if (evento.key === "Enter") {
+
+                pesquisarProduto();
+
+            }
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// FAVORITOS
+// ======================================================
+
+if (btnFavoritos) {
+
+    btnFavoritos.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "favoritos.html";
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// CARRINHO
+// ======================================================
+
+if (btnCarrinho) {
+
+    btnCarrinho.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "carrinho.html";
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// PERFIL
+// ======================================================
+
+if (btnPerfil) {
+
+    btnPerfil.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "perfil.html";
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// BOTÃO FINALIZAR
+// ======================================================
+
+const btnFinalizarCompra =
+    document.getElementById(
+        "btnFinalizarCompra"
+    );
+
+
+if (btnFinalizarCompra) {
+
+    btnFinalizarCompra.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "carrinho.html";
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// BANNER
+// ======================================================
+
+async function carregarBanner() {
+
+    try {
+
+        const resposta =
+            await fetch(
+                `${API}/banners`
+            );
+
+
+        if (!resposta.ok) {
+
+            return;
+
+        }
+
+
+        const dados =
+            await resposta.json();
+
+
+        let banners = [];
+
+
+        if (Array.isArray(dados)) {
+
+            banners = dados;
+
+        } else if (
+            Array.isArray(dados.banners)
+        ) {
+
+            banners = dados.banners;
+
+        }
+
+
+        if (
+            banners.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const banner =
+            banners[0];
+
+
+        const imagem =
+            document.getElementById(
+                "bannerPrincipal"
+            );
+
+
+        if (imagem) {
+
+            imagem.src =
+                banner.imagem ||
+                banner.url_imagem ||
+                banner.banner ||
+                "";
+
+            imagem.alt =
+                banner.titulo ||
+                "Banner";
+
+        }
+
+    } catch (erro) {
+
+        console.warn(
+            "Banner não carregado:",
+            erro
+        );
+
+    }
+
+}
+
+
+// ======================================================
+// INICIAR
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        carregarHome();
+
+    }
+);

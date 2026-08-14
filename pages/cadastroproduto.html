@@ -1,0 +1,307 @@
+### `cadastroproduto.html`
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Produtos</title>
+
+    <!-- ==========================================
+         CSS
+    =========================================== -->
+
+    <link rel="stylesheet" href="/style/cadastroproduto.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         CONTAINER
+    =========================================== -->
+
+    <div class="container">
+
+
+        <!-- ==========================================
+             TÍTULO
+        =========================================== -->
+
+        <div class="titulo">
+
+            <h1 id="tituloPagina"></h1>
+
+            <p id="descricaoPagina"></p>
+
+        </div>
+
+
+        <!-- ==========================================
+             CARD
+        =========================================== -->
+
+        <div class="card">
+
+
+            <!-- ==========================================
+                 FORMULÁRIO
+            =========================================== -->
+
+            <div class="form-grid">
+
+
+                <!-- ======================================
+                     NOME
+                ======================================= -->
+
+                <div class="campo campo-completo">
+
+                    <label for="produtoNome">
+                        Nome do produto
+                        <span class="obrigatorio">*</span>
+                    </label>
+
+                    <input type="text" id="produtoNome" placeholder="Digite o nome do produto">
+
+                </div>
+
+
+                <!-- ======================================
+                     DESCRIÇÃO
+                ======================================= -->
+
+                <div class="campo campo-completo">
+
+                    <label for="produtoDescricao">
+                        Descrição
+                        <span class="obrigatorio">*</span>
+                    </label>
+
+                    <textarea id="produtoDescricao" placeholder="Digite a descrição do produto"></textarea>
+
+                </div>
+
+
+                <!-- ======================================
+                     CÓDIGO
+                ======================================= -->
+
+                <div class="campo">
+
+                    <label for="produtoCodigo">
+                        Código do produto
+                        <span class="obrigatorio">*</span>
+                    </label>
+
+                    <input type="text" id="produtoCodigo" placeholder="Ex.: PROD001">
+
+                </div>
+
+
+                <!-- ======================================
+                     ESTOQUE
+                ======================================= -->
+
+                <div class="campo">
+
+                    <label for="produtoEstoque">
+                        Quantidade em estoque
+                        <span class="obrigatorio">*</span>
+                    </label>
+
+                    <input type="number" id="produtoEstoque" min="0" step="1" placeholder="0">
+
+                </div>
+
+
+                <!-- ======================================
+                     PREÇO ANTIGO
+                ======================================= -->
+
+                <div class="campo">
+
+                    <label for="produtoPrecoAntigo">
+                        Preço antigo
+                        <span class="obrigatorio">*</span>
+                    </label>
+
+                    <input type="number" id="produtoPrecoAntigo" min="0" step="0.01" placeholder="0,00">
+
+                </div>
+
+
+                <!-- ======================================
+                     PREÇO PROMOCIONAL
+                ======================================= -->
+
+                <div class="campo">
+
+                    <label for="produtoPrecoPromo">
+                        Preço promocional
+                    </label>
+
+                    <input type="number" id="produtoPrecoPromo" min="0" step="0.01" placeholder="0,00">
+
+                </div>
+
+
+                <!-- ======================================
+                     MARCA
+                ======================================= -->
+
+                <div class="campo">
+
+                    <label for="produtoMarca">
+
+                        Marca
+
+                        <span class="obrigatorio">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select id="produtoMarca">
+
+                        <option value="">
+                            Carregando marcas...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ======================================
+                     CATEGORIA
+                ======================================= -->
+
+                <div class="campo">
+
+                    <label for="produtoCategoria">
+
+                        Categoria
+
+                        <span class="obrigatorio">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select id="produtoCategoria">
+
+                        <option value="">
+                            Carregando categorias...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ======================================
+                     STATUS
+                ======================================= -->
+
+                <div class="campo">
+
+                    <label for="produtoStatus">
+
+                        Status do produto
+
+                        <span class="obrigatorio">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select id="produtoStatus">
+
+                        <option value="true">
+                            Ativo
+                        </option>
+
+                        <option value="false">
+                            Inativo
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ======================================
+                     LOJA
+                ======================================= -->
+
+                <div class="campo">
+
+                    <label for="produtoLoja">
+
+                        Loja
+
+                        <span class="obrigatorio">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select id="produtoLoja">
+
+                        <option value="">
+                            Carregando lojas...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ==========================================
+                 MENSAGEM
+            =========================================== -->
+
+            <div id="mensagemProduto" class="mensagem"></div>
+
+
+            <!-- ==========================================
+                 BOTÃO
+            =========================================== -->
+
+            <div class="botao-container">
+
+                <button type="button" id="btnProduto">
+                    Cadastrar Produto
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script src="/js/cadastroproduto.js"></script>
+
+
+</body>
+
+</html>
+```

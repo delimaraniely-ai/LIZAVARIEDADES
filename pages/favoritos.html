@@ -4,42 +4,56 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Meus Favoritos</title>
 
+    <!-- CSS -->
+
     <link rel="stylesheet" href="../style/favoritos.css">
 
-    <link rel="stylesheet" rel="stylesheet" href="./favoritos.css">
 </head>
+
 
 <body>
 
-    <!-- HEADER -->
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
     <header class="header">
 
         <div class="voltar">
 
-            <a href="home.html">
+            <a href="home.html" id="btnVoltar">
+
                 <i class="fa-solid fa-arrow-left"></i>
+
             </a>
 
         </div>
 
+
         <div class="titulo">
 
-            <h2>Meus Favoritos</h2>
+            <h2 id="tituloFavoritos">
+                Meus Favoritos
+            </h2>
 
         </div>
 
+
         <div class="carrinho">
 
-            <a href="carrinho.html">
+            <a href="carrinho.html" id="btnCarrinho">
 
                 <i class="fa-solid fa-cart-shopping"></i>
 
-                <span id="contadorCarrinho">0</span>
+                <span id="contadorCarrinho">
+                    0
+                </span>
 
             </a>
 
@@ -47,7 +61,11 @@
 
     </header>
 
-    <!-- PESQUISA -->
+
+
+    <!-- =====================================================
+         PESQUISA
+    ====================================================== -->
 
     <section class="pesquisa">
 
@@ -61,83 +79,127 @@
 
     </section>
 
-    <!-- QUANTIDADE -->
+
+
+    <!-- =====================================================
+         QUANTIDADE
+    ====================================================== -->
 
     <section class="informacoes">
 
-        <p id="quantidadeFavoritos"></p>
+        <p id="quantidadeFavoritos">
+            0 produtos favoritos
+        </p>
 
     </section>
 
-    <!-- FAVORITOS -->
+
+
+    <!-- =====================================================
+         CONTEÚDO
+    ====================================================== -->
 
     <main>
 
-        <section class="listaFavoritos" id="listaFavoritos">
+        <!-- =================================================
+             LISTA DE FAVORITOS
+        ================================================== -->
 
+        <section class="listaFavoritos" id="listaFavoritos">
         </section>
 
-        <!-- LISTA VAZIA -->
+
+
+        <!-- =================================================
+             LISTA VAZIA
+        ================================================== -->
 
         <section class="vazio" id="listaVazia">
 
             <i class="fa-regular fa-heart"></i>
 
-            <h3>Nenhum produto favorito</h3>
+
+            <h3>
+                Nenhum produto favorito
+            </h3>
+
 
             <p>
-
-                Adicione produtos aos favoritos para encontrá-los rapidamente.
-
+                Adicione produtos aos favoritos
+                para encontrá-los rapidamente.
             </p>
 
+
             <a href="home.html" class="btnVoltar">
-
                 Continuar Comprando
-
             </a>
 
         </section>
 
     </main>
 
-    <!-- MENU INFERIOR -->
+
+
+    <!-- =====================================================
+         MENU INFERIOR
+    ====================================================== -->
 
     <nav class="menuInferior">
+
 
         <a href="home.html">
 
             <i class="fa-solid fa-house"></i>
 
-            <span>Início</span>
+            <span>
+                Início
+            </span>
 
         </a>
+
+
 
         <a href="pesquisa.html">
 
             <i class="fa-solid fa-magnifying-glass"></i>
 
-            <span>Pesquisar</span>
+            <span>
+                Pesquisar
+            </span>
 
         </a>
+
+
 
         <a href="favoritos.html" class="ativo">
 
             <i class="fa-solid fa-heart"></i>
 
-            <span>Favoritos</span>
+            <span>
+                Favoritos
+            </span>
 
         </a>
+
+
 
         <a href="perfil.html">
 
             <i class="fa-solid fa-user"></i>
 
-            <span>Perfil</span>
+            <span>
+                Perfil
+            </span>
 
         </a>
 
     </nav>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
     <script src="../js/favoritos.js"></script>
 

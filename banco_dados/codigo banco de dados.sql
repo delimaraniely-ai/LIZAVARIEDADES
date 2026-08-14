@@ -62,7 +62,7 @@ CREATE TABLE Categoria(
 CREATE TABLE Marca(
     idMarca INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    logo VARCHAR(255)
+    logo longblob
 );
 
 -- =====================================
@@ -71,7 +71,7 @@ CREATE TABLE Marca(
 
 CREATE TABLE Tamanho(
     idTamanho INT PRIMARY KEY AUTO_INCREMENT,
-    tamanho VARCHAR(20)
+    tm VARCHAR(20)
 );
 
 -- =====================================
@@ -192,7 +192,11 @@ CREATE TABLE Carrinho(
 -- PRODUTO
 -- =====================================
 
-CREATE TABLE Produto(
+-- ==========================================
+-- TABELA PRODUTO
+-- ==========================================
+
+CREATE TABLE Produto (
 
     idProduto INT PRIMARY KEY AUTO_INCREMENT,
 
@@ -216,23 +220,22 @@ CREATE TABLE Produto(
 
     Categoria_idCategoria INT,
 
-    CONSTRAINT fk_produto_loja
+    -- ==========================================
+    -- CHAVES ESTRANGEIRAS
+    -- ==========================================
+
+    CONSTRAINT fk_Produto_Loja
         FOREIGN KEY (Loja_idLoja)
-        REFERENCES Loja(idLoja)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
+        REFERENCES Loja (idLoja),
 
-    CONSTRAINT fk_produto_marca
+    CONSTRAINT fk_Produto_Marca
         FOREIGN KEY (Marca_idMarca)
-        REFERENCES Marca(idMarca)
-        ON DELETE SET NULL
-        ON UPDATE CASCADE,
+        REFERENCES Marca (idMarca),
 
-    CONSTRAINT fk_produto_categoria
+    CONSTRAINT fk_Produto_Categoria
         FOREIGN KEY (Categoria_idCategoria)
-        REFERENCES Categoria(idCategoria)
-        ON DELETE SET NULL
-        ON UPDATE CASCADE
+        REFERENCES Categoria (idCategoria)
+
 );
 
 /*====================================================
@@ -1174,3 +1177,15 @@ ON pe.Cliente_idCliente = cl.idCliente;
 -- =====================================
 -- FIM DO SCRIPT
 -- =====================================
+
+
+show tables;
+
+USE Lizavariedades;
+select * from categoria;
+select * from marca;
+select * from cores;
+select * from tamanho;
+
+select * from produto;
+

@@ -2,332 +2,355 @@
 // IMPORTA O MODEL
 //==========================================
 
-const promocaoModel = require("../model/promocao_model.js");
+const clienteModel = require("../model/cliente_model.js");
 
 
 //==========================================
-// CADASTRAR PROMOÇÃO
+// CADASTRAR CLIENTE
 //==========================================
 
 function cadastrar(req, res) {
 
+    const cliente = req.body;
 
-    const promocao = req.body;
 
-
-    // Validação dos campos obrigatórios
+    //==========================================
+    // VALIDAÇÃO DOS CAMPOS OBRIGATÓRIOS
+    //==========================================
 
     if (
-        !promocao.nome ||
-        !promocao.data_inicio ||
-        !promocao.data_final ||
-        promocao.valor_promocao == null
+        !cliente.nome ||
+        !cliente.cpf ||
+        !cliente.dataNascimento ||
+        !cliente.email ||
+        !cliente.telefone
     ) {
-
 
         return res.status(400).json({
 
             sucesso: false,
+
             mensagem: "Preencha todos os campos obrigatórios."
 
         });
 
-
     }
 
 
+    //==========================================
+    // CADASTRAR NO MODEL
+    //==========================================
 
-    promocaoModel.cadastrar(promocao, (erro, resultado) => {
+    clienteModel.cadastrar(
+
+        cliente,
+
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao cadastrar cliente:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao cadastrar cliente.",
+
+                    erro: erro.message
+
+                });
+
+            }
 
 
+            //==========================================
+            // RETORNO DE SUCESSO
+            //==========================================
 
-        if (erro) {
+            return res.status(201).json({
 
+                sucesso: true,
 
-            return res.status(500).json({
+                mensagem: "Cliente cadastrado com sucesso!",
 
-                sucesso: false,
-                mensagem: "Erro ao cadastrar promoção.",
-                erro: erro
+                idCliente: resultado.insertId
 
             });
 
-
         }
 
-
-
-
-        return res.status(201).json({
-
-
-
-            sucesso: true,
-
-            mensagem: "Promoção cadastrada com sucesso!",
-
-            idPromocao: resultado.insertId
-
-
-
-        });
-
-
-
-    });
-
-
+    );
 
 }
 
 
-
-
 //==========================================
-// LISTAR PROMOÇÕES
+// LISTAR CLIENTES
 //==========================================
 
 function listar(req, res) {
 
+    clienteModel.listar(
+
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao listar clientes:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao listar clientes."
+
+                });
+
+            }
 
 
-    promocaoModel.listar((erro, resultado) => {
+            return res.status(200).json({
 
+                sucesso: true,
 
-
-        if (erro) {
-
-
-
-            return res.status(500).json({
-
-
-                sucesso: false,
-
-                mensagem: "Erro ao listar promoções."
-
+                clientes: resultado
 
             });
 
-
-
         }
 
-
-
-
-        res.json(resultado);
-
-
-
-    });
-
-
+    );
 
 }
 
 
-
-
-
 //==========================================
-// BUSCAR PROMOÇÃO POR ID
+// BUSCAR CLIENTE POR ID
 //==========================================
 
 function buscarPorId(req, res) {
 
-
-
     const id = req.params.id;
 
 
+    clienteModel.buscarPorId(
 
-    promocaoModel.buscarPorId(id, (erro, resultado) => {
+        id,
+
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao buscar cliente:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao buscar cliente."
+
+                });
+
+            }
 
 
+            //==========================================
+            // CLIENTE NÃO ENCONTRADO
+            //==========================================
 
-        if (erro) {
+            if (resultado.length === 0) {
+
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Cliente não encontrado."
+
+                });
+
+            }
 
 
+            return res.status(200).json({
 
-            return res.status(500).json({
+                sucesso: true,
 
-
-                sucesso: false,
-
-                mensagem: "Erro ao buscar promoção."
-
+                cliente: resultado[0]
 
             });
 
-
-
         }
 
-
-
-
-
-        if (resultado.length === 0) {
-
-
-
-            return res.status(404).json({
-
-
-                sucesso: false,
-
-                mensagem: "Promoção não encontrada."
-
-
-            });
-
-
-
-        }
-
-
-
-
-
-        res.json(resultado[0]);
-
-
-
-    });
-
-
+    );
 
 }
 
 
-
-
-
 //==========================================
-// ATUALIZAR PROMOÇÃO
+// ATUALIZAR CLIENTE
 //==========================================
 
 function atualizar(req, res) {
 
-
-
     const id = req.params.id;
 
-    const promocao = req.body;
+    const cliente = req.body;
 
 
+    //==========================================
+    // VALIDAÇÃO
+    //==========================================
 
-    promocaoModel.atualizar(id, promocao, (erro, resultado) => {
+    if (
+        !cliente.nome ||
+        !cliente.cpf ||
+        !cliente.dataNascimento ||
+        !cliente.email ||
+        !cliente.telefone
+    ) {
 
+        return res.status(400).json({
 
+            sucesso: false,
 
-        if (erro) {
-
-
-
-            return res.status(500).json({
-
-
-                sucesso: false,
-
-                mensagem: "Erro ao atualizar promoção."
-
-
-            });
-
-
-
-        }
-
-
-
-
-
-        res.json({
-
-
-
-            sucesso: true,
-
-            mensagem: "Promoção atualizada com sucesso."
-
-
+            mensagem: "Preencha todos os campos obrigatórios."
 
         });
 
+    }
 
 
-    });
+    clienteModel.atualizar(
+
+        id,
+
+        cliente,
+
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao atualizar cliente:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao atualizar cliente."
+
+                });
+
+            }
 
 
+            //==========================================
+            // VERIFICAR SE EXISTE
+            //==========================================
+
+            if (resultado.affectedRows === 0) {
+
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Cliente não encontrado."
+
+                });
+
+            }
+
+
+            return res.status(200).json({
+
+                sucesso: true,
+
+                mensagem: "Cliente atualizado com sucesso."
+
+            });
+
+        }
+
+    );
 
 }
 
 
-
-
-
 //==========================================
-// EXCLUIR PROMOÇÃO
+// EXCLUIR CLIENTE
 //==========================================
 
 function excluir(req, res) {
 
-
-
     const id = req.params.id;
 
 
+    clienteModel.excluir(
 
-    promocaoModel.excluir(id, (erro, resultado) => {
+        id,
+
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao excluir cliente:",
+                    erro
+                );
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem: "Erro ao excluir cliente."
+
+                });
+
+            }
 
 
+            //==========================================
+            // VERIFICAR SE EXISTE
+            //==========================================
 
-        if (erro) {
+            if (resultado.affectedRows === 0) {
+
+                return res.status(404).json({
+
+                    sucesso: false,
+
+                    mensagem: "Cliente não encontrado."
+
+                });
+
+            }
 
 
+            return res.status(200).json({
 
-            return res.status(500).json({
+                sucesso: true,
 
-
-                sucesso: false,
-
-                mensagem: "Erro ao excluir promoção."
-
+                mensagem: "Cliente excluído com sucesso."
 
             });
 
-
-
         }
 
-
-
-
-
-        res.json({
-
-
-
-            sucesso: true,
-
-            mensagem: "Promoção excluída com sucesso."
-
-
-
-        });
-
-
-
-    });
-
-
+    );
 
 }
-
-
-
 
 
 //==========================================
@@ -335,7 +358,6 @@ function excluir(req, res) {
 //==========================================
 
 module.exports = {
-
 
     cadastrar,
 
@@ -346,6 +368,5 @@ module.exports = {
     atualizar,
 
     excluir
-
 
 };
