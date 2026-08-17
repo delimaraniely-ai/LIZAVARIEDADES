@@ -2,8 +2,7 @@
 // IMPORTAR CONEXÃO
 // ==================================================
 
-const conexao =
-    require("../conexao/conexao.js");
+const conexao = require("../conexao/conexao.js");
 
 
 // ==================================================
@@ -13,9 +12,7 @@ const conexao =
 function cadastrar(produto, callback) {
 
     const sql = `
-
-        INSERT INTO Produto
-        (
+        INSERT INTO Produto (
             nome,
             descricao,
             codigo,
@@ -27,31 +24,78 @@ function cadastrar(produto, callback) {
             Marca_idMarca,
             Categoria_idCategoria
         )
-
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-
     `;
 
 
+    const valores = [
+
+        produto.nome,
+
+        produto.descricao,
+
+        produto.codigo,
+
+        produto.preco_antigo,
+
+        produto.preco_promocional,
+
+        produto.quantidade_estoque,
+
+        produto.ativo,
+
+        produto.Loja_idLoja,
+
+        produto.Marca_idMarca,
+
+        produto.Categoria_idCategoria
+
+    ];
+
+
+    console.log("=================================");
+    console.log("SQL - CADASTRAR PRODUTO");
+    console.log("Valores:", valores);
+    console.log("=================================");
+
+
     conexao.query(
-
         sql,
+        valores,
+        function (erro, resultado) {
 
-        [
-            produto.nome,
-            produto.descricao,
-            produto.codigo,
-            produto.preco_antigo,
-            produto.preco_promocional,
-            produto.quantidade_estoque,
-            produto.ativo,
-            produto.Loja_idLoja,
-            produto.Marca_idMarca,
-            produto.Categoria_idCategoria
-        ],
+            if (erro) {
 
-        callback
+                console.error(
+                    "ERRO NO INSERT DO PRODUTO:"
+                );
 
+                console.error(erro);
+
+                return callback(
+                    erro,
+                    null
+                );
+
+            }
+
+
+            console.log(
+                "Produto inserido no banco."
+            );
+
+            console.log(
+                "ID:",
+                resultado.insertId
+            );
+
+
+            callback(
+                null,
+                resultado
+            );
+
+        }
     );
 
 }
@@ -64,30 +108,44 @@ function cadastrar(produto, callback) {
 function listar(callback) {
 
     const sql = `
-
-        SELECT
-            *
-
+        SELECT *
         FROM Produto
-
         ORDER BY idProduto DESC
-
     `;
 
 
     conexao.query(
-
         sql,
+        function (erro, resultado) {
 
-        callback
+            if (erro) {
 
+                console.error(
+                    "Erro ao listar produtos:",
+                    erro
+                );
+
+                return callback(
+                    erro,
+                    null
+                );
+
+            }
+
+
+            callback(
+                null,
+                resultado
+            );
+
+        }
     );
 
 }
 
 
 // ==================================================
-// BUSCAR POR ID
+// BUSCAR PRODUTO POR ID
 // ==================================================
 
 function buscarPorId(
@@ -96,14 +154,9 @@ function buscarPorId(
 ) {
 
     const sql = `
-
-        SELECT
-            *
-
+        SELECT *
         FROM Produto
-
         WHERE idProduto = ?
-
     `;
 
 
@@ -113,7 +166,29 @@ function buscarPorId(
 
         [idProduto],
 
-        callback
+        function (erro, resultado) {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao buscar produto:",
+                    erro
+                );
+
+                return callback(
+                    erro,
+                    null
+                );
+
+            }
+
+
+            callback(
+                null,
+                resultado
+            );
+
+        }
 
     );
 
@@ -131,67 +206,78 @@ function atualizar(
 ) {
 
     const sql = `
-
         UPDATE Produto
-
         SET
-
             nome = ?,
-
             descricao = ?,
-
             codigo = ?,
-
             preco_antigo = ?,
-
             preco_promocional = ?,
-
             quantidade_estoque = ?,
-
             ativo = ?,
-
             Loja_idLoja = ?,
-
             Marca_idMarca = ?,
-
             Categoria_idCategoria = ?
-
         WHERE idProduto = ?
-
     `;
+
+
+    const valores = [
+
+        produto.nome,
+
+        produto.descricao,
+
+        produto.codigo,
+
+        produto.preco_antigo,
+
+        produto.preco_promocional,
+
+        produto.quantidade_estoque,
+
+        produto.ativo,
+
+        produto.Loja_idLoja,
+
+        produto.Marca_idMarca,
+
+        produto.Categoria_idCategoria,
+
+        idProduto
+
+    ];
 
 
     conexao.query(
 
         sql,
 
-        [
+        valores,
 
-            produto.nome,
+        function (erro, resultado) {
 
-            produto.descricao,
+            if (erro) {
 
-            produto.codigo,
+                console.error(
+                    "Erro ao atualizar produto:",
+                    erro
+                );
 
-            produto.preco_antigo,
+                return callback(
+                    erro,
+                    null
+                );
 
-            produto.preco_promocional,
+            }
 
-            produto.quantidade_estoque,
 
-            produto.ativo,
+            callback(
+                null,
+                resultado
+            );
 
-            produto.Loja_idLoja,
-
-            produto.Marca_idMarca,
-
-            produto.Categoria_idCategoria,
-
-            idProduto
-
-        ],
-
-        callback
+        }
 
     );
 
@@ -208,11 +294,8 @@ function excluir(
 ) {
 
     const sql = `
-
         DELETE FROM Produto
-
         WHERE idProduto = ?
-
     `;
 
 
@@ -222,7 +305,29 @@ function excluir(
 
         [idProduto],
 
-        callback
+        function (erro, resultado) {
+
+            if (erro) {
+
+                console.error(
+                    "Erro ao excluir produto:",
+                    erro
+                );
+
+                return callback(
+                    erro,
+                    null
+                );
+
+            }
+
+
+            callback(
+                null,
+                resultado
+            );
+
+        }
 
     );
 
@@ -230,7 +335,7 @@ function excluir(
 
 
 // ==================================================
-// EXPORTAR
+// EXPORTAR FUNÇÕES
 // ==================================================
 
 module.exports = {

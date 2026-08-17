@@ -6,38 +6,70 @@ const API = "http://localhost:3000";
 
 
 // ======================================================
-// ELEMENTOS
+// ELEMENTOS DO HTML
 // ======================================================
 
-const btnProduto = document.getElementById("btnProduto");
+const form =
+    document.getElementById("formCadastroProduto");
 
-const mensagemProduto =
-    document.getElementById("mensagemProduto");
+const btnCadastrar =
+    document.getElementById("btnCadastrar");
 
+const btnLimpar =
+    document.getElementById("btnLimpar");
 
-// ======================================================
-// CARREGAR TÍTULO
-// ======================================================
+const mensagem =
+    document.getElementById("mensagem");
 
-document.getElementById("tituloPagina").textContent =
-    "Cadastro de Produtos";
+const campoNome =
+    document.getElementById("nome");
 
-document.getElementById("descricaoPagina").textContent =
-    "Preencha os dados abaixo para cadastrar um novo produto.";
+const campoDescricao =
+    document.getElementById("descricao");
 
+const campoCodigo =
+    document.getElementById("codigo");
 
-// ======================================================
-// ELEMENTOS DOS SELECTS
-// ======================================================
+const campoEstoque =
+    document.getElementById("quantidade_estoque");
+
+const campoPrecoAntigo =
+    document.getElementById("preco_antigo");
+
+const campoPrecoPromocional =
+    document.getElementById("preco_promocional");
 
 const selectMarca =
-    document.getElementById("produtoMarca");
+    document.getElementById("marca");
 
 const selectCategoria =
-    document.getElementById("produtoCategoria");
+    document.getElementById("categoria");
+
+const selectAtivo =
+    document.getElementById("ativo");
 
 const selectLoja =
-    document.getElementById("produtoLoja");
+    document.getElementById("loja");
+
+
+// ======================================================
+// VERIFICAR ELEMENTOS
+// ======================================================
+
+console.log("Elementos encontrados:");
+
+console.log("Formulário:", form);
+console.log("Botão:", btnCadastrar);
+console.log("Nome:", campoNome);
+console.log("Descrição:", campoDescricao);
+console.log("Código:", campoCodigo);
+console.log("Estoque:", campoEstoque);
+console.log("Preço antigo:", campoPrecoAntigo);
+console.log("Preço promocional:", campoPrecoPromocional);
+console.log("Marca:", selectMarca);
+console.log("Categoria:", selectCategoria);
+console.log("Status:", selectAtivo);
+console.log("Loja:", selectLoja);
 
 
 // ======================================================
@@ -46,11 +78,17 @@ const selectLoja =
 
 function mostrarMensagem(texto, tipo = "erro") {
 
-    mensagemProduto.textContent = texto;
+    if (!mensagem) {
+        return;
+    }
 
-    mensagemProduto.className =
-        "mensagem " + tipo;
+    mensagem.textContent = texto;
 
+    mensagem.className = "mensagem";
+
+    if (tipo) {
+        mensagem.classList.add(tipo);
+    }
 }
 
 
@@ -60,285 +98,253 @@ function mostrarMensagem(texto, tipo = "erro") {
 
 function limparMensagem() {
 
-    mensagemProduto.textContent = "";
+    if (!mensagem) {
+        return;
+    }
 
-    mensagemProduto.className =
-        "mensagem";
+    mensagem.textContent = "";
 
+    mensagem.className = "mensagem";
 }
 
 
 // ======================================================
-// LISTAR MARCAS
+// LER RESPOSTA DA API
 // ======================================================
 
-function listarMarcas() {
+async function lerResposta(response) {
 
-    fetch(`${API}/marcas`)
+    const texto = await response.text();
 
-        .then(response => {
+    if (!texto) {
+        return {};
+    }
 
-            if (!response.ok) {
+    try {
 
-                throw new Error(
-                    "Erro ao buscar marcas."
-                );
+        return JSON.parse(texto);
 
-            }
+    } catch (erro) {
 
-            return response.json();
+        console.error(
+            "Resposta da API não é JSON:",
+            texto
+        );
 
-        })
-
-        .then(data => {
-
-            selectMarca.innerHTML = "";
-
-            const optionInicial =
-                document.createElement("option");
-
-            optionInicial.value = "";
-
-            optionInicial.textContent =
-                "Selecione a marca";
-
-            selectMarca.appendChild(
-                optionInicial
-            );
-
-
-            // =========================================
-            // VERIFICAR FORMATO DA RESPOSTA
-            // =========================================
-
-            const marcas =
-                data.marcas || data;
-
-
-            marcas.forEach(marca => {
-
-                const option =
-                    document.createElement("option");
-
-
-                option.value =
-                    marca.idMarca;
-
-                option.textContent =
-                    marca.nome;
-
-
-                selectMarca.appendChild(
-                    option
-                );
-
-            });
-
-        })
-
-        .catch(erro => {
-
-            console.error(
-                "Erro ao carregar marcas:",
-                erro
-            );
-
-            selectMarca.innerHTML = "";
-
-            const option =
-                document.createElement("option");
-
-            option.value = "";
-
-            option.textContent =
-                "Erro ao carregar marcas";
-
-            selectMarca.appendChild(
-                option
-            );
-
-        });
-
+        return {
+            mensagem: texto
+        };
+    }
 }
 
 
 // ======================================================
-// LISTAR CATEGORIAS
+// CARREGAR MARCAS
 // ======================================================
 
-function listarCategorias() {
+async function listarMarcas() {
 
-    fetch(`${API}/categorias`)
+    try {
 
-        .then(response => {
+        const resposta =
+            await fetch(`${API}/marcas`);
 
-            if (!response.ok) {
+        const dados =
+            await lerResposta(resposta);
 
-                throw new Error(
-                    "Erro ao buscar categorias."
-                );
 
-            }
+        if (!resposta.ok) {
 
-            return response.json();
-
-        })
-
-        .then(data => {
-
-            selectCategoria.innerHTML = "";
-
-            const optionInicial =
-                document.createElement("option");
-
-            optionInicial.value = "";
-
-            optionInicial.textContent =
-                "Selecione a categoria";
-
-            selectCategoria.appendChild(
-                optionInicial
+            throw new Error(
+                dados.mensagem ||
+                dados.message ||
+                "Erro ao carregar marcas."
             );
+        }
 
 
-            const categorias =
-                data.categorias || data;
+        const marcas =
+            Array.isArray(dados)
+                ? dados
+                : dados.marcas || [];
 
 
-            categorias.forEach(categoria => {
-
-                const option =
-                    document.createElement("option");
-
-
-                option.value =
-                    categoria.idCategoria;
-
-                option.textContent =
-                    categoria.nome;
+        selectMarca.innerHTML = `
+            <option value="">
+                Selecione uma marca
+            </option>
+        `;
 
 
-                selectCategoria.appendChild(
-                    option
-                );
-
-            });
-
-        })
-
-        .catch(erro => {
-
-            console.error(
-                "Erro ao carregar categorias:",
-                erro
-            );
-
-            selectCategoria.innerHTML = "";
+        marcas.forEach(function (marca) {
 
             const option =
                 document.createElement("option");
 
-            option.value = "";
+            option.value =
+                marca.idMarca;
 
             option.textContent =
-                "Erro ao carregar categorias";
+                marca.nome;
 
-            selectCategoria.appendChild(
-                option
-            );
+            selectMarca.appendChild(option);
 
         });
 
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar marcas:",
+            erro
+        );
+
+        selectMarca.innerHTML = `
+            <option value="">
+                Erro ao carregar marcas
+            </option>
+        `;
+    }
 }
 
 
 // ======================================================
-// LISTAR LOJAS
+// CARREGAR CATEGORIAS
 // ======================================================
 
-function listarLojas() {
+async function listarCategorias() {
 
-    fetch(`${API}/lojas`)
+    try {
 
-        .then(response => {
+        const resposta =
+            await fetch(`${API}/categorias`);
 
-            if (!response.ok) {
+        const dados =
+            await lerResposta(resposta);
 
-                throw new Error(
-                    "Erro ao buscar lojas."
-                );
 
-            }
+        if (!resposta.ok) {
 
-            return response.json();
-
-        })
-
-        .then(data => {
-
-            selectLoja.innerHTML = "";
-
-            const optionInicial =
-                document.createElement("option");
-
-            optionInicial.value = "";
-
-            optionInicial.textContent =
-                "Selecione a loja";
-
-            selectLoja.appendChild(
-                optionInicial
+            throw new Error(
+                dados.mensagem ||
+                dados.message ||
+                "Erro ao carregar categorias."
             );
+        }
 
 
-            const lojas =
-                data.lojas || data;
+        const categorias =
+            Array.isArray(dados)
+                ? dados
+                : dados.categorias || [];
 
 
-            lojas.forEach(loja => {
-
-                const option =
-                    document.createElement("option");
-
-
-                option.value =
-                    loja.idLoja;
-
-                option.textContent =
-                    loja.nome;
+        selectCategoria.innerHTML = `
+            <option value="">
+                Selecione uma categoria
+            </option>
+        `;
 
 
-                selectLoja.appendChild(
-                    option
-                );
-
-            });
-
-        })
-
-        .catch(erro => {
-
-            console.error(
-                "Erro ao carregar lojas:",
-                erro
-            );
-
-            selectLoja.innerHTML = "";
+        categorias.forEach(function (categoria) {
 
             const option =
                 document.createElement("option");
 
-            option.value = "";
+            option.value =
+                categoria.idCategoria;
 
             option.textContent =
-                "Erro ao carregar lojas";
+                categoria.nome;
 
-            selectLoja.appendChild(
-                option
-            );
+            selectCategoria.appendChild(option);
 
         });
 
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar categorias:",
+            erro
+        );
+
+        selectCategoria.innerHTML = `
+            <option value="">
+                Erro ao carregar categorias
+            </option>
+        `;
+    }
+}
+
+
+// ======================================================
+// CARREGAR LOJAS
+// ======================================================
+
+async function listarLojas() {
+
+    try {
+
+        const resposta =
+            await fetch(`${API}/lojas`);
+
+        const dados =
+            await lerResposta(resposta);
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                dados.mensagem ||
+                dados.message ||
+                "Erro ao carregar lojas."
+            );
+        }
+
+
+        const lojas =
+            Array.isArray(dados)
+                ? dados
+                : dados.lojas || [];
+
+
+        selectLoja.innerHTML = `
+            <option value="">
+                Selecione uma loja
+            </option>
+        `;
+
+
+        lojas.forEach(function (loja) {
+
+            const option =
+                document.createElement("option");
+
+            option.value =
+                loja.idLoja;
+
+            option.textContent =
+                loja.nome;
+
+            selectLoja.appendChild(option);
+
+        });
+
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao carregar lojas:",
+            erro
+        );
+
+        selectLoja.innerHTML = `
+            <option value="">
+                Erro ao carregar lojas
+            </option>
+        `;
+    }
 }
 
 
@@ -346,82 +352,46 @@ function listarLojas() {
 // CADASTRAR PRODUTO
 // ======================================================
 
-btnProduto.addEventListener(
-    "click",
-    cadastrarProduto
-);
+async function cadastrarProduto(event) {
 
-
-async function cadastrarProduto() {
+    event.preventDefault();
 
     limparMensagem();
 
 
     // ==================================================
-    // PEGAR DADOS
+    // PEGAR VALORES
     // ==================================================
 
     const nome =
-        document
-            .getElementById("produtoNome")
-            .value
-            .trim();
-
+        campoNome.value.trim();
 
     const descricao =
-        document
-            .getElementById("produtoDescricao")
-            .value
-            .trim();
-
+        campoDescricao.value.trim();
 
     const codigo =
-        document
-            .getElementById("produtoCodigo")
-            .value
-            .trim();
-
+        campoCodigo.value.trim();
 
     const quantidadeEstoque =
-        document
-            .getElementById("produtoEstoque")
-            .value;
-
+        campoEstoque.value;
 
     const precoAntigo =
-        document
-            .getElementById("produtoPrecoAntigo")
-            .value;
-
+        campoPrecoAntigo.value;
 
     const precoPromocional =
-        document
-            .getElementById("produtoPrecoPromo")
-            .value;
-
+        campoPrecoPromocional.value;
 
     const marca =
-        document
-            .getElementById("produtoMarca")
-            .value;
-
+        selectMarca.value;
 
     const categoria =
-        document
-            .getElementById("produtoCategoria")
-            .value;
+        selectCategoria.value;
 
-
-    const status =
-        document
-            .getElementById("produtoStatus")
-            .value;
-
+    const ativo =
+        selectAtivo.value;
 
     const loja =
-        document
-            .getElementById("produtoLoja")
-            .value;
+        selectLoja.value;
 
 
     // ==================================================
@@ -431,111 +401,91 @@ async function cadastrarProduto() {
     if (!nome) {
 
         mostrarMensagem(
-            "Digite o nome do produto."
+            "Digite o nome do produto.",
+            "erro"
         );
 
-        return;
+        campoNome.focus();
 
+        return;
     }
 
 
     if (!descricao) {
 
         mostrarMensagem(
-            "Digite a descrição do produto."
+            "Digite a descrição do produto.",
+            "erro"
         );
 
-        return;
+        campoDescricao.focus();
 
+        return;
     }
 
 
     if (!codigo) {
 
         mostrarMensagem(
-            "Digite o código do produto."
+            "Digite o código do produto.",
+            "erro"
         );
 
-        return;
+        campoCodigo.focus();
 
+        return;
     }
 
 
-    if (
-        quantidadeEstoque === "" ||
-        quantidadeEstoque === null
-    ) {
+    if (quantidadeEstoque === "") {
 
         mostrarMensagem(
-            "Digite a quantidade em estoque."
+            "Digite a quantidade em estoque.",
+            "erro"
         );
 
-        return;
+        campoEstoque.focus();
 
+        return;
     }
 
 
-    if (
-        precoAntigo === "" ||
-        precoAntigo === null
-    ) {
+    if (Number(quantidadeEstoque) < 0) {
 
         mostrarMensagem(
-            "Digite o preço antigo."
+            "A quantidade não pode ser negativa.",
+            "erro"
         );
 
-        return;
+        campoEstoque.focus();
 
+        return;
     }
 
 
-    if (!marca) {
+    if (precoAntigo === "") {
 
         mostrarMensagem(
-            "Selecione uma marca."
+            "Digite o preço antigo.",
+            "erro"
         );
 
-        return;
+        campoPrecoAntigo.focus();
 
+        return;
     }
 
 
-    if (!categoria) {
+    if (Number(precoAntigo) < 0) {
 
         mostrarMensagem(
-            "Selecione uma categoria."
+            "O preço antigo não pode ser negativo.",
+            "erro"
         );
 
-        return;
-
-    }
-
-
-    if (!loja) {
-
-        mostrarMensagem(
-            "Selecione uma loja."
-        );
+        campoPrecoAntigo.focus();
 
         return;
-
-    }
-
-
-    // ==================================================
-    // VALIDAR PREÇOS
-    // ==================================================
-
-    if (
-        Number(precoAntigo) < 0
-    ) {
-
-        mostrarMensagem(
-            "O preço antigo não pode ser negativo."
-        );
-
-        return;
-
     }
 
 
@@ -545,16 +495,74 @@ async function cadastrarProduto() {
     ) {
 
         mostrarMensagem(
-            "O preço promocional não pode ser negativo."
+            "O preço promocional não pode ser negativo.",
+            "erro"
         );
 
-        return;
+        campoPrecoPromocional.focus();
 
+        return;
+    }
+
+
+    if (
+        precoPromocional !== "" &&
+        Number(precoPromocional) >
+        Number(precoAntigo)
+    ) {
+
+        mostrarMensagem(
+            "O preço promocional não pode ser maior que o preço antigo.",
+            "erro"
+        );
+
+        campoPrecoPromocional.focus();
+
+        return;
+    }
+
+
+    if (!marca) {
+
+        mostrarMensagem(
+            "Selecione uma marca.",
+            "erro"
+        );
+
+        selectMarca.focus();
+
+        return;
+    }
+
+
+    if (!categoria) {
+
+        mostrarMensagem(
+            "Selecione uma categoria.",
+            "erro"
+        );
+
+        selectCategoria.focus();
+
+        return;
+    }
+
+
+    if (!loja) {
+
+        mostrarMensagem(
+            "Selecione uma loja.",
+            "erro"
+        );
+
+        selectLoja.focus();
+
+        return;
     }
 
 
     // ==================================================
-    // OBJETO PRODUTO
+    // OBJETO PARA O BANCO
     // ==================================================
 
     const produto = {
@@ -577,7 +585,7 @@ async function cadastrarProduto() {
             Number(quantidadeEstoque),
 
         ativo:
-            status === "true",
+            Number(ativo),
 
         Loja_idLoja:
             Number(loja),
@@ -587,17 +595,25 @@ async function cadastrarProduto() {
 
         Categoria_idCategoria:
             Number(categoria)
-
     };
 
 
     // ==================================================
-    // CONFERIR NO CONSOLE
+    // MOSTRAR OBJETO NO CONSOLE
     // ==================================================
 
     console.log(
-        "Produto enviado:",
-        produto
+        "======================================"
+    );
+
+    console.log(
+        "PRODUTO ENVIADO:"
+    );
+
+    console.log(produto);
+
+    console.log(
+        "======================================"
     );
 
 
@@ -605,9 +621,9 @@ async function cadastrarProduto() {
     // DESABILITAR BOTÃO
     // ==================================================
 
-    btnProduto.disabled = true;
+    btnCadastrar.disabled = true;
 
-    btnProduto.textContent =
+    btnCadastrar.textContent =
         "Cadastrando...";
 
 
@@ -621,40 +637,41 @@ async function cadastrarProduto() {
             await fetch(
                 `${API}/produtos`,
                 {
-
                     method: "POST",
 
                     headers: {
-
                         "Content-Type":
                             "application/json"
-
                     },
 
                     body:
                         JSON.stringify(produto)
-
                 }
             );
 
 
-        // ==============================================
-        // TENTAR LER RESPOSTA
-        // ==============================================
+        // ==================================================
+        // LER RESPOSTA
+        // ==================================================
 
         const dados =
-            await resposta.json();
+            await lerResposta(resposta);
 
 
         console.log(
-            "Resposta da API:",
+            "Status:",
+            resposta.status
+        );
+
+        console.log(
+            "Resposta:",
             dados
         );
 
 
-        // ==============================================
+        // ==================================================
         // VERIFICAR ERRO
-        // ==============================================
+        // ==================================================
 
         if (!resposta.ok) {
 
@@ -664,92 +681,123 @@ async function cadastrarProduto() {
 
                 dados.message ||
 
+                dados.erro ||
+
                 "Erro ao cadastrar produto."
 
             );
-
         }
 
 
-        // ==============================================
+        // ==================================================
         // SUCESSO
-        // ==============================================
+        // ==================================================
 
         mostrarMensagem(
+            dados.mensagem ||
             "Produto cadastrado com sucesso!",
             "sucesso"
         );
 
 
-        // ==============================================
+        // ==================================================
         // LIMPAR FORMULÁRIO
-        // ==============================================
+        // ==================================================
 
-        document
-            .getElementById("produtoNome")
-            .value = "";
+        form.reset();
 
-        document
-            .getElementById("produtoDescricao")
-            .value = "";
 
-        document
-            .getElementById("produtoCodigo")
-            .value = "";
+        // Voltar status para Ativo
+        selectAtivo.value = "1";
 
-        document
-            .getElementById("produtoEstoque")
-            .value = "";
 
-        document
-            .getElementById("produtoPrecoAntigo")
-            .value = "";
+        // ==================================================
+        // FOCO
+        // ==================================================
 
-        document
-            .getElementById("produtoPrecoPromo")
-            .value = "";
-
-        selectMarca.value = "";
-
-        selectCategoria.value = "";
-
-        selectLoja.value = "";
-
-        selectMarca.focus();
+        campoNome.focus();
 
 
     } catch (erro) {
 
         console.error(
-            "Erro ao cadastrar produto:",
-            erro
+            "======================================"
+        );
+
+        console.error(
+            "ERRO AO CADASTRAR PRODUTO"
+        );
+
+        console.error(erro);
+
+        console.error(
+            "======================================"
         );
 
 
         mostrarMensagem(
             erro.message ||
-            "Não foi possível cadastrar o produto."
+            "Não foi possível cadastrar o produto.",
+            "erro"
         );
 
 
     } finally {
 
-        btnProduto.disabled = false;
+        btnCadastrar.disabled = false;
 
-        btnProduto.textContent =
+        btnCadastrar.textContent =
             "Cadastrar Produto";
-
     }
+}
+
+
+// ======================================================
+// EVENTO DO FORMULÁRIO
+// ======================================================
+
+if (form) {
+
+    form.addEventListener(
+        "submit",
+        cadastrarProduto
+    );
 
 }
 
 
 // ======================================================
-// INICIALIZAR
+// BOTÃO LIMPAR
 // ======================================================
 
-listarMarcas();
+if (btnLimpar) {
 
-listarCategorias();
+    btnLimpar.addEventListener(
+        "click",
+        function () {
 
-listarLojas();
+            limparMensagem();
+
+            selectAtivo.value = "1";
+        }
+    );
+
+}
+
+
+// ======================================================
+// INICIAR
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        listarMarcas();
+
+        listarCategorias();
+
+        listarLojas();
+
+    }
+);

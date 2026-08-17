@@ -1,6 +1,3 @@
-### `cadastroproduto.html`
-
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -12,167 +9,196 @@
 
     <title>Cadastro de Produtos</title>
 
-    <!-- ==========================================
-         CSS
-    =========================================== -->
-
-    <link rel="stylesheet" href="/style/cadastroproduto.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../STYLE/cadastroproduto.css">
 
 </head>
 
 
 <body>
 
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-    <!-- ==========================================
-         CONTAINER
-    =========================================== -->
+    <header class="header">
 
-    <div class="container">
+        <div class="header-conteudo">
+
+            <div class="logo-area">
+
+                <a href="index.html">
+                    LIZA VARIEDADES
+                </a>
+
+            </div>
+
+            <div class="titulo-header">
+                Cadastro de Produtos
+            </div>
+
+        </div>
+
+    </header>
 
 
-        <!-- ==========================================
-             TÍTULO
-        =========================================== -->
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
 
-        <div class="titulo">
+    <main class="container">
 
-            <h1 id="tituloPagina"></h1>
+        <!-- TÍTULO -->
 
-            <p id="descricaoPagina"></p>
+        <div class="pagina-titulo">
+
+            <h1>
+                Cadastro de Produtos
+            </h1>
+
+            <p>
+                Preencha os dados abaixo para cadastrar um novo produto.
+            </p>
 
         </div>
 
 
-        <!-- ==========================================
-             CARD
-        =========================================== -->
+        <!-- =================================================
+             FORMULÁRIO
+        ================================================== -->
 
-        <div class="card">
-
-
-            <!-- ==========================================
-                 FORMULÁRIO
-            =========================================== -->
-
-            <div class="form-grid">
+        <form id="formCadastroProduto" class="formulario">
 
 
-                <!-- ======================================
-                     NOME
-                ======================================= -->
+            <!-- =================================================
+                 NOME
+            ================================================== -->
 
-                <div class="campo campo-completo">
+            <div class="campo campo-full">
 
-                    <label for="produtoNome">
-                        Nome do produto
-                        <span class="obrigatorio">*</span>
-                    </label>
+                <label for="nome">
+                    Nome do produto
+                    <span>*</span>
+                </label>
 
-                    <input type="text" id="produtoNome" placeholder="Digite o nome do produto">
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto" required>
 
-                </div>
-
-
-                <!-- ======================================
-                     DESCRIÇÃO
-                ======================================= -->
-
-                <div class="campo campo-completo">
-
-                    <label for="produtoDescricao">
-                        Descrição
-                        <span class="obrigatorio">*</span>
-                    </label>
-
-                    <textarea id="produtoDescricao" placeholder="Digite a descrição do produto"></textarea>
-
-                </div>
+            </div>
 
 
-                <!-- ======================================
-                     CÓDIGO
-                ======================================= -->
+            <!-- =================================================
+                 DESCRIÇÃO
+            ================================================== -->
+
+            <div class="campo campo-full">
+
+                <label for="descricao">
+                    Descrição
+                    <span>*</span>
+                </label>
+
+                <textarea id="descricao" name="descricao" placeholder="Digite a descrição do produto" rows="5"
+                    required></textarea>
+
+            </div>
+
+
+            <!-- =================================================
+                 CÓDIGO + ESTOQUE
+            ================================================== -->
+
+            <div class="linha">
+
+
+                <!-- CÓDIGO -->
 
                 <div class="campo">
 
-                    <label for="produtoCodigo">
+                    <label for="codigo">
                         Código do produto
-                        <span class="obrigatorio">*</span>
+                        <span>*</span>
                     </label>
 
-                    <input type="text" id="produtoCodigo" placeholder="Ex.: PROD001">
+                    <input type="text" id="codigo" name="codigo" placeholder="Ex.: PROD001" required>
 
                 </div>
 
 
-                <!-- ======================================
-                     ESTOQUE
-                ======================================= -->
+                <!-- ESTOQUE -->
 
                 <div class="campo">
 
-                    <label for="produtoEstoque">
+                    <label for="quantidade_estoque">
                         Quantidade em estoque
-                        <span class="obrigatorio">*</span>
+                        <span>*</span>
                     </label>
 
-                    <input type="number" id="produtoEstoque" min="0" step="1" placeholder="0">
+                    <input type="number" id="quantidade_estoque" name="quantidade_estoque" min="0"
+                        placeholder="Digite a quantidade" required>
 
                 </div>
 
+            </div>
 
-                <!-- ======================================
-                     PREÇO ANTIGO
-                ======================================= -->
+
+            <!-- =================================================
+                 PREÇOS
+            ================================================== -->
+
+            <div class="linha">
+
+
+                <!-- PREÇO ANTIGO -->
 
                 <div class="campo">
 
-                    <label for="produtoPrecoAntigo">
+                    <label for="preco_antigo">
                         Preço antigo
-                        <span class="obrigatorio">*</span>
+                        <span>*</span>
                     </label>
 
-                    <input type="number" id="produtoPrecoAntigo" min="0" step="0.01" placeholder="0,00">
+                    <input type="number" id="preco_antigo" name="preco_antigo" min="0" step="0.01" placeholder="0,00"
+                        required>
 
                 </div>
 
 
-                <!-- ======================================
-                     PREÇO PROMOCIONAL
-                ======================================= -->
+                <!-- PREÇO PROMOCIONAL -->
 
                 <div class="campo">
 
-                    <label for="produtoPrecoPromo">
+                    <label for="preco_promocional">
                         Preço promocional
                     </label>
 
-                    <input type="number" id="produtoPrecoPromo" min="0" step="0.01" placeholder="0,00">
+                    <input type="number" id="preco_promocional" name="preco_promocional" min="0" step="0.01"
+                        placeholder="0,00">
 
                 </div>
 
+            </div>
 
-                <!-- ======================================
-                     MARCA
-                ======================================= -->
+
+            <!-- =================================================
+                 MARCA + CATEGORIA
+            ================================================== -->
+
+            <div class="linha">
+
+
+                <!-- MARCA -->
 
                 <div class="campo">
 
-                    <label for="produtoMarca">
-
+                    <label for="marca">
                         Marca
-
-                        <span class="obrigatorio">
-                            *
-                        </span>
-
+                        <span>*</span>
                     </label>
 
-                    <select id="produtoMarca">
+                    <select id="marca" name="marca" required>
 
                         <option value="">
-                            Carregando marcas...
+                            Selecione uma marca
                         </option>
 
                     </select>
@@ -180,56 +206,51 @@
                 </div>
 
 
-                <!-- ======================================
-                     CATEGORIA
-                ======================================= -->
+                <!-- CATEGORIA -->
 
                 <div class="campo">
 
-                    <label for="produtoCategoria">
-
+                    <label for="categoria">
                         Categoria
-
-                        <span class="obrigatorio">
-                            *
-                        </span>
-
+                        <span>*</span>
                     </label>
 
-                    <select id="produtoCategoria">
+                    <select id="categoria" name="categoria" required>
 
                         <option value="">
-                            Carregando categorias...
+                            Selecione uma categoria
                         </option>
 
                     </select>
 
                 </div>
 
+            </div>
 
-                <!-- ======================================
-                     STATUS
-                ======================================= -->
+
+            <!-- =================================================
+                 STATUS + LOJA
+            ================================================== -->
+
+            <div class="linha">
+
+
+                <!-- STATUS -->
 
                 <div class="campo">
 
-                    <label for="produtoStatus">
-
+                    <label for="ativo">
                         Status do produto
-
-                        <span class="obrigatorio">
-                            *
-                        </span>
-
+                        <span>*</span>
                     </label>
 
-                    <select id="produtoStatus">
+                    <select id="ativo" name="ativo" required>
 
-                        <option value="true">
+                        <option value="1">
                             Ativo
                         </option>
 
-                        <option value="false">
+                        <option value="0">
                             Inativo
                         </option>
 
@@ -238,70 +259,77 @@
                 </div>
 
 
-                <!-- ======================================
-                     LOJA
-                ======================================= -->
+                <!-- LOJA -->
 
                 <div class="campo">
 
-                    <label for="produtoLoja">
-
+                    <label for="loja">
                         Loja
-
-                        <span class="obrigatorio">
-                            *
-                        </span>
-
+                        <span>*</span>
                     </label>
 
-                    <select id="produtoLoja">
+                    <select id="loja" name="loja" required>
 
                         <option value="">
-                            Carregando lojas...
+                            Selecione uma loja
                         </option>
 
                     </select>
 
                 </div>
 
-
             </div>
 
 
-            <!-- ==========================================
+            <!-- =================================================
                  MENSAGEM
-            =========================================== -->
+            ================================================== -->
 
-            <div id="mensagemProduto" class="mensagem"></div>
+            <div id="mensagem" class="mensagem"></div>
 
 
-            <!-- ==========================================
-                 BOTÃO
-            =========================================== -->
+            <!-- =================================================
+                 BOTÕES
+            ================================================== -->
 
-            <div class="botao-container">
+            <div class="form-footer">
 
-                <button type="button" id="btnProduto">
+                <button type="reset" id="btnLimpar" class="btn btn-secundario">
+                    Limpar
+                </button>
+
+
+                <button type="submit" id="btnCadastrar" class="btn btn-principal">
                     Cadastrar Produto
                 </button>
 
             </div>
 
 
-        </div>
+        </form>
+
+    </main>
 
 
-    </div>
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Liza Variedades - Todos os direitos reservados.
+        </p>
+
+    </footer>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          JAVASCRIPT
-    =========================================== -->
+    ====================================================== -->
 
-    <script src="/js/cadastroproduto.js"></script>
-
+    <script src="../JS/cadastroproduto.js"></script>
 
 </body>
 
 </html>
-```

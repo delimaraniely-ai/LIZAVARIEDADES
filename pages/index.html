@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Liza Variedades</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style/index.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <!-- PARTE SUPERIOR -->
+        <div class="header-top">
+
+            <!-- LOGO -->
+            <div class="logo-area">
+
+                <a href="../pages/index.html">
+
+                    <img src="../assets/logo.png" alt="Liza Variedades" class="logo">
+
+                </a>
+
+            </div>
+
+
+            <!-- PESQUISA -->
+            <div class="search-area">
+
+                <input type="text" id="campoPesquisa" placeholder="O que você está procurando?">
+
+                <button type="button" id="btnPesquisa" aria-label="Pesquisar">
+
+                    <img src="../assets/pesquisa.png" alt="Pesquisar">
+
+                </button>
+
+            </div>
+
+
+            <!-- AÇÕES -->
+            <div class="header-actions">
+
+
+                <!-- CARRINHO -->
+                <a href="#" class="header-action">
+
+                    <img src="../assets/carrinho.png" alt="Carrinho">
+
+                    <div>
+
+                        <span>MENU</span>
+
+                        <strong>CARRINHO</strong>
+
+                    </div>
+
+                </a>
+
+
+                <!-- USUÁRIO -->
+                <a href="#" class="header-action">
+
+                    <img src="../assets/usuario.png" alt="Usuário">
+
+                    <div>
+
+                        <span>Olá visitante</span>
+
+                        <strong>ENTRAR</strong>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- MENU -->
+        <nav class="menu">
+
+            <a href="#">
+                HOME
+            </a>
+
+            <a href="#">
+                CARRINHO
+            </a>
+
+            <a href="#">
+                BRINQUEDOS
+            </a>
+
+            <a href="#">
+                MAQUIAGENS
+            </a>
+
+            <a href="#">
+                CAMA, MESA E BANHO
+            </a>
+
+            <a href="#">
+                UTENSÍLIOS DE CASA
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         BANNER
+    ====================================================== -->
+
+    <section class="banner-section">
+
+        <div class="banner-container">
+
+            <!-- IMAGEM DO BANNER -->
+            <img src="../assets/BANNER.png" alt="Banner da loja" id="imagemBanner" class="banner-image">
+
+
+            <!-- SETA ANTERIOR -->
+            <button type="button" id="btnAnterior" class="banner-button banner-prev" aria-label="Banner anterior">
+
+                <span>‹</span>
+
+            </button>
+
+
+            <!-- SETA PRÓXIMO -->
+            <button type="button" id="btnProximo" class="banner-button banner-next" aria-label="Próximo banner">
+
+                <span>›</span>
+
+            </button>
+
+
+            <!-- INDICADORES -->
+            <div class="banner-indicators" id="indicadoresBanner">
+
+                <span class="indicador ativo"></span>
+
+                <span class="indicador"></span>
+
+                <span class="indicador"></span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CONTEÚDO
+    ====================================================== -->
+
+    <main class="conteudo">
+
+
+        <!-- =================================================
+             OFERTAS
+        ================================================== -->
+
+        <section class="secao-produtos">
+
+
+            <!-- TÍTULO -->
+            <div class="secao-header">
+
+                <h1>
+                    Confira as melhores ofertas!
+                </h1>
+
+                <a href="#" class="ver-tudo">
+                    Ver Tudo
+                </a>
+
+            </div>
+
+
+            <!-- PRODUTOS -->
+            <div class="produtos-grid">
+
+
+                <!-- ==========================================
+                     PRODUTO 1
+                =========================================== -->
+
+                <article class="produto-card">
+
+                    <div class="produto-imagem">
+
+                        <img src="../assets/1.png" alt="Nome do produto">
+
+                        <button type="button" class="btn-favorito" aria-label="Adicionar aos favoritos">
+
+                            <img src="../assets/favorito.png" alt="Favoritar">
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="produto-info">
+
+                        <h2>
+                            Nome do produto
+                        </h2>
+
+
+                        <div class="precos">
+
+                            <span class="preco-antigo">
+                                R$ 199,99
+                            </span>
+
+                            <strong class="preco-atual">
+                                R$ 99,99
+                            </strong>
+
+                        </div>
+
+
+                        <div class="produto-footer">
+
+                            <div class="avaliacao">
+
+                                <img src="../assets/estrela.png" alt="Estrela">
+
+                                <span>
+                                    4.5
+                                </span>
+
+                            </div>
+
+
+                            <button type="button" class="btn-carrinho" aria-label="Adicionar ao carrinho">
+
+                                <img src="../assets/carrinho.png" alt="Adicionar ao carrinho">
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ==========================================
+                     PRODUTO 2
+                =========================================== -->
+
+                <article class="produto-card">
+
+                    <div class="produto-imagem">
+
+                        <img src="../assets/1.png" alt="Produto em promoção">
+
+                        <button type="button" class="btn-favorito" aria-label="Adicionar aos favoritos">
+
+                            <img src="../assets/favorito.png" alt="Favoritar">
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="produto-info">
+
+                        <h2>
+                            Produto em promoção
+                        </h2>
+
+
+                        <div class="precos">
+
+                            <span class="preco-antigo">
+                                R$ 159,99
+                            </span>
+
+                            <strong class="preco-atual">
+                                R$ 89,99
+                            </strong>
+
+                        </div>
+
+
+                        <div class="produto-footer">
+
+                            <div class="avaliacao">
+
+                                <img src="../assets/estrela.png" alt="Estrela">
+
+                                <span>
+                                    4.5
+                                </span>
+
+                            </div>
+
+
+                            <button type="button" class="btn-carrinho" aria-label="Adicionar ao carrinho">
+
+                                <img src="../assets/carrinho.png" alt="Adicionar ao carrinho">
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ==========================================
+                     PRODUTO 3
+                =========================================== -->
+
+                <article class="produto-card">
+
+                    <div class="produto-imagem">
+
+                        <img src="../assets/1.png" alt="Produto especial">
+
+                        <button type="button" class="btn-favorito" aria-label="Adicionar aos favoritos">
+
+                            <img src="../assets/favorito.png" alt="Favoritar">
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="produto-info">
+
+                        <h2>
+                            Produto especial
+                        </h2>
+
+
+                        <div class="precos">
+
+                            <span class="preco-antigo">
+                                R$ 129,99
+                            </span>
+
+                            <strong class="preco-atual">
+                                R$ 79,99
+                            </strong>
+
+                        </div>
+
+
+                        <div class="produto-footer">
+
+                            <div class="avaliacao">
+
+                                <img src="../assets/estrela.png" alt="Estrela">
+
+                                <span>
+                                    4.5
+                                </span>
+
+                            </div>
+
+
+                            <button type="button" class="btn-carrinho" aria-label="Adicionar ao carrinho">
+
+                                <img src="../assets/carrinho.png" alt="Adicionar ao carrinho">
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ==========================================
+                     PRODUTO 4
+                =========================================== -->
+
+                <article class="produto-card">
+
+                    <div class="produto-imagem">
+
+                        <img src="../assets/1.png" alt="Oferta especial">
+
+                        <button type="button" class="btn-favorito" aria-label="Adicionar aos favoritos">
+
+                            <img src="../assets/favorito.png" alt="Favoritar">
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="produto-info">
+
+                        <h2>
+                            Oferta especial
+                        </h2>
+
+
+                        <div class="precos">
+
+                            <span class="preco-antigo">
+                                R$ 189,99
+                            </span>
+
+                            <strong class="preco-atual">
+                                R$ 99,99
+                            </strong>
+
+                        </div>
+
+
+                        <div class="produto-footer">
+
+                            <div class="avaliacao">
+
+                                <img src="../assets/estrela.png" alt="Estrela">
+
+                                <span>
+                                    4.5
+                                </span>
+
+                            </div>
+
+
+                            <button type="button" class="btn-carrinho" aria-label="Adicionar ao carrinho">
+
+                                <img src="../assets/carrinho.png" alt="Adicionar ao carrinho">
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CATEGORIAS
+        ================================================== -->
+
+        <section class="categorias">
+
+            <div class="secao-header">
+
+                <h1>
+                    Compre por categoria
+                </h1>
+
+                <a href="#" class="ver-tudo">
+                    Ver Tudo
+                </a>
+
+            </div>
+
+
+            <div class="categorias-grid">
+
+                <a href="#" class="categoria-card">
+                    Brinquedos
+                </a>
+
+                <a href="#" class="categoria-card">
+                    Maquiagens
+                </a>
+
+                <a href="#" class="categoria-card">
+                    Cama, Mesa e Banho
+                </a>
+
+                <a href="#" class="categoria-card">
+                    Utensílios de Casa
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+
+        <div class="footer-conteudo">
+
+
+            <div class="footer-coluna">
+
+                <h2>
+                    LIZA VARIEDADES
+                </h2>
+
+                <p>
+                    Tudo para você em um só lugar.
+                </p>
+
+            </div>
+
+
+            <div class="footer-coluna">
+
+                <h3>
+                    Navegação
+                </h3>
+
+                <a href="#">
+                    Home
+                </a>
+
+                <a href="#">
+                    Brinquedos
+                </a>
+
+                <a href="#">
+                    Maquiagens
+                </a>
+
+                <a href="#">
+                    Ofertas
+                </a>
+
+            </div>
+
+
+            <div class="footer-coluna">
+
+                <h3>
+                    Atendimento
+                </h3>
+
+                <p>
+                    Segunda a sexta
+                </p>
+
+                <p>
+                    08:00 às 18:00
+                </p>
+
+            </div>
+
+
+            <div class="footer-coluna">
+
+                <h3>
+                    Endereço
+                </h3>
+
+                <p>
+                    Araguaína - Tocantins
+                </p>
+
+                <p>
+                    Brasil
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Liza Variedades - Todos os direitos reservados.
+            </p>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+    <script src="../js/index.js"></script>
+
+</body>
+
+</html>

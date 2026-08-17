@@ -1,561 +1,232 @@
-// ==================================================
-// IMPORTAR MODEL
-// ==================================================
+// ======================================================
+// CONTROLLER - PRODUTO
+// ======================================================
 
-const produtoModel =
-    require("../models/produto_model.js");
+const conexao = require("../conexao/conexao.js");
 
 
-// ==================================================
+// ======================================================
 // CADASTRAR PRODUTO
-// ==================================================
-
-function cadastrarProduto(req, res) {
-
-    console.log("=================================");
-    console.log("DADOS RECEBIDOS - PRODUTO");
-    console.log(req.body);
-    console.log("=================================");
-
-
-    // ==============================================
-    // RECEBER DADOS
-    // ==============================================
-
-    const produto = {
-
-        nome: req.body.nome,
-
-        descricao: req.body.descricao,
-
-        codigo: req.body.codigo,
-
-        preco_antigo:
-            req.body.preco_antigo,
-
-        preco_promocional:
-            req.body.preco_promocional !== undefined &&
-                req.body.preco_promocional !== null &&
-                req.body.preco_promocional !== ""
-                ? req.body.preco_promocional
-                : null,
-
-        quantidade_estoque:
-            req.body.quantidade_estoque,
-
-        ativo:
-            req.body.ativo !== undefined
-                ? req.body.ativo
-                : true,
-
-        Loja_idLoja:
-            req.body.Loja_idLoja,
-
-        Marca_idMarca:
-            req.body.Marca_idMarca,
-
-        Categoria_idCategoria:
-            req.body.Categoria_idCategoria
-
-    };
-
-
-    // ==============================================
-    // VALIDAR CAMPOS OBRIGATÓRIOS
-    // ==============================================
-
-    if (!produto.nome) {
-
-        return res.status(400).json({
-
-            sucesso: false,
-
-            mensagem:
-                "Digite o nome do produto."
-
-        });
-
-    }
-
-
-    if (!produto.descricao) {
-
-        return res.status(400).json({
-
-            sucesso: false,
-
-            mensagem:
-                "Digite a descrição do produto."
-
-        });
-
-    }
-
-
-    if (!produto.codigo) {
-
-        return res.status(400).json({
-
-            sucesso: false,
-
-            mensagem:
-                "Digite o código do produto."
-
-        });
-
-    }
-
-
-    if (
-        produto.preco_antigo === undefined ||
-        produto.preco_antigo === null ||
-        produto.preco_antigo === ""
-    ) {
-
-        return res.status(400).json({
-
-            sucesso: false,
-
-            mensagem:
-                "Digite o preço antigo."
-
-        });
-
-    }
-
-
-    if (
-        produto.quantidade_estoque === undefined ||
-        produto.quantidade_estoque === null ||
-        produto.quantidade_estoque === ""
-    ) {
-
-        return res.status(400).json({
-
-            sucesso: false,
-
-            mensagem:
-                "Digite a quantidade em estoque."
-
-        });
-
-    }
-
-
-    if (!produto.Loja_idLoja) {
-
-        return res.status(400).json({
-
-            sucesso: false,
-
-            mensagem:
-                "Selecione uma loja."
-
-        });
-
-    }
-
-
-    if (!produto.Marca_idMarca) {
-
-        return res.status(400).json({
-
-            sucesso: false,
-
-            mensagem:
-                "Selecione uma marca."
-
-        });
-
-    }
-
-
-    if (!produto.Categoria_idCategoria) {
-
-        return res.status(400).json({
-
-            sucesso: false,
-
-            mensagem:
-                "Selecione uma categoria."
-
-        });
-
-    }
-
-
-    // ==============================================
-    // CADASTRAR NO BANCO
-    // ==============================================
-
-    produtoModel.cadastrar(
-
-        produto,
-
-        function (erro, resultado) {
-
-            if (erro) {
-
-                console.error(
-                    "Erro MySQL ao cadastrar produto:",
-                    erro
-                );
-
-
-                return res.status(500).json({
-
-                    sucesso: false,
-
-                    mensagem:
-                        "Erro ao cadastrar produto.",
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            // ==========================================
-            // SUCESSO
-            // ==========================================
-
-            console.log(
-                "Produto cadastrado. ID:",
-                resultado.insertId
-            );
-
-
-            return res.status(201).json({
-
-                sucesso: true,
-
-                mensagem:
-                    "Produto cadastrado com sucesso!",
-
-                idProduto:
-                    resultado.insertId
-
-            });
-
+// ======================================================
+
+function cadastrar(produto, callback) {
+
+    const sql = `
+        INSERT INTO Produto
+        (
+            nome,
+            descricao,
+            codigo,
+            preco_antigo,
+            preco_promocional,
+            quantidade_estoque,
+            ativo,
+            Loja_idLoja,
+            Marca_idMarca,
+            Categoria_idCategoria
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    const valores = [
+        produto.nome,
+        produto.descricao,
+        produto.codigo,
+        produto.preco_antigo,
+        produto.preco_promocional || null,
+        produto.quantidade_estoque,
+        produto.ativo !== undefined ? produto.ativo : 1,
+        produto.Loja_idLoja,
+        produto.Marca_idMarca || null,
+        produto.Categoria_idCategoria || null
+    ];
+
+    conexao.query(sql, valores, function (erro, resultado) {
+
+        if (erro) {
+            console.error("ERRO AO CADASTRAR PRODUTO:");
+            console.error(erro);
+
+            return callback(erro, null);
         }
 
-    );
+        console.log("Produto cadastrado com sucesso!");
 
+        callback(null, resultado);
+    });
 }
 
 
-// ==================================================
+// ======================================================
 // LISTAR PRODUTOS
-// ==================================================
+// ======================================================
 
-function listarProdutos(req, res) {
+function listar(callback) {
 
-    produtoModel.listar(
+    const sql = `
+        SELECT
+            p.idProduto,
+            p.nome,
+            p.descricao,
+            p.codigo,
+            p.preco_antigo,
+            p.preco_promocional,
+            p.quantidade_estoque,
+            p.ativo,
 
-        function (erro, resultado) {
+            p.Loja_idLoja,
 
-            if (erro) {
+            p.Marca_idMarca,
+            m.nome AS marca,
 
-                console.error(
-                    "Erro ao listar produtos:",
-                    erro
-                );
+            p.Categoria_idCategoria,
+            c.nome AS categoria
 
+        FROM Produto p
 
-                return res.status(500).json({
+        LEFT JOIN Marca m
+            ON p.Marca_idMarca = m.idMarca
 
-                    sucesso: false,
+        LEFT JOIN Categoria c
+            ON p.Categoria_idCategoria = c.idCategoria
 
-                    mensagem:
-                        "Erro ao listar produtos.",
+        ORDER BY p.idProduto DESC
+    `;
 
-                    erro:
-                        erro.message
+    conexao.query(sql, function (erro, resultados) {
 
-                });
+        if (erro) {
+            console.error("ERRO AO LISTAR PRODUTOS:");
+            console.error(erro);
 
-            }
-
-
-            return res.status(200).json({
-
-                sucesso: true,
-
-                produtos: resultado
-
-            });
-
+            return callback(erro, null);
         }
 
-    );
-
+        callback(null, resultados);
+    });
 }
 
 
-// ==================================================
+// ======================================================
 // BUSCAR PRODUTO POR ID
-// ==================================================
+// ======================================================
 
-function buscarProdutoPorId(req, res) {
+function buscarPorId(id, callback) {
 
-    const idProduto =
-        req.params.id;
+    const sql = `
+        SELECT
+            p.*,
+            m.nome AS marca,
+            c.nome AS categoria
 
+        FROM Produto p
 
-    produtoModel.buscarPorId(
+        LEFT JOIN Marca m
+            ON p.Marca_idMarca = m.idMarca
 
-        idProduto,
+        LEFT JOIN Categoria c
+            ON p.Categoria_idCategoria = c.idCategoria
 
-        function (erro, resultado) {
+        WHERE p.idProduto = ?
+    `;
 
-            if (erro) {
+    conexao.query(sql, [id], function (erro, resultado) {
 
-                console.error(
-                    "Erro ao buscar produto:",
-                    erro
-                );
+        if (erro) {
+            console.error("ERRO AO BUSCAR PRODUTO:");
+            console.error(erro);
 
-
-                return res.status(500).json({
-
-                    sucesso: false,
-
-                    mensagem:
-                        "Erro ao buscar produto.",
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            if (resultado.length === 0) {
-
-                return res.status(404).json({
-
-                    sucesso: false,
-
-                    mensagem:
-                        "Produto não encontrado."
-
-                });
-
-            }
-
-
-            return res.status(200).json({
-
-                sucesso: true,
-
-                produto:
-                    resultado[0]
-
-            });
-
+            return callback(erro, null);
         }
 
-    );
-
+        callback(null, resultado);
+    });
 }
 
 
-// ==================================================
+// ======================================================
 // ATUALIZAR PRODUTO
-// ==================================================
+// ======================================================
 
-function atualizarProduto(req, res) {
+function atualizar(id, produto, callback) {
 
-    const idProduto =
-        req.params.id;
+    const sql = `
+        UPDATE Produto
 
+        SET
+            nome = ?,
+            descricao = ?,
+            codigo = ?,
+            preco_antigo = ?,
+            preco_promocional = ?,
+            quantidade_estoque = ?,
+            ativo = ?,
+            Marca_idMarca = ?,
+            Categoria_idCategoria = ?
 
-    const produto = {
+        WHERE idProduto = ?
+    `;
 
-        nome:
-            req.body.nome,
+    const valores = [
+        produto.nome,
+        produto.descricao,
+        produto.codigo,
+        produto.preco_antigo,
+        produto.preco_promocional || null,
+        produto.quantidade_estoque,
+        produto.ativo !== undefined ? produto.ativo : 1,
+        produto.Marca_idMarca || null,
+        produto.Categoria_idCategoria || null,
+        id
+    ];
 
-        descricao:
-            req.body.descricao,
+    conexao.query(sql, valores, function (erro, resultado) {
 
-        codigo:
-            req.body.codigo,
+        if (erro) {
+            console.error("ERRO AO ATUALIZAR PRODUTO:");
+            console.error(erro);
 
-        preco_antigo:
-            req.body.preco_antigo,
-
-        preco_promocional:
-            req.body.preco_promocional !== undefined &&
-                req.body.preco_promocional !== null &&
-                req.body.preco_promocional !== ""
-                ? req.body.preco_promocional
-                : null,
-
-        quantidade_estoque:
-            req.body.quantidade_estoque,
-
-        ativo:
-            req.body.ativo,
-
-        Loja_idLoja:
-            req.body.Loja_idLoja,
-
-        Marca_idMarca:
-            req.body.Marca_idMarca,
-
-        Categoria_idCategoria:
-            req.body.Categoria_idCategoria
-
-    };
-
-
-    produtoModel.atualizar(
-
-        idProduto,
-
-        produto,
-
-        function (erro, resultado) {
-
-            if (erro) {
-
-                console.error(
-                    "Erro ao atualizar produto:",
-                    erro
-                );
-
-
-                return res.status(500).json({
-
-                    sucesso: false,
-
-                    mensagem:
-                        "Erro ao atualizar produto.",
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            if (resultado.affectedRows === 0) {
-
-                return res.status(404).json({
-
-                    sucesso: false,
-
-                    mensagem:
-                        "Produto não encontrado."
-
-                });
-
-            }
-
-
-            return res.status(200).json({
-
-                sucesso: true,
-
-                mensagem:
-                    "Produto atualizado com sucesso!"
-
-            });
-
+            return callback(erro, null);
         }
 
-    );
-
+        callback(null, resultado);
+    });
 }
 
 
-// ==================================================
+// ======================================================
 // EXCLUIR PRODUTO
-// ==================================================
+// ======================================================
 
-function excluirProduto(req, res) {
+function excluir(id, callback) {
 
-    const idProduto =
-        req.params.id;
+    const sql = `
+        DELETE FROM Produto
+        WHERE idProduto = ?
+    `;
 
+    conexao.query(sql, [id], function (erro, resultado) {
 
-    produtoModel.excluir(
+        if (erro) {
+            console.error("ERRO AO EXCLUIR PRODUTO:");
+            console.error(erro);
 
-        idProduto,
-
-        function (erro, resultado) {
-
-            if (erro) {
-
-                console.error(
-                    "Erro ao excluir produto:",
-                    erro
-                );
-
-
-                return res.status(500).json({
-
-                    sucesso: false,
-
-                    mensagem:
-                        "Erro ao excluir produto.",
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            if (resultado.affectedRows === 0) {
-
-                return res.status(404).json({
-
-                    sucesso: false,
-
-                    mensagem:
-                        "Produto não encontrado."
-
-                });
-
-            }
-
-
-            return res.status(200).json({
-
-                sucesso: true,
-
-                mensagem:
-                    "Produto excluído com sucesso!"
-
-            });
-
+            return callback(erro, null);
         }
 
-    );
-
+        callback(null, resultado);
+    });
 }
 
 
-// ==================================================
-// EXPORTAR CONTROLLER
-// ==================================================
+// ======================================================
+// EXPORTAR
+// ======================================================
 
 module.exports = {
-
-    cadastrarProduto,
-
-    listarProdutos,
-
-    buscarProdutoPorId,
-
-    atualizarProduto,
-
-    excluirProduto
-
+    cadastrar,
+    listar,
+    buscarPorId,
+    atualizar,
+    excluir
 };
