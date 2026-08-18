@@ -2,12 +2,14 @@ const express = require("express");
 
 const router = express.Router();
 
-const produtoController =
-    require("../controllers/produto_controller.js");
+const produtoController = require(
+    "../controllers/produto_controller.js"
+);
 
 
 // ======================================================
-// CADASTRAR
+// CADASTRAR PRODUTO
+// POST /produtos
 // ======================================================
 
 router.post(
@@ -17,7 +19,8 @@ router.post(
 
 
 // ======================================================
-// LISTAR
+// LISTAR PRODUTOS
+// GET /produtos
 // ======================================================
 
 router.get(
@@ -27,7 +30,8 @@ router.get(
 
 
 // ======================================================
-// BUSCAR POR ID
+// BUSCAR PRODUTO POR ID
+// GET /produtos/:idProduto
 // ======================================================
 
 router.get(
@@ -37,7 +41,8 @@ router.get(
 
 
 // ======================================================
-// ATUALIZAR
+// ATUALIZAR PRODUTO
+// PUT /produtos/:idProduto
 // ======================================================
 
 router.put(
@@ -47,7 +52,8 @@ router.put(
 
 
 // ======================================================
-// EXCLUIR
+// EXCLUIR PRODUTO
+// DELETE /produtos/:idProduto
 // ======================================================
 
 router.delete(

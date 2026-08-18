@@ -2,44 +2,44 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Estoque - Logista</title>
+    <title>Estoque - Lojista</title>
 
-    <link rel="stylesheet" href="./estoquelogista.html">
-
+    <link rel="stylesheet" href="/style/estoque.css">
 </head>
 
 <body>
 
-    <!-- MENU SUPERIOR -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-    <header class="topbar">
+    <header class="header">
 
-        <div class="logo-area">
+        <div class="header-conteudo">
 
-            <h1 id="logoNome"></h1>
+            <!-- LOGO -->
+            <div class="logo">
+                <h1 id="logoNome">LOGISTA</h1>
+            </div>
 
-        </div>
+            <!-- BUSCA -->
+            <div class="busca">
+                <input type="text" id="campoBusca" placeholder="Pesquisar produtos...">
+            </div>
 
-        <div class="search-area">
+            <!-- USUÁRIO -->
+            <div class="usuario">
 
-            <input type="text" id="campoBusca">
+                <img id="usuarioAvatar" src="../ASSETS/avatar.png" alt="Usuário">
 
-        </div>
-
-        <div class="user-area">
-
-            <img id="avatarUsuario" alt="Usuário">
-
-            <div>
-
-                <strong id="nomeUsuario"></strong>
-
-                <small id="cargoUsuario"></small>
+                <div class="dados-usuario">
+                    <strong id="usuarioNome">Liza Variedades</strong>
+                    <span>Administrador</span>
+                </div>
 
             </div>
 
@@ -47,265 +47,331 @@
 
     </header>
 
-    <!-- CONTEÚDO -->
 
-    <main class="container">
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
 
-        <section class="page-header">
+    <main class="conteudo">
+
+        <!-- TÍTULO -->
+
+        <section class="titulo-pagina">
 
             <div>
+                <h2>Estoque</h2>
 
-                <h2 id="tituloPagina"></h2>
-
-                <p id="descricaoPagina"></p>
-
+                <p>
+                    Gerencie produtos e controle os níveis de estoque.
+                </p>
             </div>
 
-            <button id="btnNovoProduto"></button>
+            <button class="btn-novo" id="btnNovoProduto" type="button">
+                + Novo Produto
+            </button>
 
         </section>
 
-        <!-- CARDS -->
 
-        <section class="cards-grid">
+        <!-- =================================================
+             CARDS DE ESTOQUE
+        ================================================== -->
 
-            <article class="card">
+        <section class="cards-estoque">
 
-                <span class="card-title">
-                    Total Produtos
-                </span>
+            <!-- TOTAL -->
+            <div class="card estoque-total">
 
-                <h3 id="totalProdutos"></h3>
+                <div class="card-topo">
+                    <span>Total Produtos</span>
+                </div>
 
-                <small id="infoProdutos"></small>
+                <h3 id="totalProdutos">1.245</h3>
 
-            </article>
-
-            <article class="card">
-
-                <span class="card-title">
-                    Estoque Baixo
-                </span>
-
-                <h3 id="estoqueBaixo"></h3>
-
-                <small id="infoBaixo"></small>
-
-            </article>
-
-            <article class="card">
-
-                <span class="card-title">
-                    Sem Estoque
-                </span>
-
-                <h3 id="semEstoque"></h3>
-
-                <small id="infoSemEstoque"></small>
-
-            </article>
-
-        </section>
-
-        <!-- TABELA -->
-
-        <section class="table-card">
-
-            <div class="table-header">
-
-                <h3>
-                    Controle de Estoque
-                </h3>
-
-                <button id="btnExportar"></button>
+                <p class="positivo">
+                    +12 novos produtos
+                </p>
 
             </div>
 
-            <table>
 
-                <thead>
+            <!-- ESTOQUE BAIXO -->
+            <div class="card estoque-baixo">
 
-                    <tr>
+                <div class="card-topo">
+                    <span>Estoque Baixo</span>
+                </div>
 
-                        <th>Produto</th>
-                        <th>SKU</th>
-                        <th>Categoria</th>
-                        <th>Quantidade</th>
-                        <th>Status</th>
-                        <th>Preço</th>
-                        <th>Ações</th>
+                <h3 id="produtosBaixo">12</h3>
 
-                    </tr>
+                <p>
+                    Necessitam reposição
+                </p>
 
-                </thead>
+            </div>
 
-                <tbody>
 
-                    <tr>
+            <!-- SEM ESTOQUE -->
+            <div class="card sem-estoque">
 
-                        <td>
+                <div class="card-topo">
+                    <span>Sem Estoque</span>
+                </div>
 
-                            <div class="produto-info">
+                <h3 id="produtosSemEstoque">04</h3>
 
-                                <img id="produtoImagem1" alt="Produto">
+                <p class="urgente">
+                    Reposição urgente
+                </p>
 
-                                <span id="produtoNome1"></span>
+            </div>
 
-                            </div>
+        </section>
 
-                        </td>
 
-                        <td id="sku1"></td>
-                        <td id="categoria1"></td>
-                        <td id="quantidade1"></td>
+        <!-- =================================================
+             CONTROLE DE ESTOQUE
+        ================================================== -->
 
-                        <td>
+        <section class="controle">
 
-                            <span id="status1" class="status">
-                            </span>
+            <div class="controle-topo">
 
-                        </td>
+                <h2>Controle de Estoque</h2>
 
-                        <td id="preco1"></td>
+                <button class="btn-exportar" id="btnExportar" type="button">
+                    Exportar
+                </button>
 
-                        <td>
+            </div>
 
-                            <button id="editar1" class="btn-editar">
-                                Editar
-                            </button>
 
-                        </td>
+            <!-- TABELA -->
 
-                    </tr>
+            <div class="tabela-container">
 
-                    <tr>
+                <table class="tabela-estoque">
 
-                        <td>
+                    <thead>
 
-                            <div class="produto-info">
+                        <tr>
 
-                                <img id="produtoImagem2" alt="Produto">
+                            <th>Imagem</th>
+                            <th>Produto</th>
+                            <th>SKU</th>
+                            <th>Categoria</th>
+                            <th>Quantidade</th>
+                            <th>Status</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
 
-                                <span id="produtoNome2"></span>
+                        </tr>
 
-                            </div>
+                    </thead>
 
-                        </td>
 
-                        <td id="sku2"></td>
-                        <td id="categoria2"></td>
-                        <td id="quantidade2"></td>
+                    <tbody id="listaProdutos">
 
-                        <td>
+                        <!-- PRODUTO 1 -->
 
-                            <span id="status2" class="status">
-                            </span>
+                        <tr>
 
-                        </td>
+                            <td>
+                                <img class="imagem-produto" src="../ASSETS/caixa-organizadora.jpg"
+                                    alt="Produto Caixa Organizadora">
+                            </td>
 
-                        <td id="preco2"></td>
+                            <td>
+                                Caixa Organizadora
+                            </td>
 
-                        <td>
+                            <td>
+                                SKU001
+                            </td>
 
-                            <button id="editar2" class="btn-editar">
-                                Editar
-                            </button>
+                            <td>
+                                Utilidades
+                            </td>
 
-                        </td>
+                            <td>
+                                85
+                            </td>
 
-                    </tr>
+                            <td>
+                                <span class="status disponivel">
+                                    Disponível
+                                </span>
+                            </td>
 
-                    <tr>
+                            <td>
+                                R$ 29,90
+                            </td>
 
-                        <td>
+                            <td>
+                                <button class="btn-editar">
+                                    Editar
+                                </button>
+                            </td>
 
-                            <div class="produto-info">
+                        </tr>
 
-                                <img id="produtoImagem3" alt="Produto">
 
-                                <span id="produtoNome3"></span>
+                        <!-- PRODUTO 2 -->
 
-                            </div>
+                        <tr>
 
-                        </td>
+                            <td>
+                                <img class="imagem-produto" src="../ASSETS/garrafa-termica.jpg"
+                                    alt="Produto Garrafa Térmica">
+                            </td>
 
-                        <td id="sku3"></td>
-                        <td id="categoria3"></td>
-                        <td id="quantidade3"></td>
+                            <td>
+                                Garrafa Térmica
+                            </td>
 
-                        <td>
+                            <td>
+                                SKU002
+                            </td>
 
-                            <span id="status3" class="status">
-                            </span>
+                            <td>
+                                Cozinha
+                            </td>
 
-                        </td>
+                            <td>
+                                10
+                            </td>
 
-                        <td id="preco3"></td>
+                            <td>
+                                <span class="status baixo">
+                                    Baixo
+                                </span>
+                            </td>
 
-                        <td>
+                            <td>
+                                R$ 59,90
+                            </td>
 
-                            <button id="editar3" class="btn-editar">
-                                Editar
-                            </button>
+                            <td>
+                                <button class="btn-editar">
+                                    Editar
+                                </button>
+                            </td>
 
-                        </td>
+                        </tr>
 
-                    </tr>
 
-                    <tr>
+                        <!-- PRODUTO 3 -->
 
-                        <td>
+                        <tr>
 
-                            <div class="produto-info">
+                            <td>
+                                <img class="imagem-produto" src="../ASSETS/kit-escolar.jpg" alt="Produto Kit Escolar">
+                            </td>
 
-                                <img id="produtoImagem4" alt="Produto">
+                            <td>
+                                Kit Escolar
+                            </td>
 
-                                <span id="produtoNome4"></span>
+                            <td>
+                                SKU003
+                            </td>
 
-                            </div>
+                            <td>
+                                Papelaria
+                            </td>
 
-                        </td>
+                            <td>
+                                0
+                            </td>
 
-                        <td id="sku4"></td>
-                        <td id="categoria4"></td>
-                        <td id="quantidade4"></td>
+                            <td>
+                                <span class="status esgotado">
+                                    Esgotado
+                                </span>
+                            </td>
 
-                        <td>
+                            <td>
+                                R$ 39,90
+                            </td>
 
-                            <span id="status4" class="status">
-                            </span>
+                            <td>
+                                <button class="btn-editar">
+                                    Editar
+                                </button>
+                            </td>
 
-                        </td>
+                        </tr>
 
-                        <td id="preco4"></td>
 
-                        <td>
+                        <!-- PRODUTO 4 -->
 
-                            <button id="editar4" class="btn-editar">
-                                Editar
-                            </button>
+                        <tr>
 
-                        </td>
+                            <td>
+                                <img class="imagem-produto" src="../ASSETS/brinquedo-infantil.jpg"
+                                    alt="Produto Brinquedo Infantil">
+                            </td>
 
-                    </tr>
+                            <td>
+                                Brinquedo Infantil
+                            </td>
 
-                </tbody>
+                            <td>
+                                SKU004
+                            </td>
 
-            </table>
+                            <td>
+                                Brinquedos
+                            </td>
+
+                            <td>
+                                120
+                            </td>
+
+                            <td>
+                                <span class="status disponivel">
+                                    Disponível
+                                </span>
+                            </td>
+
+                            <td>
+                                R$ 89,90
+                            </td>
+
+                            <td>
+                                <button class="btn-editar">
+                                    Editar
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
 
         </section>
 
     </main>
 
-    <!-- RODAPÉ -->
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
     <footer class="footer">
 
-        <p id="footerTexto"></p>
+        <p>
+            © Lojista Estoque - Todos os direitos reservados
+        </p>
 
     </footer>
 
-    <script src="/js/estoquelogista.js"></script>
+
+    <!-- JS -->
+    <script src="../JS/estoque.js"></script>
 
 </body>
 

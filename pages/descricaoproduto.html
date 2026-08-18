@@ -7,24 +7,25 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Descrição do Produto</title>
+    <title>Liza Variedades - Produto</title>
 
-    <link rel="stylesheet" href="../style/descricao.css">
+    <link rel="stylesheet" href="../css/produto.css">
 
 </head>
+
 
 <body>
 
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
+    <!-- ==================================================
+         CABEÇALHO
+    ================================================== -->
 
     <header class="header">
 
         <div class="logo">
 
-            <a href="home.html">
+            <a href="./index.html">
                 LIZA VARIEDADES
             </a>
 
@@ -33,9 +34,9 @@
 
         <div class="pesquisa">
 
-            <input type="text" id="buscar" placeholder="Buscar produtos...">
+            <input type="text" id="campoBusca" placeholder="Buscar produtos...">
 
-            <button type="button" id="btnBuscar">
+            <button type="button" id="btnPesquisar" aria-label="Pesquisar">
                 🔍
             </button>
 
@@ -44,11 +45,11 @@
 
         <div class="acoes">
 
-            <a href="#" id="btnConta">
+            <a href="./login.html">
                 👤 Minha Conta
             </a>
 
-            <a href="#" id="btnCarrinho">
+            <a href="./carrinho.html">
                 🛒 Carrinho
             </a>
 
@@ -57,85 +58,92 @@
     </header>
 
 
-
-    <!-- =====================================================
+    <!-- ==================================================
          BREADCRUMB
-    ====================================================== -->
+    ================================================== -->
 
-    <section class="breadcrumb">
+    <nav class="breadcrumb">
 
-        <a href="home.html">
+        <a href="./index.html">
             Início
         </a>
 
         <span>›</span>
 
-        <span id="caminhoProduto">
+        <span id="breadcrumbProduto">
             Produto
         </span>
 
-    </section>
+    </nav>
 
 
-
-    <!-- =====================================================
+    <!-- ==================================================
          PRODUTO
-    ====================================================== -->
+    ================================================== -->
 
     <main class="produto">
 
 
-        <!-- =================================================
+        <!-- ==================================================
              GALERIA
         ================================================== -->
 
         <section class="galeria">
 
             <div class="miniaturas" id="miniaturas">
+
+                <!-- JavaScript adicionará as imagens -->
+
             </div>
 
 
             <div class="imagemPrincipal">
 
-                <img id="imagemPrincipal" src="" alt="Imagem do produto">
+                <img id="imagemProduto" src="../assets/produto.png" alt="Imagem do produto">
 
             </div>
 
         </section>
 
 
-
-        <!-- =================================================
-             INFORMAÇÕES DO PRODUTO
+        <!-- ==================================================
+             INFORMAÇÕES
         ================================================== -->
 
         <section class="informacoes">
 
 
-            <!-- MARCA -->
-
-            <span class="marca" id="marcaProduto">
+            <span class="marca" id="produtoMarca">
+                Marca
             </span>
 
 
-            <!-- NOME -->
-
-            <h1 id="nomeProduto">
-                Carregando produto...
+            <h1 id="produtoNome">
+                Produto não informado
             </h1>
 
 
-            <!-- AVALIAÇÃO -->
+            <div class="avaliacao">
 
-            <div class="avaliacao" id="avaliacaoProduto">
+                <span class="estrelas">
+                    ★★★★★
+                </span>
+
+                <span id="produtoAvaliacao">
+                    0 avaliações
+                </span>
+
             </div>
 
 
-            <!-- PREÇO -->
+            <!-- ==================================================
+                 PREÇO
+            ================================================== -->
 
             <div class="preco">
 
-                <span id="precoAntigo" class="precoAntigo">
+                <span class="precoAntigo" id="precoAntigo">
+                    R$ 0,00
                 </span>
 
 
@@ -144,55 +152,62 @@
                 </h2>
 
 
-                <small id="parcelamento">
-                    Em até 12x
+                <small>
+                    Em até 12x sem juros
                 </small>
 
             </div>
 
 
-
-            <!-- =================================================
+            <!-- ==================================================
                  CORES
             ================================================== -->
 
-            <div class="cores">
+            <div class="opcao">
 
                 <h3>
                     Cores
                 </h3>
 
 
-                <div id="listaCores" class="listaOpcoes">
+                <div class="listaOpcoes" id="listaCores">
+
+                    <span class="semOpcao">
+                        Nenhuma cor cadastrada
+                    </span>
+
                 </div>
 
             </div>
 
 
-
-            <!-- =================================================
+            <!-- ==================================================
                  TAMANHOS
             ================================================== -->
 
-            <div class="armazenamento">
+            <div class="opcao">
 
                 <h3>
                     Tamanhos
                 </h3>
 
 
-                <div id="listaMemorias" class="listaOpcoes">
+                <div class="listaOpcoes" id="listaTamanhos">
+
+                    <span class="semOpcao">
+                        Nenhum tamanho cadastrado
+                    </span>
+
                 </div>
 
             </div>
 
 
-
-            <!-- =================================================
+            <!-- ==================================================
                  FRETE
             ================================================== -->
 
-            <div class="cep">
+            <div class="frete">
 
                 <label for="cep">
                     Calcule o Frete
@@ -201,43 +216,40 @@
 
                 <div class="freteLinha">
 
-                    <input type="text" id="cep" maxlength="9" placeholder="00000-000">
+                    <input type="text" id="cep" placeholder="00000-000" maxlength="9">
 
 
-                    <button type="button" id="btnFrete">
+                    <button type="button" id="btnCalcularFrete">
                         Calcular
                     </button>
 
                 </div>
 
+
+                <div class="resultadoFrete" id="resultadoFrete"></div>
+
             </div>
 
 
-            <div id="resultadoFrete" class="resultadoFrete">
-            </div>
-
-
-
-            <!-- =================================================
+            <!-- ==================================================
                  BOTÕES
             ================================================== -->
 
             <div class="botoes">
 
-                <button type="button" id="comprar" class="btnComprar">
+                <button type="button" class="btnComprar" id="btnComprar">
                     Comprar Agora
                 </button>
 
 
-                <button type="button" id="carrinho" class="btnCarrinho">
+                <button type="button" class="btnCarrinho" id="btnAdicionarCarrinho">
                     Adicionar ao Carrinho
                 </button>
 
             </div>
 
 
-
-            <!-- =================================================
+            <!-- ==================================================
                  BENEFÍCIOS
             ================================================== -->
 
@@ -249,9 +261,9 @@
                         🔒
                     </span>
 
-                    <p>
+                    <strong>
                         Compra Segura
-                    </p>
+                    </strong>
 
                 </div>
 
@@ -262,9 +274,9 @@
                         🚚
                     </span>
 
-                    <p>
+                    <strong>
                         Entrega Rápida
-                    </p>
+                    </strong>
 
                 </div>
 
@@ -275,9 +287,9 @@
                         ↩️
                     </span>
 
-                    <p>
+                    <strong>
                         Compra Protegida
-                    </p>
+                    </strong>
 
                 </div>
 
@@ -288,102 +300,120 @@
     </main>
 
 
-
-    <!-- =====================================================
+    <!-- ==================================================
          ABAS
-    ====================================================== -->
+    ================================================== -->
 
-    <section class="abas">
-
-        <button type="button" class="aba ativa" data-aba="descricao">
-            Descrição
-        </button>
+    <section class="areaAbas">
 
 
-        <button type="button" class="aba" data-aba="especificacoes">
-            Especificações
-        </button>
+        <div class="abas">
+
+            <button class="aba ativa" type="button" data-aba="descricao">
+                Descrição
+            </button>
 
 
-        <button type="button" class="aba" data-aba="avaliacoes">
-            Avaliações
-        </button>
+            <button class="aba" type="button" data-aba="especificacoes">
+                Especificações
+            </button>
+
+
+            <button class="aba" type="button" data-aba="avaliacoes">
+                Avaliações
+            </button>
+
+        </div>
+
+
+        <div class="conteudoAbas">
+
+
+            <!-- DESCRIÇÃO -->
+
+            <div class="conteudo ativo" id="descricao">
+
+                <h3>
+                    Descrição
+                </h3>
+
+                <p id="descricaoProduto">
+                    Nenhuma descrição informada.
+                </p>
+
+            </div>
+
+
+            <!-- ESPECIFICAÇÕES -->
+
+            <div class="conteudo" id="especificacoes">
+
+                <h3>
+                    Especificações
+                </h3>
+
+                <div id="listaEspecificacoes">
+
+                    <p>
+                        Carregando informações...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- AVALIAÇÕES -->
+
+            <div class="conteudo" id="avaliacoes">
+
+                <h3>
+                    Avaliações
+                </h3>
+
+                <div id="listaAvaliacoes">
+
+                    <p>
+                        Este produto ainda não possui avaliações.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </section>
 
 
-
-    <!-- =====================================================
-         CONTEÚDO DAS ABAS
-    ====================================================== -->
-
-    <section class="conteudoAbas">
-
-
-        <!-- DESCRIÇÃO -->
-
-        <div id="descricao" class="conteudo ativo">
-
-            <!-- O JavaScript irá colocar a descrição aqui -->
-
-        </div>
-
-
-
-        <!-- ESPECIFICAÇÕES -->
-
-        <div id="especificacoes" class="conteudo">
-
-            <!-- O JavaScript irá colocar as especificações aqui -->
-
-        </div>
-
-
-
-        <!-- AVALIAÇÕES -->
-
-        <div id="avaliacoes" class="conteudo">
-
-            <!-- O JavaScript irá colocar as avaliações aqui -->
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
+    <!-- ==================================================
          PRODUTOS RELACIONADOS
-    ====================================================== -->
+    ================================================== -->
 
     <section class="relacionados">
 
-        <div class="titulo">
-
-            <h2>
-                Produtos relacionados
-            </h2>
-
-        </div>
+        <h2>
+            Produtos relacionados
+        </h2>
 
 
         <div class="listaRelacionados" id="listaRelacionados">
+
+            <!-- JavaScript adicionará os produtos -->
+
         </div>
 
     </section>
 
 
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <!-- ==================================================
+         RODAPÉ
+    ================================================== -->
 
     <footer>
 
         <div class="footerContainer">
 
-
-            <!-- EMPRESA -->
 
             <div>
 
@@ -392,15 +422,11 @@
                 </h3>
 
                 <p>
-                    Produtos de qualidade
-                    com os melhores preços.
+                    Produtos de qualidade com os melhores preços.
                 </p>
 
             </div>
 
-
-
-            <!-- CATEGORIAS -->
 
             <div>
 
@@ -412,25 +438,25 @@
 
                     <li>
                         <a href="#">
-                            Celulares
+                            Casa
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            Informática
+                            Brinquedos
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            Acessórios
+                            Utensílios
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            Eletrônicos
+                            Maquiagem
                         </a>
                     </li>
 
@@ -439,38 +465,29 @@
             </div>
 
 
-
-            <!-- INSTITUCIONAL -->
-
             <div>
 
                 <h3>
-                    Institucional
+                    Atendimento
                 </h3>
 
                 <ul>
 
                     <li>
-                        <a href="#">
-                            Sobre Nós
+                        <a href="./login.html">
+                            Minha Conta
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            Política
+                            Meus Pedidos
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            Trocas
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Contato
+                            Fale Conosco
                         </a>
                     </li>
 
@@ -479,21 +496,18 @@
             </div>
 
 
-
-            <!-- NEWSLETTER -->
-
             <div>
 
                 <h3>
-                    Newsletter
+                    Receba novidades
                 </h3>
 
 
-                <input type="email" id="emailNewsletter" placeholder="Seu e-mail">
+                <input type="email" placeholder="Seu e-mail">
 
 
-                <button type="button" id="btnNewsletter">
-                    Enviar
+                <button type="button">
+                    Cadastrar
                 </button>
 
             </div>
@@ -501,12 +515,9 @@
         </div>
 
 
-
-        <!-- COPYRIGHT -->
-
         <div class="copyright">
 
-            © 2026 Liza Variedades -
+            © 2026 LIZA VARIEDADES -
             Todos os direitos reservados.
 
         </div>
@@ -514,13 +525,11 @@
     </footer>
 
 
-
-    <!-- =====================================================
+    <!-- ==================================================
          JAVASCRIPT
-    ====================================================== -->
+    ================================================== -->
 
-    <script src="../js/descricaoproduto.js"></script>
-
+    <script src="../js/produto.js"></script>
 
 </body>
 

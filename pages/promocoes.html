@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
@@ -8,14 +7,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Promoções</title>
+    <title>Promoções - Liza Variedades</title>
 
-
-    <!-- ==========================================
-         CSS
-    =========================================== -->
-
-    <link rel="stylesheet" href="../style/promocoes.css">
+    <link rel="stylesheet" href="../STYLE/promocoes.css">
 
 </head>
 
@@ -23,471 +17,580 @@
 <body>
 
 
-    <!-- ==========================================
+    <!-- =====================================================
          HEADER
-    =========================================== -->
+    ====================================================== -->
 
     <header class="header">
 
-
-        <div class="top-bar">
+        <div class="header-conteudo">
 
 
             <!-- LOGO -->
 
             <div class="logo-area">
 
-                <h1>LIZA VARIEDADES</h1>
-
-                <span id="cidadeUsuario"></span>
-
-            </div>
-
-
-            <!-- BUSCA -->
-
-            <div class="search-area">
-
-                <input type="text" id="campoBusca" placeholder="Buscar em ofertas...">
+                <a href="index.html">
+                    LIZA VARIEDADES
+                </a>
 
             </div>
 
 
-            <!-- ÍCONES -->
+            <!-- TÍTULO -->
 
-            <div class="icons-area">
+            <div class="titulo-header">
 
-                <button id="btnPerfil" type="button">
-                    👤
-                </button>
+                Promoções
 
-
-                <button id="btnFavoritos" type="button">
-                    ❤
-                </button>
+            </div>
 
 
-                <button id="btnCarrinho" type="button">
-                    🛒
-                </button>
+            <!-- USUÁRIO -->
+
+            <div class="usuario">
+
+                <span id="nomeUsuario">
+                    Lojista
+                </span>
+
+                <span id="tipoUsuario">
+                    Administrador
+                </span>
 
             </div>
 
         </div>
 
 
-        <!-- MENU -->
+        <!-- =================================================
+             MENU
+        ================================================== -->
 
-        <nav class="menu-categorias">
+        <nav class="menu">
 
-            <a href="#">Categorias</a>
+            <a href="index.html">
+                Início
+            </a>
 
-            <a href="#">Ofertas</a>
+            <a href="resumo.html">
+                Resumo
+            </a>
 
-            <a href="#">Mais Vendidos</a>
+            <a href="cadastroproduto.html">
+                Produtos
+            </a>
 
-            <a href="#">Novidades</a>
+            <a href="estoque.html">
+                Estoque
+            </a>
 
-            <a href="#">Outlet</a>
+            <a href="promocoes.html" class="ativo">
+                Promoções
+            </a>
+
+            <a href="relatorio.html">
+                Relatórios
+            </a>
 
         </nav>
 
     </header>
 
 
+    <!-- =====================================================
+         CONTEÚDO
+    ====================================================== -->
 
-    <!-- ==========================================
-         CONTEÚDO PRINCIPAL
-    =========================================== -->
+    <main class="container">
 
-    <main>
 
+        <!-- TÍTULO -->
 
-        <!-- ======================================
-             BANNER
-        ======================================= -->
+        <section class="pagina-titulo">
 
-        <section class="banner-promocao">
+            <div>
 
-            <span id="bannerTag"></span>
+                <h1>
+                    Promoções
+                </h1>
 
-            <h2 id="bannerTitulo"></h2>
+                <p>
+                    Crie, acompanhe e gerencie as promoções da sua loja.
+                </p>
 
-            <p id="bannerDescricao"></p>
+            </div>
 
-        </section>
 
+            <button type="button" id="btnNovaPromocao" class="btn-principal">
 
+                + Nova promoção
 
-        <!-- ======================================
-             LAYOUT
-        ======================================= -->
-
-        <div class="layout">
-
-
-            <!-- ==================================
-                 FILTROS
-            =================================== -->
-
-            <aside class="sidebar">
-
-
-                <h3>Categoria</h3>
-
-
-                <label>
-
-                    <input type="checkbox" value="tudo">
-
-                    Tudo
-
-                </label>
-
-
-                <label>
-
-                    <input type="checkbox" value="casa">
-
-                    Casa
-
-                </label>
-
-
-                <label>
-
-                    <input type="checkbox" value="decoracao">
-
-                    Decoração
-
-                </label>
-
-
-                <label>
-
-                    <input type="checkbox" value="tecnologia">
-
-                    Tecnologia
-
-                </label>
-
-
-                <h3>Desconto</h3>
-
-
-                <button type="button" class="filter-btn" data-desconto="25">
-                    Acima de 25%
-                </button>
-
-
-                <button type="button" class="filter-btn" data-desconto="50">
-                    Acima de 50%
-                </button>
-
-
-                <button type="button" class="filter-btn" data-desconto="70">
-                    Acima de 70%
-                </button>
-
-
-                <button id="btnFiltrar" class="apply-filter" type="button">
-                    Aplicar
-                </button>
-
-
-            </aside>
-
-
-
-            <!-- ==================================
-                 PRODUTOS
-            =================================== -->
-
-            <section class="products">
-
-
-                <!-- CABEÇALHO -->
-
-                <div class="products-header">
-
-                    <h3 id="quantidadeProdutos"></h3>
-
-
-                    <select id="ordenacao">
-
-                        <option value="ofertas">
-                            Melhores Ofertas
-                        </option>
-
-                        <option value="menor">
-                            Menor Preço
-                        </option>
-
-                        <option value="maior">
-                            Maior Preço
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-
-                <!-- ==================================
-                     GRID DE PRODUTOS
-                =================================== -->
-
-                <div class="products-grid">
-
-
-                    <!-- PRODUTO 1 -->
-
-                    <article class="product-card">
-
-                        <span id="desconto1" class="badge"></span>
-
-
-                        <img id="imagem1" src="" alt="">
-
-
-                        <h4 id="nome1"></h4>
-
-
-                        <span id="parcela1" class="parcela"></span>
-
-
-                        <div class="preco">
-
-                            <small id="precoAntigo1"></small>
-
-
-                            <strong id="precoAtual1"></strong>
-
-                        </div>
-
-
-                        <button id="btnProduto1" type="button">
-                            ADICIONAR AO CARRINHO
-                        </button>
-
-                    </article>
-
-
-
-                    <!-- PRODUTO 2 -->
-
-                    <article class="product-card">
-
-                        <span id="desconto2" class="badge"></span>
-
-
-                        <img id="imagem2" src="" alt="">
-
-
-                        <h4 id="nome2"></h4>
-
-
-                        <span id="parcela2" class="parcela"></span>
-
-
-                        <div class="preco">
-
-                            <small id="precoAntigo2"></small>
-
-
-                            <strong id="precoAtual2"></strong>
-
-                        </div>
-
-
-                        <button id="btnProduto2" type="button">
-                            ADICIONAR AO CARRINHO
-                        </button>
-
-                    </article>
-
-
-
-                    <!-- PRODUTO 3 -->
-
-                    <article class="product-card">
-
-                        <span id="desconto3" class="badge"></span>
-
-
-                        <img id="imagem3" src="" alt="">
-
-
-                        <h4 id="nome3"></h4>
-
-
-                        <span id="parcela3" class="parcela"></span>
-
-
-                        <div class="preco">
-
-                            <small id="precoAntigo3"></small>
-
-
-                            <strong id="precoAtual3"></strong>
-
-                        </div>
-
-
-                        <button id="btnProduto3" type="button">
-                            ADICIONAR AO CARRINHO
-                        </button>
-
-                    </article>
-
-
-
-                    <!-- PRODUTO 4 -->
-
-                    <article class="product-card">
-
-                        <span id="desconto4" class="badge"></span>
-
-
-                        <img id="imagem4" src="" alt="">
-
-
-                        <h4 id="nome4"></h4>
-
-
-                        <span id="parcela4" class="parcela"></span>
-
-
-                        <div class="preco">
-
-                            <small id="precoAntigo4"></small>
-
-
-                            <strong id="precoAtual4"></strong>
-
-                        </div>
-
-
-                        <button id="btnProduto4" type="button">
-                            ADICIONAR AO CARRINHO
-                        </button>
-
-                    </article>
-
-
-                </div>
-
-
-
-                <!-- ==================================
-                     PAGINAÇÃO
-                =================================== -->
-
-                <div class="pagination">
-
-                    <button type="button" data-page="1">
-                        1
-                    </button>
-
-                    <button type="button" data-page="2">
-                        2
-                    </button>
-
-                    <button type="button" data-page="3">
-                        3
-                    </button>
-
-                </div>
-
-
-            </section>
-
-
-        </div>
-
-
-
-        <!-- ==========================================
-             NEWSLETTER
-        =========================================== -->
-
-        <section class="newsletter">
-
-            <h2 id="newsletterTitulo"></h2>
-
-            <p id="newsletterDescricao"></p>
-
-
-            <input type="email" id="newsletterEmail" placeholder="Seu melhor e-mail">
-
-
-            <button id="btnCadastrar" type="button">
-                CADASTRAR
             </button>
 
         </section>
 
 
-    </main>
+        <!-- =================================================
+             RESUMO
+        ================================================== -->
+
+        <section class="resumo-promocoes">
 
 
+            <div class="card-resumo">
 
-    <!-- ==========================================
-         FOOTER
-    =========================================== -->
+                <div class="icone">
+                    %
+                </div>
 
-    <footer class="footer">
+                <div>
 
+                    <span>
+                        Promoções ativas
+                    </span>
 
-        <div class="footer-content">
+                    <strong id="totalAtivas">
+                        0
+                    </strong>
 
-
-            <div>
-
-                <h3>LIZA VARIEDADES</h3>
-
-                <p id="footerDescricao"></p>
-
-            </div>
-
-
-            <div>
-
-                <h4>Institucional</h4>
-
-                <a href="#">Quem Somos</a>
-
-                <a href="#">Políticas</a>
-
-                <a href="#">Trocas</a>
+                </div>
 
             </div>
 
 
-            <div>
+            <div class="card-resumo">
 
-                <h4>Contato</h4>
+                <div class="icone">
+                    $
+                </div>
 
-                <p id="telefone"></p>
+                <div>
 
-                <p id="email"></p>
+                    <span>
+                        Produtos em promoção
+                    </span>
+
+                    <strong id="totalProdutos">
+                        0
+                    </strong>
+
+                </div>
 
             </div>
 
+
+            <div class="card-resumo">
+
+                <div class="icone">
+                    !
+                </div>
+
+                <div>
+
+                    <span>
+                        Promoções encerradas
+                    </span>
+
+                    <strong id="totalEncerradas">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-resumo">
+
+                <div class="icone">
+                    %
+                </div>
+
+                <div>
+
+                    <span>
+                        Maior desconto
+                    </span>
+
+                    <strong id="maiorDesconto">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTROS
+        ================================================== -->
+
+        <section class="filtros">
+
+            <div class="campo">
+
+                <label for="campoBusca">
+                    Buscar promoção
+                </label>
+
+                <input type="text" id="campoBusca" placeholder="Digite o nome da promoção">
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="filtroStatus">
+                    Status
+                </label>
+
+                <select id="filtroStatus">
+
+                    <option value="todos">
+                        Todos
+                    </option>
+
+                    <option value="ativa">
+                        Ativas
+                    </option>
+
+                    <option value="encerrada">
+                        Encerradas
+                    </option>
+
+                    <option value="futura">
+                        Futuras
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LISTA DE PROMOÇÕES
+        ================================================== -->
+
+        <section class="promocoes-container">
+
+            <div class="titulo-lista">
+
+                <h2>
+                    Minhas promoções
+                </h2>
+
+                <span id="quantidadePromocoes">
+                    0 promoções
+                </span>
+
+            </div>
+
+
+            <div id="listaPromocoes" class="lista-promocoes">
+
+
+                <!-- PROMOÇÃO 1 -->
+
+                <article class="promocao-card">
+
+                    <div class="promocao-topo">
+
+                        <span class="status ativa">
+                            ATIVA
+                        </span>
+
+                        <span class="desconto">
+                            40% OFF
+                        </span>
+
+                    </div>
+
+
+                    <div class="promocao-conteudo">
+
+                        <h3>
+                            Black Friday
+                        </h3>
+
+                        <p>
+                            Desconto especial em produtos selecionados.
+                        </p>
+
+
+                        <div class="datas">
+
+                            <div>
+
+                                <span>
+                                    Início
+                                </span>
+
+                                <strong>
+                                    20/11/2026
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Final
+                                </span>
+
+                                <strong>
+                                    30/11/2026
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="promocao-footer">
+
+                        <button type="button" class="btn-editar">
+
+                            Editar
+
+                        </button>
+
+                        <button type="button" class="btn-excluir">
+
+                            Excluir
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PROMOÇÃO 2 -->
+
+                <article class="promocao-card">
+
+                    <div class="promocao-topo">
+
+                        <span class="status futura">
+                            FUTURA
+                        </span>
+
+                        <span class="desconto">
+                            25% OFF
+                        </span>
+
+                    </div>
+
+
+                    <div class="promocao-conteudo">
+
+                        <h3>
+                            Natal
+                        </h3>
+
+                        <p>
+                            Promoção especial de Natal.
+                        </p>
+
+
+                        <div class="datas">
+
+                            <div>
+
+                                <span>
+                                    Início
+                                </span>
+
+                                <strong>
+                                    01/12/2026
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Final
+                                </span>
+
+                                <strong>
+                                    25/12/2026
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="promocao-footer">
+
+                        <button type="button" class="btn-editar">
+
+                            Editar
+
+                        </button>
+
+                        <button type="button" class="btn-excluir">
+
+                            Excluir
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MENSAGEM
+        ================================================== -->
+
+        <div id="mensagem" class="mensagem">
 
         </div>
 
+    </main>
+
+
+    <!-- =====================================================
+         MODAL NOVA PROMOÇÃO
+    ====================================================== -->
+
+    <div id="modalPromocao" class="modal">
+
+
+        <div class="modal-conteudo">
+
+
+            <div class="modal-header">
+
+                <h2>
+                    Nova promoção
+                </h2>
+
+                <button type="button" id="btnFecharModal" class="btn-fechar">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <form id="formPromocao">
+
+
+                <div class="campo">
+
+                    <label for="nomePromocao">
+                        Nome da promoção
+                    </label>
+
+                    <input type="text" id="nomePromocao" placeholder="Ex.: Black Friday" required>
+
+                </div>
+
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="dataInicio">
+                            Data de início
+                        </label>
+
+                        <input type="date" id="dataInicio" required>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="dataFinal">
+                            Data final
+                        </label>
+
+                        <input type="date" id="dataFinal" required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="valorPromocao">
+                        Desconto (%)
+                    </label>
+
+                    <input type="number" id="valorPromocao" min="1" max="100" step="0.01" placeholder="Ex.: 20"
+                        required>
+
+                </div>
+
+
+                <div id="mensagemModal" class="mensagem">
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button type="button" id="btnCancelar" class="btn-secundario">
+
+                        Cancelar
+
+                    </button>
+
+
+                    <button type="submit" class="btn-principal">
+
+                        Salvar promoção
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Liza Variedades - Todos os direitos reservados.
+        </p>
 
     </footer>
 
 
+    <!-- JAVASCRIPT -->
 
-    <!-- ==========================================
-         JAVASCRIPT
-    =========================================== -->
-
-    <script src="../js/promocoes.js"></script>
-
+    <script src="../JS/promocoes.js"></script>
 
 </body>
 

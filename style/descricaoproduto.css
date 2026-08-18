@@ -1,6 +1,6 @@
-/* =====================================================
+/* ==================================================
    RESET
-===================================================== */
+================================================== */
 
 * {
     margin: 0;
@@ -9,20 +9,22 @@
 }
 
 
-/* =====================================================
-   BODY
-===================================================== */
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     background: #f7f7f7;
     color: #333;
 }
 
 
-/* =====================================================
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* ==================================================
    HEADER
-===================================================== */
+================================================== */
 
 .header {
     width: 100%;
@@ -34,82 +36,70 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    padding: 15px 5%;
+    gap: 20px;
 
-    gap: 25px;
+    padding: 15px 5%;
 }
 
 
 .logo a {
     color: white;
-
     text-decoration: none;
 
     font-size: 23px;
     font-weight: bold;
-
-    white-space: nowrap;
 }
 
 
 .pesquisa {
-    display: flex;
-
     width: 45%;
-
     max-width: 550px;
+
+    display: flex;
 }
 
 
 .pesquisa input {
     width: 100%;
-
     height: 42px;
 
     border: none;
+    outline: none;
 
     padding: 0 15px;
 
-    outline: none;
-
     border-radius: 6px 0 0 6px;
-
-    font-size: 14px;
 }
 
 
 .pesquisa button {
     width: 50px;
+    height: 42px;
 
     border: none;
 
     background: white;
 
-    border-left: 1px solid #ddd;
-
-    border-radius: 0 6px 6px 0;
-
     cursor: pointer;
 
-    font-size: 18px;
+    border-radius: 0 6px 6px 0;
+}
+
+
+.pesquisa button:hover {
+    background: #f5e5e5;
 }
 
 
 .acoes {
     display: flex;
-
-    align-items: center;
-
     gap: 20px;
 }
 
 
 .acoes a {
     color: white;
-
     text-decoration: none;
-
-    font-size: 14px;
 
     font-weight: bold;
 }
@@ -120,9 +110,9 @@ body {
 }
 
 
-/* =====================================================
+/* ==================================================
    BREADCRUMB
-===================================================== */
+================================================== */
 
 .breadcrumb {
     max-width: 1200px;
@@ -132,12 +122,11 @@ body {
     padding: 0 20px;
 
     display: flex;
+    align-items: center;
 
     gap: 8px;
 
     color: #777;
-
-    font-size: 14px;
 }
 
 
@@ -148,9 +137,14 @@ body {
 }
 
 
-/* =====================================================
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==================================================
    PRODUTO
-===================================================== */
+================================================== */
 
 .produto {
     max-width: 1200px;
@@ -167,11 +161,13 @@ body {
 }
 
 
-/* =====================================================
+/* ==================================================
    GALERIA
-===================================================== */
+================================================== */
 
 .galeria {
+    min-height: 500px;
+
     display: flex;
 
     gap: 20px;
@@ -182,9 +178,8 @@ body {
 
     border-radius: 12px;
 
-    box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
-
-    min-height: 500px;
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.08);
 }
 
 
@@ -201,18 +196,19 @@ body {
 
 .miniaturas img {
     width: 70px;
-
     height: 70px;
 
     object-fit: cover;
 
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
 
     border-radius: 6px;
 
+    padding: 4px;
+
     cursor: pointer;
 
-    padding: 4px;
+    background: white;
 }
 
 
@@ -221,8 +217,18 @@ body {
 }
 
 
+.miniaturas img.selecionada {
+    border-color: #c28282;
+
+    box-shadow:
+        0 0 0 2px #f9e8e8;
+}
+
+
 .imagemPrincipal {
     flex: 1;
+
+    min-width: 0;
 
     display: flex;
 
@@ -235,86 +241,98 @@ body {
 .imagemPrincipal img {
     width: 100%;
 
+    max-width: 500px;
+
     max-height: 450px;
 
     object-fit: contain;
 }
 
 
-/* =====================================================
+/* ==================================================
    INFORMAÇÕES
-===================================================== */
+================================================== */
 
 .informacoes {
     background: white;
 
-    border-radius: 12px;
-
     padding: 30px;
 
-    box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+    border-radius: 12px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.08);
 }
 
 
 .marca {
     display: inline-block;
 
+    margin-bottom: 10px;
+
     color: #a85f6e;
 
     font-weight: bold;
-
-    font-size: 14px;
-
-    margin-bottom: 10px;
 }
 
 
 .informacoes h1 {
     font-size: 28px;
 
-    color: #333;
-
     margin-bottom: 15px;
 }
 
 
 .avaliacao {
-    color: #e5a400;
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
 
     margin-bottom: 20px;
 }
 
 
+.estrelas {
+    color: #e5a400;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==================================================
+   PREÇO
+================================================== */
+
 .preco {
-    border-top: 1px solid #eee;
-
-    border-bottom: 1px solid #eee;
-
     padding: 20px 0;
 
     margin-bottom: 20px;
+
+    border-top: 1px solid #eee;
+
+    border-bottom: 1px solid #eee;
 }
 
 
 .precoAntigo {
     display: block;
 
+    margin-bottom: 5px;
+
     color: #999;
 
     text-decoration: line-through;
-
-    font-size: 15px;
-
-    margin-bottom: 5px;
 }
 
 
 .preco h2 {
+    margin-bottom: 5px;
+
     color: #a85f6e;
 
     font-size: 30px;
-
-    margin-bottom: 5px;
 }
 
 
@@ -323,9 +341,9 @@ body {
 }
 
 
-/* =====================================================
+/* ==================================================
    OPÇÕES
-===================================================== */
+================================================== */
 
 .opcao {
     margin-bottom: 20px;
@@ -334,8 +352,6 @@ body {
 
 .opcao h3 {
     margin-bottom: 10px;
-
-    font-size: 16px;
 }
 
 
@@ -358,6 +374,8 @@ body {
     border-radius: 6px;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 
@@ -371,9 +389,16 @@ body {
 }
 
 
-/* =====================================================
+.semOpcao {
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* ==================================================
    FRETE
-===================================================== */
+================================================== */
 
 .frete {
     margin-top: 20px;
@@ -383,11 +408,9 @@ body {
 .frete label {
     display: block;
 
-    font-weight: bold;
-
-    font-size: 14px;
-
     margin-bottom: 8px;
+
+    font-weight: bold;
 }
 
 
@@ -403,11 +426,16 @@ body {
 
     border: 1px solid #ccc;
 
-    border-radius: 6px 0 0 6px;
+    outline: none;
 
     padding: 0 12px;
 
-    outline: none;
+    border-radius: 6px 0 0 6px;
+}
+
+
+.frete input:focus {
+    border-color: #c28282;
 }
 
 
@@ -424,24 +452,39 @@ body {
 
     font-weight: bold;
 
-    border-radius: 0 6px 6px 0;
-
     cursor: pointer;
+
+    border-radius: 0 6px 6px 0;
+}
+
+
+.frete button:hover {
+    background: #a85f6e;
 }
 
 
 .resultadoFrete {
+    min-height: 20px;
+
     margin-top: 10px;
 
     font-size: 14px;
-
-    color: #555;
 }
 
 
-/* =====================================================
+.resultadoFrete.erro {
+    color: #c0392b;
+}
+
+
+.resultadoFrete.sucesso {
+    color: #27853f;
+}
+
+
+/* ==================================================
    BOTÕES
-===================================================== */
+================================================== */
 
 .botoes {
     display: flex;
@@ -463,7 +506,7 @@ body {
 
     cursor: pointer;
 
-    font-size: 14px;
+    transition: 0.2s;
 }
 
 
@@ -495,14 +538,15 @@ body {
 }
 
 
-/* =====================================================
+/* ==================================================
    BENEFÍCIOS
-===================================================== */
+================================================== */
 
 .beneficios {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 10px;
 
@@ -517,32 +561,33 @@ body {
 .beneficios div {
     text-align: center;
 
-    font-size: 13px;
-
     color: #666;
 }
 
 
 .beneficios span {
-    font-size: 20px;
-
     display: block;
 
     margin-bottom: 5px;
+
+    font-size: 20px;
 }
 
 
-/* =====================================================
+/* ==================================================
    ABAS
-===================================================== */
+================================================== */
 
-.abas {
+.areaAbas {
     max-width: 1200px;
 
-    margin: 0 auto;
+    margin: 0 auto 50px;
 
     padding: 0 20px;
+}
 
+
+.abas {
     display: flex;
 
     border-bottom: 1px solid #ddd;
@@ -561,8 +606,6 @@ body {
     font-weight: bold;
 
     color: #777;
-
-    border-bottom: 3px solid transparent;
 }
 
 
@@ -574,20 +617,17 @@ body {
 .aba.ativa {
     color: #a85f6e;
 
-    border-bottom-color: #c28282;
+    border-bottom:
+        3px solid #c28282;
 }
 
 
-/* =====================================================
-   CONTEÚDO ABAS
-===================================================== */
+/* ==================================================
+   CONTEÚDO DAS ABAS
+================================================== */
 
 .conteudoAbas {
-    max-width: 1200px;
-
-    margin: 0 auto 50px;
-
-    padding: 25px 20px;
+    padding-top: 25px;
 }
 
 
@@ -611,9 +651,46 @@ body {
 }
 
 
-/* =====================================================
-   RELACIONADOS
-===================================================== */
+.conteudo h3 {
+    margin-bottom: 15px;
+
+    color: #333;
+}
+
+
+.conteudo p {
+    margin-bottom: 10px;
+}
+
+
+/* ==================================================
+   ESPECIFICAÇÕES
+================================================== */
+
+.listaEspecificacoes {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.especificacaoItem {
+    padding: 10px;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+.especificacaoItem strong {
+    color: #333;
+}
+
+
+/* ==================================================
+   PRODUTOS RELACIONADOS
+================================================== */
 
 .relacionados {
     max-width: 1200px;
@@ -624,22 +701,16 @@ body {
 }
 
 
-.titulo {
+.relacionados h2 {
     margin-bottom: 20px;
-}
-
-
-.titulo h2 {
-    color: #333;
-
-    font-size: 23px;
 }
 
 
 .listaRelacionados {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 20px;
 }
@@ -652,16 +723,18 @@ body {
 
     padding: 15px;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08);
 
-    cursor: pointer;
-
-    transition: .2s;
+    transition: 0.2s;
 }
 
 
 .produtoRelacionado:hover {
     transform: translateY(-3px);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -671,35 +744,74 @@ body {
     height: 180px;
 
     object-fit: contain;
-
-    margin-bottom: 10px;
 }
 
 
 .produtoRelacionado h3 {
-    font-size: 15px;
+    margin-top: 10px;
 
-    margin-bottom: 8px;
+    font-size: 16px;
 }
 
 
 .produtoRelacionado strong {
+    display: block;
+
+    margin-top: 10px;
+
     color: #a85f6e;
 
     font-size: 18px;
 }
 
 
-/* =====================================================
-   FOOTER
-===================================================== */
+.produtoRelacionado button {
+    width: 100%;
 
-footer {
-    background: #333;
+    margin-top: 12px;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #c28282;
 
     color: white;
 
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+.produtoRelacionado button:hover {
+    background: #a85f6e;
+}
+
+
+.semRelacionados {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    color: #777;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
     margin-top: 50px;
+
+    background: #333;
+
+    color: white;
 }
 
 
@@ -712,7 +824,8 @@ footer {
 
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 30px;
 }
@@ -723,10 +836,9 @@ footer {
 }
 
 
-.footerContainer p {
+.footerContainer p,
+.footerContainer a {
     color: #ccc;
-
-    line-height: 1.5;
 }
 
 
@@ -741,8 +853,6 @@ footer {
 
 
 .footerContainer a {
-    color: #ccc;
-
     text-decoration: none;
 }
 
@@ -755,22 +865,20 @@ footer {
 .footerContainer input {
     width: 100%;
 
-    height: 40px;
+    padding: 10px;
 
-    padding: 0 10px;
+    margin-bottom: 10px;
 
     border: none;
 
     border-radius: 5px;
 
-    margin-bottom: 8px;
+    outline: none;
 }
 
 
 .footerContainer button {
-    height: 40px;
-
-    padding: 0 18px;
+    padding: 10px 20px;
 
     border: none;
 
@@ -780,26 +888,31 @@ footer {
 
     color: white;
 
+    font-weight: bold;
+
     cursor: pointer;
 }
 
 
-.copyright {
-    text-align: center;
-
-    border-top: 1px solid #555;
-
-    padding: 18px;
-
-    color: #bbb;
-
-    font-size: 13px;
+.footerContainer button:hover {
+    background: #a85f6e;
 }
 
 
-/* =====================================================
-   RESPONSIVIDADE
-===================================================== */
+.copyright {
+    padding: 18px;
+
+    border-top: 1px solid #555;
+
+    text-align: center;
+
+    color: #bbb;
+}
+
+
+/* ==================================================
+   TABLET
+================================================== */
 
 @media (max-width: 900px) {
 
@@ -825,18 +938,29 @@ footer {
 
 
     .listaRelacionados {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
 
     .footerContainer {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
 }
 
 
+/* ==================================================
+   CELULAR
+================================================== */
+
 @media (max-width: 600px) {
+
+    .header {
+        padding: 15px;
+    }
+
 
     .logo a {
         font-size: 18px;
@@ -845,18 +969,27 @@ footer {
 
     .acoes {
         gap: 10px;
+
+        font-size: 14px;
     }
 
 
     .acoes a {
-        font-size: 12px;
+        font-size: 13px;
+    }
+
+
+    .produto {
+        padding: 10px;
     }
 
 
     .galeria {
-        flex-direction: column;
-
         min-height: auto;
+
+        padding: 15px;
+
+        flex-direction: column;
     }
 
 
@@ -866,6 +999,16 @@ footer {
         flex-direction: row;
 
         overflow-x: auto;
+    }
+
+
+    .miniaturas img {
+        flex-shrink: 0;
+    }
+
+
+    .imagemPrincipal img {
+        max-height: 350px;
     }
 
 
@@ -889,15 +1032,20 @@ footer {
     }
 
 
+    .areaAbas {
+        padding: 0 10px;
+    }
+
+
     .abas {
         overflow-x: auto;
     }
 
 
     .aba {
-        white-space: nowrap;
+        flex-shrink: 0;
 
-        padding: 14px 18px;
+        white-space: nowrap;
     }
 
 
